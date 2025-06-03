@@ -8,6 +8,7 @@ layer(base);
 @theme {
   --font-*: initial;
   --font-outfit: Outfit, sans-serif;
+  --font-philosopher: Philosopher, sans-serif;
 
   --breakpoint-*: initial;
   --breakpoint-2xsm: 375px;
@@ -37,6 +38,7 @@ layer(base);
   --text-theme-xs--line-height: 18px;
 
   --color-current: currentColor;
+  --color-primary-blue: #001a4d;
   --color-transparent: transparent;
   --color-white: #ffffff;
   --color-black: #101828;

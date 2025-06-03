@@ -1,6 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import PageTitle from "./components/PageTitle";
 import HomePage from "./pages/Home/HomePage";
+import Login from "./pages/Authentications/Login";
+import "./index.css";
+import "./app.css"
+import AccountDetail from "./pages/AccountDetail/AccountDetail";
+import EditAccount from "./pages/AccountDetail/EditAccount/EditAccount";
+import Package from "./pages/Package/Package";
+import PackageCover from "./pages/Package/AddPackage/PackageCover";
 
 export default function App() {
   return (
@@ -14,6 +21,56 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <HomePage />
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <Login />
+              </>
+            }
+          />
+            <Route
+            path="/AccountDetail"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <AccountDetail />
+              </>
+            }
+          />
+           <Route
+            path="/AccountDetail/EditAccountDetail"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <EditAccount />
+              </>
+            }
+          />
+          <Route
+            path="/Package"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <Package />
+              </>
+            }
+          />
+           <Route
+            path="/Package/AddPackage"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <PackageCover />
               </>
             }
           />
