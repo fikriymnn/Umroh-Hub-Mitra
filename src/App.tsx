@@ -8,6 +8,7 @@ import AccountDetail from "./pages/AccountDetail/AccountDetail";
 import EditAccount from "./pages/AccountDetail/EditAccount/EditAccount";
 import Package from "./pages/Package/Package";
 import PackageCover from "./pages/Package/AddPackage/PackageCover";
+import PackageFasility from "./pages/Package/AddPackage/PackageFasility";
 
 export default function App() {
   return (
@@ -71,6 +72,16 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <PackageCover />
+              </>
+            }
+          />
+           <Route
+            path="/Package/AddPackage/Fasility"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <PackageFasility />
               </>
             }
           />
