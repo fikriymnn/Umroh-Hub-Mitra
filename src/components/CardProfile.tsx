@@ -17,13 +17,25 @@ const CardProfile = () => {
                     alt="profile"
                     className="w-[100px] h-[100px] rounded-full object-cover"
                 />
-                <div className="flex flex-col justify-center">
-                    <h1 className="text-white font-medium capitalize text-[16px]">
-                        Umroh Hasanah Hana
-                    </h1>
-                    <h2 className="text-white text-[10px] capitalize">
-                        PT Hasanah Hana
-                    </h2>
+                <div className="flex flex-col justify-center space-y-[9px]">
+                    <div className="flex flex-col">
+
+                        <h1 className="text-white font-medium capitalize text-[16px]">
+                            Umroh Hasanah Hana
+                        </h1>
+                        <h2 className="text-white text-[10px] capitalize">
+                            PT Hasanah Hana
+                        </h2>
+                    </div>
+                     <div className="flex flex-col">
+
+                        <h2 className="text-white text-[10px] capitalize">
+                            Daftar Sejak
+                        </h2>
+                        <h2 className="text-white text-[10px] capitalize">
+                            20/10/2020
+                        </h2>
+                    </div>
                 </div>
                 <div className="flex w-5/12" />
                 <div className="flex items-center justify-end">
