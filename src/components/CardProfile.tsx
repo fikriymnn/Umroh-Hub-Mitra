@@ -2,8 +2,9 @@ import React from 'react';
 import profileExample from "../assets/images/profile_placeholder (1).png";
 import editIcon from "../assets/icons/Edit_fill.svg";
 import vector from "../assets/images/Group (1).png";
+import { Partner } from '../types/Partners';
 
-const CardProfile = () => {
+const CardProfile = ({ partner }: { partner: Partner }) => {
     return (
         <div className='mt-[20px]'>
             <img
@@ -21,13 +22,13 @@ const CardProfile = () => {
                     <div className="flex flex-col">
 
                         <h1 className="text-white font-medium capitalize text-[16px]">
-                            Umroh Hasanah Hana
+                            {partner.company_name}
                         </h1>
                         <h2 className="text-white text-[10px] capitalize">
-                            PT Hasanah Hana
+                            {partner.name}
                         </h2>
                     </div>
-                     <div className="flex flex-col">
+                    <div className="flex flex-col">
 
                         <h2 className="text-white text-[10px] capitalize">
                             Daftar Sejak
