@@ -12,15 +12,17 @@ const defaultPartner: Partner = {
 
 function Login() {
     const navigate = useNavigate();
-    const [partner, setPartner] = useState<Partner>(defaultPartner);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPartner({ ...partner, [e.target.name]: e.target.value })
-    }
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
         try {
-            const res = await login(partner);
+            const res = await login({
+                name,
+                email,
+                password
+            });
             console.log(res);
 
             alert('Login berhasil');
@@ -44,25 +46,28 @@ function Login() {
                             <input
                                 type="text"
                                 name='name'
+                                value={name}
                                 className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Nama Mitra'
-                                onChange={handleChange}
+                                onChange={(e) => setName(e.target.value)}
                                 required
                             />
                             <input
                                 type="email"
                                 name='email'
+                                value={email}
                                 className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Email'
-                                onChange={handleChange}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
                             <input
                                 type="password"
                                 name='password'
+                                value={password}
                                 className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Password'
-                                onChange={handleChange}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
                             <button
