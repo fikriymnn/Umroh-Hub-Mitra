@@ -3,35 +3,18 @@ import { useNavigate } from 'react-router'
 import bg from '../../assets/images/Group (1).png'
 import { Partner } from '../../types/Partners';
 import { login } from '../../services/authServices';
-
-const defaultPartner: Partner = {
-    name: '',
-    email: '',
-    password: ''
-}
+import useLogin from '../../hooks/useLogin';
 
 function Login() {
-    const navigate = useNavigate();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = async () => {
-        try {
-            const res = await login({
-                name,
-                email,
-                password
-            });
-            console.log(res);
-
-            alert('Login berhasil');
-            navigate('/home')
-        } catch (error) {
-            alert('Login gagal')
-            console.error(`Error: ${error}`);
-        }
-    }
+    const {
+        name,
+        setName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        handleLogin
+    } = useLogin();
 
     return (
         <div className="w-full h-screen flex items-center justify-center bg-[#DAFAFF]">

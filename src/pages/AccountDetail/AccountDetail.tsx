@@ -2,25 +2,13 @@ import React, { useState, useEffect } from "react";
 import DefaultLayout from "../../layout/DefaultLayout";
 import dashboardIcon from "../../assets/icons/Home.svg";
 import CardProfile from "../../components/CardProfile";
+import useAccountDetail from "../../hooks/useAccountDetail";
 import { Partner } from "../../types/Partners";
 import { getMe } from "../../services/partnerServices";
+import { Link } from "react-router";
 
 const AccountDetail: React.FC = () => {
-  const [partner, setPartner] = useState<Partner>();
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await getMe();
-        console.log(res);
-        setPartner(res.data.data);
-      } catch (error) {
-        console.error(`Error: ${error}`);
-      }
-    }
-
-    fetchUser();
-  }, []);
+  const { partner } = useAccountDetail();
 
   return (
     <DefaultLayout>
@@ -45,7 +33,7 @@ const AccountDetail: React.FC = () => {
                   </div>
                   <div className="">
                     <h1 className="capitalize font-medium text-[#414141]">Nomor izin</h1>
-                    <h1 className="capitalize font-medium text-[19px]">{partner.phone_number}</h1>
+                    <h1 className="capitalize font-medium text-[19px]">{partner.siuppiu}</h1>
                   </div>
                   <div className="">
                     <h1 className="capitalize font-medium text-[#414141]">penilaian</h1>
@@ -69,14 +57,16 @@ const AccountDetail: React.FC = () => {
                 <div className="flex flex-col space-y-[19px]">
                   <div className="">
                     <h1 className="capitalize font-medium text-[#414141]">website</h1>
-                    <h1 className="capitalize font-medium text-[19px]">Umrah Hasanah Hana</h1>
+                    <h1 className="capitalize font-medium text-[19px]">{partner.website}</h1>
                   </div>
                   <div className="">
                     <h1 className="capitalize font-medium text-[#414141]">email</h1>
                     <h1 className="capitalize font-medium text-[19px]">{partner.email}</h1>
                   </div>
                   <div className="mt-10">
-                    <button className="bg-[#013293] rounded-[5px] font-medium text-[19px] text-white py-[12px] w-6/12">Edit</button>
+                    <Link to={`/AccountDetail/${partner.id}`}>
+                      <button className="bg-[#013293] rounded-[5px] font-medium text-[19px] text-white py-[12px] w-6/12">Edit</button>
+                    </Link>
                   </div>
                 </div>
               </div>
