@@ -29,7 +29,8 @@ function PackageFasility() {
                     <h1 className="text-[12px] flex items-center text-[#0A6BDB] space-x-[12px] capitalize font-medium ms-[30px]  mb-4">Sampul Paket <span className='ms-[12px]'>-</span>
                         <span className='text-[20px] text-primary-blue'>fasilitas</span>
                         <span>-</span><span className='text-[12px] text-[#919191]'>Detail hotel</span>
-                        <span>-</span><span className='text-[12px] text-[#919191]'>jadwal perjalanan</span>
+            <span>-</span><span className='text-[12px] text-[#919191]'>jadwal perjalanan</span>
+              <span>-</span><span className='text-[12px] text-[#919191]'>preview</span>
                     </h1>
 
         <div className="w-11/12 grid bg-white grid-cols-2 gap-6 shadow-[0px_4px_7.7px_5px] px-[30px] py-[27px] shadow-black/25">

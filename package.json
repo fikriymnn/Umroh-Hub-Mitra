@@ -35,7 +35,9 @@
     "react-helmet-async": "^2.0.5",
     "react-router": "^7.1.5",
     "react-router-dom": "^7.5.2",
+    "react-slick": "^0.30.3",
     "recharts": "^2.15.3",
+    "slick-carousel": "^1.8.1",
     "swiper": "^11.2.3",
     "tailwind-merge": "^3.0.1"
   },
@@ -44,6 +46,7 @@
     "@tailwindcss/postcss": "^4.0.8",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.0.4",
+    "@types/react-slick": "^0.23.13",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.19.0",
     "eslint-plugin-react-hooks": "^5.0.0",
