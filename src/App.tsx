@@ -10,6 +10,9 @@ import Package from "./pages/Package/Package";
 import PackageCover from "./pages/Package/AddPackage/PackageCover";
 import PackageFasility from "./pages/Package/AddPackage/PackageFasility";
 import Dashboard from "./pages/Home/Dashboard";
+import DetailHotel from "./pages/Package/AddPackage/DetailHotel";
+import TravelDuration from "./pages/Package/AddPackage/TravelDuration";
+import PreviewPackage from "./pages/Package/AddPackage/PreviewPackage";
 
 export default function App() {
   return (
@@ -83,6 +86,36 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <PackageFasility />
+              </>
+            }
+          />
+           <Route
+            path="/Package/AddPackage/DetailHotel"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <DetailHotel />
+              </>
+            }
+          />
+           <Route
+            path="/Package/AddPackage/TravelDuration"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <TravelDuration />
+              </>
+            }
+          />
+          <Route
+            path="/Package/AddPackage/PreviewPackage"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <PreviewPackage />
               </>
             }
           />
