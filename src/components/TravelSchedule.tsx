@@ -4,8 +4,8 @@ import React from 'react'
 
 const TravelSchedule = ({ scheduleList }: any) => {
     return (
-        <div className='grid grid-cols-5 gap-5 mb-10'>
-            <img src={scheduleList.image} alt={`Schedule Image`} className='w-full h-[230px]' />
+        <div className='w-full grid grid-cols-6 gap-5 mb-10'>
+            <img src={scheduleList.image} alt={`Schedule Image`} className='w-full col-span-2 h-[230px]' />
             <div className="w-full">
                 <h1 className="font-bold  capitalize text-[20px] text-[#004492]">
                     {scheduleList.hari}

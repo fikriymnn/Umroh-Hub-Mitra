@@ -72,7 +72,7 @@ function PackageCover() {
             </div>
 
             {/* Gambar Sampul */}
-            <div className="">
+            <div className="flex flex-col space-y-4">
                 
              <h1 className="font-medium capitalize">Gambar sampul</h1>
             <div className="flex flex-col mt-1 w-10/12 items-center justify-center  rounded-[10px] bg-[#F4F4F4] h-64">
@@ -89,6 +89,13 @@ function PackageCover() {
                 </div>
                 </div>
             )}
+                            </div>
+                              <div>
+                <label className="block  font-medium text-primary-blue">List Persyaratan Untuk Jemaah</label>
+                <textarea
+                className="mt-1 w-10/12 p-2  rounded-[10px] bg-[#F4F4F4]"
+                rows={6}
+                ></textarea>
             </div>
             </div>
             <div className=""></div>
