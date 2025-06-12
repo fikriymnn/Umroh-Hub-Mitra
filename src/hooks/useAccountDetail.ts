@@ -6,7 +6,7 @@ const useAccountDetail = () => {
     const [partner, setPartner] = useState<Partner>();
 
     useEffect(() => {
-        const fetchUser = async () => {
+        async function fetchUser() {
             try {
                 const res = await getMe();
                 setPartner(res.data.data);

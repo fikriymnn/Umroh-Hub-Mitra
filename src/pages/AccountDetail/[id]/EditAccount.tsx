@@ -4,11 +4,13 @@ import dashboardIcon from "../../../assets/icons/Home.svg";
 import profileExample from "../../../assets/images/profile_placeholder (1).png";
 import editIcon from "../../../assets/icons/Edit_fill (1).svg";
 import useUpdateAccount from "../../../hooks/useUpdateAccount";
+import ProfileMenu from "../../../components/ProfileMenu";
+import useLogOut from "../../../hooks/useLogOut";
+import useAccountDetail from "../../../hooks/useAccountDetail";
 // import vector from "../../assets/images/Group (1).png";
 const EditAccount: React.FC = () => {
+  const { partner } = useAccountDetail();
   const {
-    partner,
-    // setPartner,
     name,
     setName,
     siuppiu,
@@ -23,13 +25,27 @@ const EditAccount: React.FC = () => {
     setEmail,
     handleUpdate
   } = useUpdateAccount();
+  const {
+    openDropdown, setOpenDropdown,
+    handleLogOut
+  } = useLogOut();
 
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
         <div className="w-full h-[58px] flex space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
-          <img src={dashboardIcon} alt="dashboard icon" className="w-[20px] h-[20px]" />
-          <h1 className="text-primary-blue font-medium">Detail Akun - <span className="text-[12px]">Edit Profile</span></h1>
+          <div className="flex">
+            <img src={dashboardIcon} alt="dashboard icon" className="w-[20px] h-[20px]" />
+            <h1 className="text-primary-blue font-medium">Detail Akun - <span className="text-[12px]">Edit Profile</span></h1>
+          </div>
+          {partner && (
+            <ProfileMenu
+              partner={partner}
+              openDropdown={openDropdown}
+              setOpenDropdown={setOpenDropdown}
+              handleLogOut={handleLogOut}
+            />
+          )}
         </div>
         <div className="w-full flex flex-col mt-[56px] h-full items-center">
           <div className="w-[205px] flex justify-center relative h-[180px]">

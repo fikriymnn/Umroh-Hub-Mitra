@@ -7,3 +7,7 @@ export const login = async (partner: Partner) => {
         {withCredentials: true}
     );
 };
+
+export const logOut = async () => {
+    await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/auth/logout`);
+};

@@ -8,7 +8,7 @@ const useLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = async () => {
+    async function handleLogin() {
         try {
             const res = await login({
                 name,

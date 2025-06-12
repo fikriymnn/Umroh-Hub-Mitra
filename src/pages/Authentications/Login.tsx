@@ -1,8 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router'
 import bg from '../../assets/images/Group (1).png'
-import { Partner } from '../../types/Partners';
-import { login } from '../../services/authServices';
 import useLogin from '../../hooks/useLogin';
 
 function Login() {

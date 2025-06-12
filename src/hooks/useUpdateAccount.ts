@@ -14,7 +14,7 @@ const useUpdateAccount = () => {
     const [email, setEmail] = useState('');
 
     useEffect(() => {
-        const fetchPartner = async () => {
+        async function fetchPartner() {
             try {
                 const res = await getMe();
                 console.log(res);
@@ -35,7 +35,7 @@ const useUpdateAccount = () => {
         fetchPartner();
     }, []);
 
-    const handleUpdate = async () => {
+    async function handleUpdate() {
         if (!partner?.id) return;
         try {
             await updatePartner(partner.id, {

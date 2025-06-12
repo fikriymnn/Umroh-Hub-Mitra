@@ -1,23 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DefaultLayout from "../../layout/DefaultLayout";
 import dashboardIcon from "../../assets/icons/Home.svg";
 import CardProfile from "../../components/CardProfile";
 import useAccountDetail from "../../hooks/useAccountDetail";
-import { Partner } from "../../types/Partners";
-import { getMe } from "../../services/partnerServices";
 import { Link } from "react-router";
+import ProfileMenu from "../../components/ProfileMenu";
+import useLogOut from "../../hooks/useLogOut";
 
 const AccountDetail: React.FC = () => {
   const { partner } = useAccountDetail();
+  const {
+    openDropdown, setOpenDropdown,
+    handleLogOut
+  } = useLogOut();
 
   return (
     <DefaultLayout>
-      <div className="w-full min-h-screen pb-16">
-        <div className="w-full h-[58px] flex space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
-          <img src={dashboardIcon} alt="dashboard icon" className="w-[20px] h-[20px]" />
-          <h1 className="text-primary-blue font-medium">Detail Akun</h1>
-        </div>
-        {partner && (
+      {partner && (
+        <div className="w-full min-h-screen pb-16">
+          <div className="w-full h-[58px] flex justify-between space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
+            <div className="flex">
+              <img src={dashboardIcon} alt="dashboard icon" className="w-[20px] h-[20px]" />
+              <h1 className="text-primary-blue font-medium">Detail Akun</h1>
+            </div>
+            <ProfileMenu
+              partner={partner}
+              openDropdown={openDropdown}
+              setOpenDropdown={setOpenDropdown}
+              handleLogOut={handleLogOut}
+            />
+          </div>
           <div className="w-full flex flex-col mt-[56px] h-full items-center">
             <div className="relative bg-gradient-to-r from-[#0C4E87] to-[#183453] h-[145px] shadow-[0px_10px_19px] shadow-black/25 rounded-[14px] w-7/12 overflow-hidden">
               {/* Background Image Vector */}
@@ -72,8 +84,8 @@ const AccountDetail: React.FC = () => {
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </DefaultLayout>
   );
 };
