@@ -1,5 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: white;
   }  
 .background-div {
   position: relative;
@@ -51,3 +52,73 @@ body {
     opacity: 0.45;
     z-index: -1; 
   }
+
+.custom-scrollbar {
+  padding-right: 10px;  
+  margin-right: -10px;  
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to right, #5CE9FF, #3C97FF);
+  border-radius: 30px;
+}
+
+@layer utilities {
+  @keyframes fadeSlide {
+    0% {
+      opacity: 0;
+      transform: translateX(-10px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  .animate-fade-slide {
+    animation: fadeSlide 0.3s ease;
+  }
+}
+
+ .active-nav {
+  background-color: white;
+  padding: 12px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.active-nav::before,
+.active-nav::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px white;
+  transition: box-shadow 0.3s ease;
+  z-index: -1;
+}
+
+.active-nav::before {
+  top: -50px;
+  right: 0;
+  box-shadow: 35px 35px 0 10px white;
+}
+
+.active-nav::after {
+  bottom: -50px;
+  right: 0;
+  box-shadow: 35px -35px 0 10px white;
+}
+

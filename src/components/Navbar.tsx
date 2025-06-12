@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import homeIcon from '../assets/icons/Home.svg'
 import homeIcon2 from '../assets/icons/Home (1).svg'
@@ -7,10 +7,14 @@ import detailIcon2 from '../assets/icons/Vector (2).svg'
 import packageIcon from '../assets/icons/Vector (3).svg'
 import packageIcon2 from '../assets/icons/Vector (4).svg'
 import orderIcon from '../assets/icons/Vector (5).svg'
+import promoIcon from "../assets/icons/Lable (1).svg"
+import promoIcon2 from "../assets/icons/Lable (2).svg"
 import orderIcon2 from '../assets/icons/Vector (6).svg'
+import { ChevronUp, ChevronDown } from 'lucide-react'
 function Sidebar() {
      const location = useLocation();
     const currentPath = location.pathname;
+    const [isOpen, setIsOpen] = useState(false);
 
   return (
       <div className='w-[275px] fixed h-screen'>
@@ -28,8 +32,8 @@ function Sidebar() {
                   
                 <Link
                   to="/home"
-                  className={`flex items-center w-full p-4 space-x-[15px] 
-                  ${currentPath === "/home" ? "bg-white text-primary-blue rounded-l-[30px]" : "text-white"}
+                  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
+                  ${currentPath === "/home" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
                 >
                   <img
@@ -51,8 +55,8 @@ function Sidebar() {
 
                <Link
                 to="/AccountDetail"
-                className={`flex items-center w-full p-4 space-x-[15px] 
-                  ${currentPath === "/AccountDetail" ? "bg-white text-primary-blue rounded-l-[30px]" : "text-white"}
+                className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
+                  ${currentPath === "/AccountDetail" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
               >
                 <img
@@ -70,17 +74,38 @@ function Sidebar() {
                 )}
               </Link>
 
-              <Link to="/Package"  className={`flex items-center w-full p-4 space-x-[15px] 
-                  ${currentPath === "/Package" ? "bg-white text-primary-blue rounded-l-[30px]" : "text-white"}
+              <Link to="/Package"  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
+                  ${currentPath === "/Package" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}>
-                    <img src={currentPath === "/Package" ? packageIcon : packageIcon2} alt="profile" className="w-[20px] h-[20px] ms-[30px]" />
+                  <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="focus:outline-none"
+        >
+          {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </button>
+                    <img src={currentPath === "/Package" ? packageIcon : packageIcon2} alt="profile" className="w-[20px] h-[20px]" />
                     <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Paket</h1>
                 {currentPath === "/Package" && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
               </Link>
-              <Link to="/Order"  className={`flex items-center w-full p-4 space-x-[15px] 
-                  ${currentPath === "/Order" ? "bg-white text-primary-blue rounded-l-[30px]" : "text-white"}
+      {(isOpen || currentPath === "/Package/Promo") && (
+        <div className=" mt-1 space-y-1">
+          <Link
+            to="/Package/Promo"
+            className={`flex items-center space-x-2 text-sm p-2 rounded-md ${
+              currentPath === "/Package/Promo"
+                ? "bg-white text-primary-blue font-semibold active-nav"
+                : "text-white"
+            }`}
+          >
+            <img src={currentPath === "/Package/Promo" ? promoIcon2 : promoIcon} alt="promo" className="w-[20px] h-[20px] ms-[40px]" />
+            <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Promo</h1>
+          </Link>
+        </div>
+      )}
+              <Link to="/Order"  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
+                  ${currentPath === "/Order" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}>
                     <img src={currentPath === "/Order" ? orderIcon : orderIcon2} alt="profile" className="w-[20px] h-[20px] ms-[30px]" />
             <h1 className={`font-medium text-left text-[20px] text-white flex items-self-center`}>Order</h1>

@@ -240,7 +240,7 @@ function PreviewPackage() {
 
                 <div className='w-full pt-[200px] min-h-screen background-div flex flex-col space-y-[25px] items-center justify-center'> */}
 
-                    <div className="grid grid-cols-5 gap-5 w-full mx-auto mt-10">
+                    <div className="grid grid-cols-5 gap-5 w-full mx-auto ">
                         {/* Kartu Kiri */}
                         <div className="bg-white w-full col-span-2 h-[600px] rounded-[5px]  shadow-[0px_4px_17px] shadow-black/25 overflow-hidden">
                             <div className="relative rounded-t-[5px] overflow-hidden">
