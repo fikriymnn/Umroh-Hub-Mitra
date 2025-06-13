@@ -5,7 +5,7 @@ import packageIcon from "../../assets/icons/Vector (3).svg";
 import editIcon from "../../assets/icons/Edit_fill.svg";
 // import vector from "../../assets/images/Group (1).png";
 import searchIcon from "../../assets/icons/Search_alt_light.svg";
-const Package: React.FC = () => {
+const Promo: React.FC = () => {
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -37,13 +37,16 @@ const Package: React.FC = () => {
                     </button>
 
               </div>
+              <div className="w-11/12 mt-[39px] ms-[39px]">
+                  <h1 className="text-[32px] font-semibold text-primary-blue">Paket Sedang Promosi</h1>
+              </div>
               <div className="w-11/12 ms-[39px] mt-[30px] h-full">
                 {/* table head */}
                 <div className="grid grid-cols-12 bg-white text-[#031B4E] font-bold px-4 py-3 rounded-t-md shadow-[0px_0px_14.4px_2px] shadow-black/25">
                     <div className="text-center">No</div>
                     <div className="col-span-4 text-center">Nama Paket</div>
                     <div className="col-span-2 text-center">Harga Paket</div>
-            <div className="text-center">Kuota</div>
+            <div className="text-center">Kuota Tersisa</div>
              <div className="col-span-4 text-center"></div>
                    
                 </div>
@@ -52,7 +55,7 @@ const Package: React.FC = () => {
                 <div className="grid grid-cols-12 items-center bg-white px-4 py-3 mt-3 shadow-[0px_0px_14.4px_2px] shadow-black/25 rounded-md mb-4">
                     <div className="font-bold w-1/5 text-[#031B4E] text-center">1</div>
 
-                    <div className="flex items-center gap-3 col-span-4">
+                    <div className="flex items-center space-x-5 col-span-4">
                     <img
                         src={packageIcon}
                         alt="ikon paket"
@@ -77,7 +80,13 @@ const Package: React.FC = () => {
                         <img src={editIcon} alt="edit Icon" className="w-[20px] h-[20px]" />
                     </button>
                     </div>
-                </div>
+                  </div>
+                  
+                  <div className="mt-[44px] relative w-full">
+                      <div className="absolute right-10">
+                          <h1 className="text-[15px] font-medium text-primary-blue">Aktifkan Promo di paket lainnya &gt;</h1>
+                      </div>
+                  </div>
             </div>
 
 
@@ -86,4 +95,4 @@ const Package: React.FC = () => {
   );
 };
 
-export default Package;
+export default Promo;

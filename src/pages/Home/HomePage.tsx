@@ -8,7 +8,7 @@ import incomeIcon from "../../assets/icons/Money.svg";
 import packageIconn from "../../assets/icons/Group 1000004478.svg"
 import promoIcon from "../../assets/icons/Lable.svg";
 import orderIcon from "../../assets/icons/package_box.svg";
-import { Area, CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, LabelList, Line, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import ProfileMenu from "../../components/ProfileMenu";
 import useAccountDetail from "../../hooks/useAccountDetail";
 import useLogOut from "../../hooks/useLogOut";
@@ -60,6 +60,16 @@ const HomePage: React.FC = () => {
   const years = ["2023", "2024", "2025"];
   const [tahun, setTahun] = useState("2025");
 
+  const dataPackage = [
+    {
+      name: 'Plus',
+      jumlah: 3000,
+    },
+    {
+      name: 'Regular',
+      jumlah: 4000,
+    },
+  ]
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -161,7 +171,7 @@ const HomePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="w-11/12 mt-[42px] h-full grid grid-cols-2 gap-6">
+          <div className="w-11/12 mt-[42px] gap-6 h-full grid grid-cols-2">
             <div className="bg-white shadow-[-5px_2px_14px] shadow-black/25 w-full rounded-[7px] px-[30px] py-[15px]">
               <h2 className="text-xl font-bold">Pendapatan Bulanan</h2>
               <div className="flex items-center justify-between mb-2">
@@ -178,25 +188,24 @@ const HomePage: React.FC = () => {
                   ))}
                 </select>
               </div>
-              <div className="overflow-x-auto overflow-y-hidden relative">
+              <div className="overflow-x-auto custom-scrollbar">
                 <div className="min-w-[680px] pe-4">
                   <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={data}>
+                    <AreaChart data={data}>
                       <defs>
                         <linearGradient id="colorPendapatan" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#38bdf8" stopOpacity={0.6} />
-                          <stop offset="95%" stopColor="#38bdf8" stopOpacity={0.1} />
+                          <stop offset="30%" stopColor="#3C97FF" stopOpacity={100} />
+                          <stop offset="100%" stopColor="#5CE9FF00" stopOpacity={0.0} />
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                      <XAxis dataKey="bulan" />
+                      <CartesianGrid strokeDasharray="0" stroke="#e5e7eb" />
+                      <XAxis dataKey="bulan" className="text-[11px] font-medium text-black mt-3" />
                       <YAxis domain={[0, 110]} />
                       <Tooltip />
                       <Area
                         type="monotone"
                         dataKey="pendapatan"
-                        stroke="#38bdf8"
-                        fillOpacity={1}
+                        stroke="none"
                         fill="url(#colorPendapatan)"
                       />
                       <Line
@@ -204,14 +213,11 @@ const HomePage: React.FC = () => {
                         dataKey="pendapatan"
                         stroke="#0284c7"
                         strokeWidth={2}
-                        dot={{ fill: "#0284c7", r: 3 }}
+                        dot={{ fill: '#0284c7', r: 3 }}
                       />
-                    </LineChart>
+                    </AreaChart>
                   </ResponsiveContainer>
                 </div>
-
-
-
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-[-5px_2px_14px] shadow-black/25 p-6 flex flex-col  w-full">
@@ -220,7 +226,7 @@ const HomePage: React.FC = () => {
               </h2>
               <div className="flex w-full h-12/12 items-center space-x-[29px] justify-center">
 
-                <div className="min-w-[200px]">
+                <div className="min-w-[200px] h-[200px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <defs>
@@ -262,17 +268,19 @@ const HomePage: React.FC = () => {
                     </div>
                     <h1 className="font-bold text-center text-[20px]">30%</h1>
                   </div>
+
                 </div>
               </div>
 
 
             </div>
-            <div className="mt-[42px] h-full  shadow-[-5px_2px_14px] shadow-black/25 rounded-xl col-span-2   p-6 w-full grid grid-cols-2">
-              {/* KIRI */}
-              <div className="flex flex-col space-y-[20px]">
-                <h2 className="font-bold text-lg ">Paket Aktif</h2>
-                <div className="flex justify-center mt-[50px] space-x-5 items-center">
-                  <div className="flex space-x-6 items-end">
+          </div>
+          <div className=" mt-[30px] h-full w-11/12 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl p-6  grid grid-cols-2">
+
+            <div className="flex flex-col space-y-[20px] border-e-2">
+              <h2 className="font-bold text-lg ">Paket Aktif</h2>
+              <div className="flex justify-center mt-[50px] space-x-5 items-center">
+                {/* <div className="flex space-x-6 items-end">
                     <div className="text-center">
                       <div className="text-sm mb-1">12</div>
                       <div className="w-8 h-16 bg-[#001A4D] rounded-t-lg" />
@@ -283,13 +291,64 @@ const HomePage: React.FC = () => {
                       <div className="w-8 h-32 bg-gradient-to-b from-[#0D78F3] to-[#00E0FF] rounded-t-lg" />
                       <div className="h-1 bg-[#00E0FF] mt-1 w-full rounded-sm" />
                     </div>
-                  </div>
+                  </div> */}
+                <div className="w-7/12 h-[200px] grid grid-cols-2">
+                  <div className="">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={dataPackage} margin={{ top: 30, right: 30, left: 0, bottom: 5 }}>
+                        <defs>
+                          <linearGradient id="gradientRegular" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#0D78F3" />
+                            <stop offset="100%" stopColor="#10F5EA" />
+                          </linearGradient>
+                          <linearGradient id="gradientPlus" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#001A4D" />
+                            <stop offset="100%" stopColor="#003CB3" />
+                          </linearGradient>
+                        </defs>
+                        <Tooltip />
+                        <Bar dataKey="jumlah" radius={[10, 10, 0, 0]}>
+                          <LabelList
+                            dataKey="jumlah"
+                            position="top"
+                            content={({ x, y, index, value }) => {
+                              const pkg = typeof index === "number" && dataPackage[index] ? dataPackage[index] : undefined;
+                              return (
+                                <text
+                                  x={typeof x === "number" ? x + 15 : 15}
+                                  y={typeof y === "number" ? y - 5 : 0}
+                                  fill={pkg?.name === "Plus" ? "#000" : "#008FE2"}
+                                  fontSize={12}
+                                  fontWeight="bold"
+                                >
+                                  {value}
+                                </text>
+                              );
+                            }}
+                          />
 
-                  {/* Persentase */}
-                  <div className="mt-4 space-y-2">
+                          {dataPackage.map((datas, index) => (
+                            <Cell
+                              key={index}
+
+                              fill={
+                                datas.name === 'Plus'
+                                  ? 'url(#gradientPlus)'
+                                  : datas.name === 'Regular'
+                                    ? 'url(#gradientRegular)'
+                                    : '#ccc'
+                              }
+                            />
+
+                          ))}
+
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="mt-4 space-y-2 flex flex-col justify-center">
                     <div className="flex items-center space-x-2">
                       <div className="w-3 h-3 rounded-full bg-[#0D78F3]" />
-
                       <span>Reguler</span>
                       <span className="font-bold">80%</span>
                     </div>
@@ -300,47 +359,67 @@ const HomePage: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              </div>
 
 
-                <div className=" flex flex-col items-center space-y-1 text-sm">
-                  <div className="flex space-x-4 w-[250px]">
+              <div className="flex flex-col text-sm items-center w-full space-y-2">
+                {/* Reguler */}
+                <div className="grid grid-cols-[150px_auto] items-center gap-x-2">
+                  <div className="flex items-center gap-2">
                     <img src={packageIconn} alt="package Icon" className="w-[14px] h-[16px]" />
                     <span className="text-blue-500">Reguler</span>
-                    <span>: Rp1.536.000.000</span>
                   </div>
-                  <div className="flex space-x-4 w-[250px]">
+                  <div className="flex items-center gap-1">
+                    <span>:</span>
+                    <span>Rp1.536.000.000</span>
+                  </div>
+                </div>
+
+                {/* Plus */}
+                <div className="grid grid-cols-[150px_auto] items-center gap-x-2">
+                  <div className="flex items-center gap-2">
                     <img src={packageIconn} alt="package Icon" className="w-[14px] h-[16px]" />
                     <span className="text-blue-900">Plus</span>
-                    <span>: Rp420.000.000</span>
                   </div>
-                  <div className="flex justify-between w-56 font-bold">
-                    <span>Total</span>
-                    <span>: Rp1.956.000.000</span>
+                  <div className="flex items-center gap-1">
+                    <span>:</span>
+                    <span>Rp420.000.000</span>
+                  </div>
+                </div>
+
+                {/* Total */}
+                <div className="grid grid-cols-[130px_auto] ms-8 items-center gap-x-2 font-bold pt-1">
+                  <span>Total</span>
+                  <div className="flex items-center gap-1">
+                    <span>:</span>
+                    <span>Rp1.956.000.000</span>
                   </div>
                 </div>
               </div>
 
 
+            </div>
 
-              {/* KANAN */}
-              <div className="">
-                <div className="flex justify-end mb-4">
-                  <select
-                    value={tahun}
-                    onChange={(e) => setTahun(e.target.value)}
-                    className="bg-[#00BFFF] text-white text-xs px-3 py-1 rounded-full"
-                  >
-                    <option>2025</option>
-                    <option>2024</option>
-                  </select>
-                </div>
-                <div className="space-y-2">
+            <div className="w-full flex flex-col justify-center">
+              <div className="flex w-full justify-end mb-4">
+                <select
+                  value={tahun}
+                  onChange={(e) => setTahun(e.target.value)}
+                  className="bg-gradient-to-r from-[#008FE2] to-[#5CE9FF] text-white text-xs px-3 py-1 rounded-full"
+                >
+                  <option>2025</option>
+                  <option>2024</option>
+                </select>
+              </div>
+              <div className="w-full flex flex-col items-center">
+
+                <div className="space-y-2 w-9/12">
                   {dataMonthly.map((item, idx) => {
                     const isActive = item.bulan === "Okt";
                     return (
-                      <div key={idx} className="flex items-center space-x-2">
+                      <div key={idx} className="w-[100%] flex items-center space-x-2">
                         <span
-                          className={`w-[35px] text-right ${isActive ? "font-bold text-blue-600 text-lg" : "text-sm"
+                          className={`w-[35px] text-right ${isActive ? "font-bold text-[#004492] text-[20px]" : "text-[11px]"
                             }`}
                         >
                           {item.bulan}
@@ -351,20 +430,71 @@ const HomePage: React.FC = () => {
                           }}>
                           <div
                             className={`h-3 rounded-full bg-gradient-to-r from-[#1E90FF] to-[#00E0FF]
-                    `}
+                            `}
                             style={{ width: `${item.value}%` }}
                           />
-                          <span
-                            className={` flex items-center text-[#008FE2]  ${isActive ? "font-bold text-[15px]" : "font-semibold text-[10px]"
+                          <h1
+                            className={` flex items-center w-fit justify-self-end text-[#008FE2]  ${isActive ? "font-bold text-[15px]" : "font-semibold text-[10px]"
                               }`}
                           >
                             {item.value}
-                          </span>
+                          </h1>
                         </div>
                       </div>
                     );
                   })}
                 </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="mt-[42px] px-[37px] py-[16px] w-11/12 col-span-2 h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
+            <h1 className="font-bold text-[14px]">Aktivitas</h1>
+            <div className="ms-[22px] mt-[21px] flex space-x-[38px]">
+              <div className="text-center">
+                <h1 className="text-[12px] font-semibold">Pesanan Paket</h1>
+                <div className="w-[40px] h-[6px] mt-1 mx-auto rounded-full bg-gradient-to-r from-[#00E0FF] to-[#0D78F3]" />
+              </div>
+              <h1 className="text-[12px] font-semibold">
+                Paket Aktif
+              </h1>
+              <h1 className="text-[12px] font-semibold">
+                Paket Promo
+              </h1>
+            </div>
+            <div className="mt-[17px]">
+              <table className="w-full text-sm">
+                <thead className="bg-[#DAFCFF] text-left">
+                  <tr>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Nama Paket</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Nama Pemesan</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Harga Bayar</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Status</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Waktu Pesan</th>
+                  </tr>
+                </thead>
+                <tbody className="text-left">
+                  <tr>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Amanah</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Gunawan</td>
+                    <td className="py-[15px] ps-[23px] text-[12px]">Rp6.000.000</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Uang Muka</td>
+                    <td className="py-[15px] ps-[23px] text-[12px]">10/05/2025</td>
+                  </tr>
+                  <tr>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Plus Amanah</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Asep Hitla Husomad</td>
+                    <td className="py-[15px] ps-[23px] text-[12px]">Rp20.000.000</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Lunas</td>
+                    <td className="py-[15px] px-4 text-[12px]">12/05/2025</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="relative w-full">
+                <h2 className="text-[12px] absolute mt-3 right-0 font-bold bg-gradient-to-r from-[#004492] to-[#10F5EA] bg-clip-text text-transparent">
+                  lihat lebih banyak
+                </h2>
               </div>
             </div>
           </div>

@@ -9,10 +9,10 @@ import EditAccount from "./pages/AccountDetail/[id]/EditAccount";
 import Package from "./pages/Package/Package";
 import PackageCover from "./pages/Package/AddPackage/PackageCover";
 import PackageFasility from "./pages/Package/AddPackage/PackageFasility";
-import Dashboard from "./pages/Home/Dashboard";
 import DetailHotel from "./pages/Package/AddPackage/DetailHotel";
 import TravelDuration from "./pages/Package/AddPackage/TravelDuration";
 import PreviewPackage from "./pages/Package/AddPackage/PreviewPackage";
+import Promo from "./pages/Package/Promo";
 
 export default function App() {
   return (
@@ -120,12 +120,12 @@ export default function App() {
             }
           />
           <Route
-            path="/Dashboard"
+            path="/Package/Promo"
             element={
               <>
                 <PageTitle title="PT CBL" />
 
-                <Dashboard />
+                <Promo />
               </>
             }
           />

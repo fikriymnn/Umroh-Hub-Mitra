@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
-import { useParams } from 'react-router';
 import Slider from 'react-slick'
 import hotelIcon from "../../../assets/icons/Component 1.svg"
 import wifiIcon from "../../../assets/icons/ic_baseline-wifi.svg"
@@ -13,38 +12,162 @@ import roomServiceIcon from '../../../assets/icons/ic_baseline-meeting-room.svg'
 import locationIcon from "../../../assets/icons/Pin_alt.svg"
 import exampleImage from "../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png"
 import planeIcon from '../../../assets/icons/bxs_plane.svg'
-
+import scheduleImage from "../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png"
 import examplePlane from '../../../assets/images/image 3.png'
 import bedIcons from '../../../assets/icons/mdi_guest-room.svg'
 import departureLocIcon from '../../../assets/icons/mingcute_location-fill.svg'
 import dateIcon from '../../../assets/icons/clarity_date-solid.svg'
 import durationIcon from '../../../assets/icons/mdi_calendar-time.svg'
-
-import axios from 'axios'
 import TravelSchedule from '../../../components/TravelSchedule';
+import { Package } from '../../../types/Package'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function PreviewPackage() {
-     const { id } = useParams();
-    const [packages, setPackages] = useState<any>();
+ const [packages] = useState<Package>({
+  id: 1,
+  id_mitra: 1,
+  id_location_departure: 1,
+  id_category_departure: 1,
+  package_name: "Paket Umroh Premium",
+  description: "Paket umroh lengkap dengan city tour di Madinah dan Makkah",
+  date_departure: "2025-09-15",
+  airline: "Garuda Indonesia",
+  duration: 12,
+  quota: 40,
+  quota_update: 40,
+  price: 28500000,
+  is_active: true,
+  id_type_departure: 1,
+  createdAt: "2025-01-01T00:00:00.000Z",
+  updatedAt: "2025-01-01T00:00:00.000Z",
+
+  Mitra: {
+    id: 1,
+    name: "Agen Travel",
+    email: "info@agen.com",
+    password: "hashed_password",
+    phone_number: "08123456789",
+    address: "Jl. Kemang Raya No.10",
+    compamy_name: "PT Amanah Travel",
+    website: "https://amanahtravel.co.id",
+    nib: "1234567890",
+    npwp: "09.123.456.7-891.000",
+    siup: "SIUP123456",
+    siuppiu: "SIUPPIU456789",
+    akta: "AKTA987654",
+    image_url: "https://via.placeholder.com/150",
+    is_active: true,
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z"
+  },
+
+  master_location_departure: {
+    id: 1,
+    location_name: "Jakarta",
+    is_active: true,
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z"
+  },
+
+  master_type_departure: {
+    id: 1,
+    type_name: "Reguler",
+    is_active: true,
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z"
+  },
+
+  master_category_departure: {
+    id: 1,
+    category_name: "Plus City Tour",
+    is_active: true,
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z"
+  },
+
+  package_hotels: [
+    {
+      id: 1,
+      id_package: 1,
+      id_hotel: 1,
+      description: "Hotel dekat Masjidil Haram",
+      is_active: true,
+      createdAt: "2025-01-01T00:00:00.000Z",
+      updatedAt: "2025-01-01T00:00:00.000Z",
+      master_hotel: {
+        id: 1,
+        id_mitra: 1,
+        is_active: true,
+        hotel_name: "Makkah Tower",
+        hotel_type: "Bintang 5",
+        address: "Jalan King Abdul Aziz, Makkah",
+        room_type: "Double",
+        createdAt: "2025-01-01T00:00:00.000Z",
+        updatedAt: "2025-01-01T00:00:00.000Z",
+        hotel_facilities: [
+          {
+            id: 1,
+            id_hotel: 1,
+            description: "WiFi Gratis",
+            is_active: true,
+            createdAt: "2025-01-01T00:00:00.000Z",
+            updatedAt: "2025-01-01T00:00:00.000Z"
+          }
+        ]
+      }
+    }
+  ],
+
+  package_facilities: [
+    {
+      id: 1,
+      id_package: 1,
+      description: "Visa Umroh",
+      is_active: true,
+      createdAt: "2025-01-01T00:00:00.000Z",
+      updatedAt: "2025-01-01T00:00:00.000Z"
+    },
+    {
+      id: 2,
+      id_package: 1,
+      description: "Tiket PP",
+      is_active: true,
+      createdAt: "2025-01-01T00:00:00.000Z",
+      updatedAt: "2025-01-01T00:00:00.000Z"
+    }
+  ],
+
+  package_schedules: [
+    {
+      id: 1,
+      id_package: 1,
+      title: "Hari 1",
+      is_active: true,
+      image_url: scheduleImage,
+      createdAt: "2025-01-01T00:00:00.000Z",
+      updatedAt: "2025-01-01T00:00:00.000Z",
+      detail_activities: [
+        {
+          id: 1,
+          id_schedule: 1,
+          note: "Berkumpul di bandara Soekarno-Hatta",
+          activity: "Check-in dan briefing",
+          time: "06:00",
+          is_active: true,
+          createdAt: "2025-01-01T00:00:00.000Z",
+          updatedAt: "2025-01-01T00:00:00.000Z"
+        }
+      ]
+    }
+  ]
+});
+
+
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemPages = 4;
 
-    useEffect(() => {
-        if (id) {
-            fetchPackages();
-        }
-    }, [id]);
-
-    const fetchPackages = async () => {
-        try {
-            const res = await axios.get(`https://zshnvs5v-7000.asse.devtunnels.ms/api/getOnePackageUmroh/4`);
-            console.log(res.data);
-
-            setPackages(res.data.data);
-        } catch (error) {
-            console.error(`Error: ${error}`);
-        }
-    }
 
 
     const schedule = packages?.package_schedules?.flatMap((schedule: any) =>
@@ -112,14 +235,14 @@ function PreviewPackage() {
                          <span>-</span><span className='text-[20px] text-primary-blue'>preview</span>
                     </h1>
                         {/* {packages && ( */}
-                    <div className="w-full bg-white  shadow-[0px_4px_7.7px_5px] px-[30px] py-[27px] shadow-black/25">
-                    {packages && (
+                    <div className="w-full bg-white flex flex-col space-y-5  shadow-[0px_4px_7.7px_5px] px-[30px] py-[27px] shadow-black/25">
+                    {/* {packages && (
 
-                <div className='w-full pt-[200px] min-h-screen background-div flex flex-col space-y-[25px] items-center justify-center'>
+                <div className='w-full pt-[200px] min-h-screen background-div flex flex-col space-y-[25px] items-center justify-center'> */}
 
-                    <div className="grid grid-cols-5 gap-5 w-10/12 mx-auto mt-10">
+                    <div className="grid grid-cols-5 gap-5 w-full mx-auto ">
                         {/* Kartu Kiri */}
-                        <div className="bg-white col-span-2 h-[650px] rounded-[5px] shadow-md overflow-hidden">
+                        <div className="bg-white w-full col-span-2 h-[600px] rounded-[5px]  shadow-[0px_4px_17px] shadow-black/25 overflow-hidden">
                             <div className="relative rounded-t-[5px] overflow-hidden">
                                 <Slider {...settings} ref={sliderRef}>
                                     {images.map((src, index) => (
@@ -159,17 +282,17 @@ function PreviewPackage() {
                             <div className="px-8 py-4 space-y-[2px]">
                                 <p className="text-[15px] font-medium">Harga</p>
                                 <h2 className="text-[36px] font-bold bg-gradient-to-r from-[#3C97FF] to-[#245B99] bg-clip-text text-transparent">
-                                    {formatHarga(packages.price)}
+                                    {formatHarga(packages?.price)}
                                 </h2>
 
                                 <p className="text-[15px] font-medium">Mitra</p>
                                 <div className="flex items-center space-x-4">
-                                    <span className="text-[24px] font-medium">{packages.Mitra.compamy_name}</span>
+                                    <span className="text-[24px] font-medium">{packages?.Mitra.compamy_name}</span>
                                     <span className='text-yellow-300 text-[18px]'>★ ★ ★ ★ ★</span>
                                 </div>
                                 <div className="flex flex-col justify-center space-y-1">
-                                    <h1 className="text-[24px] font-medium">{packages.package_name}</h1>
-                                    <p className='text-sm'>{packages.description}</p>
+                                    <h1 className="text-[24px] font-medium">{packages?.package_name}</h1>
+                                    <p className='text-sm'>{packages?.description}</p>
                                 </div>
                                 <p className="text-[15px] font-medium mt-2">Nomor Izin Umroh</p>
                                 <p className="text-[20px] font-medium">1243214533</p>
@@ -186,12 +309,12 @@ function PreviewPackage() {
                         </div>
 
                         {/* Kartu Kanan */}
-                        <div className="col-span-3 h-[650px] flex flex-col space-y-5">
-                            <div className="bg-white w-full h-11/12 rounded-[5px] py-4 px-[50px] space-y-4 shadow-md">
+                        <div className="col-span-3 flex flex-col space-y-5">
+                            <div className="bg-white w-full h-[600px] rounded-[5px] py-4 px-[50px] space-y-4  shadow-[0px_4px_17px] shadow-black/25">
                                 <h2 className="font-semibold text-[24px] ms-3">Fasilitas Umroh</h2>
                                 <div className="grid grid-cols-2 gapx-8 py-4 text-sm">
                                     <ul className="list-disc list-inside text-[15px] font-medium space-y-2">
-                                        {packages.package_facilities.map((facility: any, i: number) => (
+                                        {packages?.package_facilities.map((facility: any, i: number) => (
                                             <li key={i}>{facility.description}</li>
                                         ))}
                                     </ul>
@@ -210,7 +333,7 @@ function PreviewPackage() {
                                             <p className="font-bold text-[15px]">Pilihan Kamar</p>
                                         </div>
                                         <p className='font-medium text-[13px] ms-6 mt-3'>
-                                            {packages.package_hotels[0].master_hotel.room_type}
+                                            {packages?.package_hotels[0]?.master_hotel?.room_type}
                                         </p>
                                     </div>
                                     <div>
@@ -224,11 +347,11 @@ function PreviewPackage() {
                                             </div>
                                             <div className='flex-col w-full'>
                                                 <h6 className='text-[12px] font-semibold'>
-                                                    {packages.package_hotels[0].master_hotel.hotel_name}
+                                                    {packages?.package_hotels[0].master_hotel.hotel_name}
                                                     <span className='text-yellow-300 mx-[7px]'>★ ★ ★ ★ ★</span> Double Room
                                                 </h6>
 
-                                                <p className='text-[#209FB2] text-[10px] capitalize font-semibold'>{packages.package_hotels[0]?.description}</p>
+                                                <p className='text-[#209FB2] text-[10px] capitalize font-semibold'>{packages?.package_hotels[0]?.description}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -237,7 +360,7 @@ function PreviewPackage() {
                                             <img src={durationIcon} alt='Hotels' className='w-[14px] h-[14px]' />
                                             <p className="font-bold text-[15px]">Duration Perjalanan</p>
                                         </div>
-                                        <p className='font-medium text-[13px] ms-6 mt-1'>{packages.duration} Hari</p>
+                                        <p className='font-medium text-[13px] ms-6 mt-1'>{packages?.duration} Hari</p>
                                     </div>
                                     <div className="flex space-x-1 ms-4">
                                         <div className="h-[16px] flex items-center">
@@ -246,11 +369,11 @@ function PreviewPackage() {
                                         <div className='flex-col w-full'>
 
                                             <h6 className='text-[12px] font-semibold'>
-                                                {packages.package_hotels[1].master_hotel.hotel_name}
+                                                {packages?.package_hotels[1]?.master_hotel.hotel_name}
                                                 <span className='text-yellow-300 mx-[7px]'>★ ★ ★ ★ ★</span> Double Room
                                             </h6>
 
-                                            <p className='text-[#209FB2] text-[10px] capitalize font-semibold'>{packages.package_hotels[1]?.description}</p>
+                                            <p className='text-[#209FB2] text-[10px] capitalize font-semibold'>{packages?.package_hotels[1]?.description}</p>
                                         </div>
                                     </div>
                                     <div>
@@ -259,7 +382,7 @@ function PreviewPackage() {
                                             <p className="font-bold text-[15px]">Tanggal Keberangkatan</p>
                                         </div>
                                         <p className='font-medium text-[13px] ms-6 mt-1'>
-                                            {new Date(packages.date_departure).toLocaleDateString('id-ID', {
+                                            {new Date(packages?.date_departure).toLocaleDateString('id-ID', {
                                                 day: '2-digit',
                                                 month: 'long',
                                                 year: 'numeric'
@@ -271,7 +394,7 @@ function PreviewPackage() {
                                             <img src={planeIcon} alt="icon" className='w-[14px] h-[14px]' />
                                             <p className="font-semibold">Maskapai</p>
                                         </div>
-                                        <p className='font-medium text-[13px] ms-6 mt-1'>{packages.airline}</p>
+                                        <p className='font-medium text-[13px] ms-6 mt-1'>{packages?.airline}</p>
 
                                     </div>
                                     <div>
@@ -279,7 +402,7 @@ function PreviewPackage() {
                                             <img src={departureLocIcon} alt='Hotels' className='w-[14px] h-[14px]' />
                                             <p className="font-bold text-[15px]">Kota Keberangkatan</p>
                                         </div>
-                                        <p className='font-medium text-[13px] ms-6 mt-1'>{packages.master_location_departure.location_name}</p>
+                                        <p className='font-medium text-[13px] ms-6 mt-1'>{packages?.master_location_departure.location_name}</p>
                                     </div>
                                     <div className="flex gap-2 items-center">
                                         <img src={examplePlane} alt="AirAsia" className="w-[34px] h-[34px] " />
@@ -288,20 +411,16 @@ function PreviewPackage() {
                                 </div>
                             </div>
 
-                            <div className="bg-gradient-to-r p-3 from-[#10F5EA] to-[#3C97FF] w-full h-1/12 flex items-center justify-center rounded-b-[20px] rounded-t-[5px] shadow-md">
-                                <h1 className="capitalize text-white text-center font-bold text-[30px]">
-                                    Pesan Sekarang
-                                </h1>
-                            </div>
+                            
                         </div>
                     </div>
 
 
                     {/* hotel dan Fasilitasnya */}
-                    <div className="w-10/12 h-[600px] p-[40px] rounded-[5px] bg-white">
+                    <div className="w-full h-[600px] p-[40px] shadow-[0px_4px_17px] shadow-black/25 rounded-[5px] bg-white">
                         <h1 className='text-[24px] font-medium'>Hotel dan Fasilitasnya</h1>
                         <div className=" h-full grid grid-cols-2 w-11/12 mt-[50px]">
-                            {packages.package_hotels.map((item:any, index:number) => (
+                            {packages?.package_hotels.map((item:any, index:number) => (
                                 <div key={index} className='flex flex-col space-y-2 w-full my-2 items-center'>
 
                                     <div className="w-full flex space-x-3.5">
@@ -364,7 +483,7 @@ function PreviewPackage() {
                     </div>
 
                     {/* jadwal */}
-                    <div className="bg-white w-10/12 p-[40px] rounded-[5px]">
+                    <div className="bg-white  shadow-[0px_4px_17px] shadow-black/25 w-full p-[40px] rounded-[5px]">
                         <div>
                             <h1 className='text-[24px] font-medium capitalize mb-10'>Jadwal perjalanan</h1>
                             {currentItems.map((item: any, index: number) => (
@@ -404,9 +523,15 @@ function PreviewPackage() {
                     </div>
 
                     
-                </div>
-            )}
-              </div>
+                {/* </div>
+            )} */}
+                    <div className="w-full mt-6 flex justify-end gap-4">
+                        <button className="px-6 py-2 rounded-full bg-gradient-to-r from-[#004492] to-[#00152C] text-white">Kembali</button>
+                        <button className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white">
+                        Simpan Dan Lanjut
+                        </button>
+                    </div>
+        </div>
                     {/* )} */}
           </div>
           
