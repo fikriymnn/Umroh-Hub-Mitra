@@ -4,7 +4,14 @@ import hotelIcon from '../../../assets/icons/Component 7 (1).svg'
 import hotelExample from '../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
 import roomIcon from '../../../assets/icons/mdi_guest-room (1).svg'
 import locationIcon from '../../../assets/icons/Pin_alt (1).svg'
+import { useNavigate } from 'react-router'
 function PackageHotel() {
+  const navigate = useNavigate();
+
+  const handleAddHotel = () => {
+    navigate('/Package/Hotel/AddHotel');
+  };
+
     return (
       <DefaultLayout>
             <div className="w-full min-h-screen pb-16">
@@ -37,7 +44,7 @@ function PackageHotel() {
                     </div>
                     
                   <div className="flex w-full justify-center">
-                    <button className='group active:w-1/3 w-full origin-center transform transition-all duration-500 ease-in-out border-3 rounded-[20px] border-[#5CE9FF] bg-gradient-to-br from-white to-white hover:from-[#3C97FF] hover:to-[#10F5EA] pb-4 flex justify-center items-center py-3 hover:text-white text-[#0CC3BA]'>
+                    <button onClick={handleAddHotel} className='group active:w-1/3 w-full origin-center transform transition-all duration-500 ease-in-out border-3 rounded-[20px] border-[#5CE9FF] bg-gradient-to-br from-white to-white hover:from-[#3C97FF] hover:to-[#10F5EA] pb-4 flex justify-center items-center py-3 hover:text-white text-[#0CC3BA]'>
                         <span className="flex whitespace-nowrap items-center w-[33px] h-[33px] rounded-full border-[3px] border-[#08CFC5] group-hover:border-white justify-center text-2xl font-bold me-2">+</span>
                         Tambah Hotel
                     </button>

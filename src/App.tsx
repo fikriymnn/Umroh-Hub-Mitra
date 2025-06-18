@@ -16,6 +16,7 @@ import Promo from "./pages/Package/Promo/Promo";
 import AddPromo from "./pages/Package/Promo/AddPromo";
 import Order from "./pages/Order/Order";
 import PackageHotel from "./pages/Package/Hotel/Hotel";
+import AddHotel from "./pages/Package/Hotel/AddHotel/AddHotel";
 
 
 export default function App() {
@@ -160,6 +161,16 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <Order />
+              </>
+            }
+          />
+           <Route
+            path="/Package/Hotel/AddHotel"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <AddHotel/>
               </>
             }
           />
