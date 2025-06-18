@@ -12,7 +12,11 @@ import PackageFasility from "./pages/Package/AddPackage/PackageFasility";
 import DetailHotel from "./pages/Package/AddPackage/DetailHotel";
 import TravelDuration from "./pages/Package/AddPackage/TravelDuration";
 import PreviewPackage from "./pages/Package/AddPackage/PreviewPackage";
-import Promo from "./pages/Package/Promo";
+import Promo from "./pages/Package/Promo/Promo";
+import AddPromo from "./pages/Package/Promo/AddPromo";
+import Order from "./pages/Order/Order";
+import PackageHotel from "./pages/Package/Hotel/Hotel";
+
 
 export default function App() {
   return (
@@ -126,6 +130,36 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <Promo />
+              </>
+            }
+          />
+           <Route
+            path="/Package/Hotel"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <PackageHotel/>
+              </>
+            }
+          />
+            <Route
+            path="/Package/Promo/AddPromo"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <AddPromo />
+              </>
+            }
+          />
+          <Route
+            path="/Order"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <Order />
               </>
             }
           />

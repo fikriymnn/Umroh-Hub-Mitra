@@ -11,13 +11,15 @@ import promoIcon from "../assets/icons/Lable (1).svg"
 import promoIcon2 from "../assets/icons/Lable (2).svg"
 import orderIcon2 from '../assets/icons/Vector (6).svg'
 import { ChevronUp, ChevronDown } from 'lucide-react'
+import hotelIcon2 from '../assets/icons/Component 7 (1).svg'
+import hotelIcon from '../assets/icons/Component 7 (2).svg'
 function Sidebar() {
      const location = useLocation();
     const currentPath = location.pathname;
     const [isOpen, setIsOpen] = useState(false);
 
   return (
-      <div className='w-[275px] fixed h-screen'>
+      <div className='w-[275px] fixed h-screen z-50'>
           <nav className="relative w-full h-screen background-div py-[17px]">
                 {/* Content Layer */}
                
@@ -89,26 +91,41 @@ function Sidebar() {
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
               </Link>
-      {(isOpen || currentPath === "/Package/Promo") && (
-        <div className=" mt-1 space-y-1">
-          <Link
-            to="/Package/Promo"
-            className={`flex items-center space-x-2 text-sm p-2 rounded-md ${
-              currentPath === "/Package/Promo"
-                ? "bg-white text-primary-blue font-semibold active-nav"
-                : "text-white"
-            }`}
-          >
-            <img src={currentPath === "/Package/Promo" ? promoIcon2 : promoIcon} alt="promo" className="w-[20px] h-[20px] ms-[40px]" />
-            <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Promo</h1>
-          </Link>
-        </div>
+      {(isOpen || currentPath === "/Package/Promo" || currentPath ===  "/Package/Promo/AddPromo" || currentPath === "/Package/Hotel") && (
+        <><div className=" mt-1 space-y-1">
+              <Link
+                to="/Package/Promo"
+                className={`flex items-center space-x-2 text-sm p-2 rounded-md ${currentPath === "/Package/Promo" || currentPath === "/Package/Promo/AddPromo"
+                    ? "bg-white text-primary-blue font-semibold active-nav"
+                    : "text-white"}`}
+              >
+                <img src={(currentPath === "/Package/Promo" || currentPath === "/Package/Promo/AddPromo") ? promoIcon2 : promoIcon} alt="promo" className="w-[20px] h-[20px] ms-[50px]" />
+                <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Promo</h1>
+               {currentPath === "/Package/Promo" && (
+                  <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
+                )}
+              </Link>
+            </div>
+              <div className=" space-y-1">
+                <Link
+                  to="/Package/Hotel"
+                  className={`flex items-center space-x-2 text-sm p-2 rounded-md ${currentPath === "/Package/Hotel" 
+                      ? "bg-white text-primary-blue font-semibold active-nav"
+                      : "text-white"}`}
+                >
+                  <img src={(currentPath === "/Package/Hotel") ? hotelIcon2 : hotelIcon} alt="hotel" className="w-[20px] h-[20px] ms-[50px]" />
+                  <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Hotel</h1>
+                 {currentPath === "/Package/Hotel" && (
+                  <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
+                )}
+                </Link>
+              </div></>
       )}
               <Link to="/Order"  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
                   ${currentPath === "/Order" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}>
                     <img src={currentPath === "/Order" ? orderIcon : orderIcon2} alt="profile" className="w-[20px] h-[20px] ms-[30px]" />
-            <h1 className={`font-medium text-left text-[20px] text-white flex items-self-center`}>Order</h1>
+            <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Order</h1>
               {/* Bulatan di kanan */}
                 {currentPath === "/Order" && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
