@@ -1,10 +1,10 @@
 import React from "react";
-import DefaultLayout from "../../layout/DefaultLayout";
-import packageIcon from "../../assets/icons/Vector (3).svg";
+import DefaultLayout from "../../../layout/DefaultLayout";
+import packageIcon from "../../../assets/icons/Vector (3).svg";
 // import profileExample from "../../assets/images/profile_placeholder (1).png";
-import editIcon from "../../assets/icons/Edit_fill.svg";
 // import vector from "../../assets/images/Group (1).png";
-import searchIcon from "../../assets/icons/Search_alt_light.svg";
+import searchIcon from "../../../assets/icons/Search_alt_light.svg";
+import { Link } from "react-router";
 const Promo: React.FC = () => {
   return (
     <DefaultLayout>
@@ -37,8 +37,13 @@ const Promo: React.FC = () => {
                     </button>
 
               </div>
+           <div className="w-11/12 mt-[39px] ms-[39px] relative">
+                      <Link to="/Package/Promo/AddPromo" className="absolute right-0 top-5">
+                          <h1 className="text-[15px] font-medium text-primary-blue">Aktifkan Promo di paket lainnya &gt;</h1>
+                      </Link>
+                  </div>
               <div className="w-11/12 mt-[39px] ms-[39px]">
-                  <h1 className="text-[32px] font-semibold text-primary-blue">Paket Sedang Promosi</h1>
+          <h1 className="text-[32px] font-semibold text-primary-blue">Paket Sedang Promosi</h1>
               </div>
               <div className="w-11/12 ms-[39px] mt-[30px] h-full">
                 {/* table head */}
@@ -70,23 +75,22 @@ const Promo: React.FC = () => {
                     <div className="font-semibold col-span-2 text-[#031B4E] text-center">Rp32.000.000</div>
                     <div className="font-semibold text-[#031B4E] text-center">10/20</div>
                     <div className="flex col-span-4 justify-center gap-2">
-                      <button className="bg-gradient-to-br from-[#1C9D38] to-[#05FE92] text-white text-sm font-medium rounded-full px-7 py-1 w-fit">
+                      {/* <button className="bg-gradient-to-br from-[#1C9D38] to-[#05FE92] text-white text-sm font-medium rounded-full px-7 py-1 w-fit">
+                        Promo
+                    </button> */}
+               <button className="text-[#00EB33] font-bold rounded-full px-7 py-1 w-fit">
                         Promo
                     </button>
                     <button className="bg-gradient-to-br from-primary-blue to-[#003CB3] text-white text-sm font-medium rounded-full px-7 py-1 w-fit">
                         Detail
                     </button>
-                    <button className="bg-gradient-to-br from-[#32D3FF] to-[#10F5EA] text-white w-fit text-sm py-2 px-4 rounded-full">
-                        <img src={editIcon} alt="edit Icon" className="w-[20px] h-[20px]" />
+                    <button className="bg-gradient-to-br from-[#9D1C1C] whitespace-nowrap to-[#FE0505] text-white text-sm font-medium rounded-full px-7 py-1 w-fit">
+                        Non Aktifkan
                     </button>
                     </div>
                   </div>
                   
-                  <div className="mt-[44px] relative w-full">
-                      <div className="absolute right-10">
-                          <h1 className="text-[15px] font-medium text-primary-blue">Aktifkan Promo di paket lainnya &gt;</h1>
-                      </div>
-                  </div>
+                 
             </div>
 
 

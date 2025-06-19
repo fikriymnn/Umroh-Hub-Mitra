@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import DefaultLayout from "../../layout/DefaultLayout";
 import packageIcon from "../../assets/icons/Vector (3).svg";
 // import profileExample from "../../assets/images/profile_placeholder (1).png";
-import editIcon from "../../assets/icons/Edit_fill.svg";
 // import vector from "../../assets/images/Group (1).png";
 import searchIcon from "../../assets/icons/Search_alt_light.svg";
-const Package: React.FC = () => {
+const Order: React.FC = () => {
+    const [active, setActive] = useState(false);
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -29,7 +29,6 @@ const Package: React.FC = () => {
                   <h1 className="font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue">Semua</h1>
                   <h1 className="font-medium text-[15px] text-primary-blue">Paket Reguler</h1>
             <h1 className="font-medium text-[15px] text-primary-blue">Paket Plus</h1>
-            <h1 className="font-medium text-[15px] text-primary-blue">Paket Promo</h1>
                   </div>
                   <button className="flex justify-center px-4 py-2 w-fit justify-self-end rounded-full text-white text-sm font-medium bg-gradient-to-r from-[#0066b2] to-[#00d2d3]">
                     <span className="flex whitespace-nowrap items-center justify-center w-5 h-5 rounded-full border border-white text-white text-sm me-2">+</span>
@@ -40,44 +39,59 @@ const Package: React.FC = () => {
               <div className="w-11/12 ms-[39px] mt-[30px] h-full">
                 {/* table head */}
                 <div className="grid grid-cols-12 bg-white text-[#031B4E] font-bold px-4 py-3 rounded-t-md shadow-[0px_0px_14.4px_2px] shadow-black/25">
-                    <div className="text-center">No</div>
-                    <div className="col-span-4 text-center">Nama Paket</div>
-                    <div className="col-span-2 text-center">Harga Paket</div>
-            <div className="text-center">Kuota</div>
-             <div className="col-span-4 text-center"></div>
-                   
+                    <div className="">No</div>
+                    <div className="col-span-3 ">Nama Pemesan</div>
+                    <div className="col-span-2 ">Jumlah Jemaah</div>
+            <div className=" col-span-3">Paket</div>
+                      <div className="col-span-3 flex space-x-3">
+                          
+                          <h1>Status</h1>
+                          <div>
+                            <select
+                            id="pembayaran"
+                            name="pembayaran"
+                            className="font-medium w-[160px]"
+                            defaultValue="uang_muka"
+                        >
+                            <option value="uang_muka">Uang Muka</option>
+                            <option value="pelunasan">Pelunasan</option>
+                            <option value="biaya_tambahan">Biaya Tambahan</option>
+                              </select>
+                          </div>
+             </div>
                 </div>
 
                   {/* table data */}
-                <div className="grid grid-cols-12 items-center bg-white px-4 py-3 mt-3 shadow-[0px_0px_14.4px_2px] shadow-black/25 rounded-md mb-4">
-                    <div className="font-bold w-1/5 text-[#031B4E] text-center">1</div>
+                  <div
+  className={`group items-center bg-white text-[#031B4E] px-4 py-2 mt-3 shadow-[0px_0px_14.4px_2px] shadow-black/25 rounded-md mb-4 transition-all hover:w-[1180px] duration-500 ease-in-out hover:text-white hover:bg-[#0030EE] ${
+    active ? "w-[1180px]" : "w-full"
+  }`}
+>
+  <div className="grid grid-cols-12 px-1 items-center pb-5 gap-1 mt-3 w-full">
+    <div className="font-bold">1</div>
 
-                    <div className="flex items-center gap-3 col-span-4">
-                    <img
-                        src={packageIcon}
-                        alt="ikon paket"
-                        className="w-10 h-10 object-cover rounded"
-                    />
-                    <div className="col-span-2">
-                        <p className="font-bold text-[#031B4E]">Umroh Paket Plus Amanah</p>
-                        <p className="text-sm text-gray-500">Paket Plus</p>
-                    </div>
-                    </div>
+    <div className="col-span-3 capitalize font-bold">Belia</div>
 
-                    <div className="font-semibold col-span-2 text-[#031B4E] text-center">Rp32.000.000</div>
-                    <div className="font-semibold text-[#031B4E] text-center">10/20</div>
-                    <div className="flex col-span-4 justify-center gap-2">
-                      <button className="text-[#00EB33] font-bold rounded-full px-7 py-1 w-fit">
-                        Promo
-                    </button>
-                    <button className="bg-gradient-to-br from-primary-blue to-[#003CB3] text-white text-sm font-medium rounded-full px-7 py-1 w-fit">
-                        Detail
-                    </button>
-                    <button className="bg-gradient-to-br from-[#32D3FF] to-[#10F5EA] text-white w-fit text-sm py-2 px-4 rounded-full">
-                        <img src={editIcon} alt="edit Icon" className="w-[20px] h-[20px]" />
-                    </button>
-                    </div>
-                </div>
+    <div className="font-semibold col-span-2">4 Orang</div>
+
+    <div className="font-semibold col-span-3">
+      <h1>Paket Reguler an-nur</h1>
+      <h1 className="text-[10px] font-medium capitalize text-[#5587ED] group-hover:text-[#10F5EA]">Reguler</h1>
+    </div>
+
+    <div className="flex col-span-3 justify-between items-center">
+      <h1 className="font-medium">Uang Muka</h1>
+
+      <button
+        onClick={() => setActive(true)}
+        className="transition-all duration-300 group-hover:from-white group-hover:to-white group-hover:text-[#003CB3] bg-gradient-to-br from-[#003CB4] to-[#3679FE] text-white text-sm font-medium rounded-full px-7 py-1 w-fit"
+      >
+        Detail
+      </button>
+    </div>
+  </div>
+</div>
+
             </div>
 
 
@@ -86,4 +100,4 @@ const Package: React.FC = () => {
   );
 };
 
-export default Package;
+export default Order;

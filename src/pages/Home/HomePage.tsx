@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import DefaultLayout from "../../layout/DefaultLayout";
 import dashboardIcon from "../../assets/icons/Home.svg";
@@ -14,6 +16,7 @@ import useAccountDetail from "../../hooks/useAccountDetail";
 import useLogOut from "../../hooks/useLogOut";
 
 const data = [
+  { bulan: '', pendapatan: 0 },
   { bulan: "Jan", pendapatan: 52 },
   { bulan: "feb", pendapatan: 63 },
   { bulan: "mar", pendapatan: 73 },
@@ -34,6 +37,7 @@ const dataPie = [
 ];
 
 const dataMonthly = [
+
   { bulan: "Jan", value: 25 },
   { bulan: "Feb", value: 30 },
   { bulan: "Mar", value: 50 },
@@ -60,6 +64,9 @@ const HomePage: React.FC = () => {
   const years = ["2023", "2024", "2025"];
   const [tahun, setTahun] = useState("2025");
 
+
+  const maxValue = Math.max(...data.map(d => d.pendapatan));
+
   const dataPackage = [
     {
       name: 'Plus',
@@ -70,6 +77,17 @@ const HomePage: React.FC = () => {
       jumlah: 4000,
     },
   ]
+  // 2. Buat array ticks secara manual
+  const ticks = [];
+
+  for (let i = 0; i <= maxValue;) {
+    ticks.push(i);
+    if (i < 100) {
+      i += 20;
+    } else {
+      i += 5;
+    }
+  }
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -251,7 +269,9 @@ const HomePage: React.FC = () => {
                   </ResponsiveContainer>
                 </div>
 
-                <div className="space-y-2 flex flex-col justify-center">
+
+
+                <div className="flex space-x-4 mt-[24px] justify-center">
                   <div className="flex flex-col">
 
                     <div className="flex items-center space-x-2">
@@ -352,10 +372,13 @@ const HomePage: React.FC = () => {
                       <span>Reguler</span>
                       <span className="font-bold">80%</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 rounded-full bg-[#001A4D]" />
-                      <span>Plus</span>
-                      <span className="font-bold">20%</span>
+                    <div className="flex flex-col items-center space-x-2">
+                      <div className="flex items-center space-x-2">
+
+                        <div className="w-3 h-3 rounded-full bg-[#001A4D]" />
+                        <h1>Plus</h1>
+                      </div>
+                      <h1 className="font-bold text-[20px]">20%</h1>
                     </div>
                   </div>
                 </div>
@@ -388,7 +411,7 @@ const HomePage: React.FC = () => {
                 </div>
 
                 {/* Total */}
-                <div className="grid grid-cols-[130px_auto] ms-8 items-center gap-x-2 font-bold pt-1">
+                <div className="grid grid-cols-[130px_auto] ms-8 items-center gap-x-2 font-bold ">
                   <span>Total</span>
                   <div className="flex items-center gap-1">
                     <span>:</span>
