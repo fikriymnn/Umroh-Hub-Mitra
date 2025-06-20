@@ -54,7 +54,7 @@ const Package: React.FC = () => {
           {/* table data */}
           {packages?.map((pckg) => (
             <div className="grid grid-cols-12 items-center bg-white px-4 py-3 mt-3 shadow-[0px_0px_14.4px_2px] shadow-black/25 rounded-md mb-4">
-              <div className="font-bold w-1/5 text-[#031B4E] text-center">{pckg.id}</div>
+              <div className="font-bold w-1/5 text-[#031B4E] text-center">1</div>
 
               <div className="flex items-center gap-3 col-span-4">
                 <img
