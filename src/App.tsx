@@ -17,6 +17,7 @@ import AddPromo from "./pages/Package/Promo/AddPromo";
 import Order from "./pages/Order/Order";
 import PackageHotel from "./pages/Package/Hotel/Hotel";
 import AddHotel from "./pages/Package/Hotel/AddHotel/AddHotel";
+import OrderDetail from "./pages/Order/[id]/Detail";
 
 
 export default function App() {
@@ -171,6 +172,16 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <AddHotel/>
+              </>
+            }
+          />
+          <Route
+            path="/Order/:id"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <OrderDetail/>
               </>
             }
           />

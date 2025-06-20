@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DefaultLayout from "../../layout/DefaultLayout";
-import packageIcon from "../../assets/icons/Vector (3).svg";
+import orderIcon from '../../assets/icons/Vector (5).svg'
 // import profileExample from "../../assets/images/profile_placeholder (1).png";
 // import vector from "../../assets/images/Group (1).png";
 import searchIcon from "../../assets/icons/Search_alt_light.svg";
@@ -10,8 +10,8 @@ const Order: React.FC = () => {
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
         <div className="w-full h-[58px] flex space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
-          <img src={packageIcon} alt="dashboard icon" className="w-[20px] h-[20px] mt-1" />
-          <h1 className="text-primary-blue font-medium">Package</h1>
+          <img src={orderIcon} alt="dashboard icon" className="w-[20px] h-[20px] mt-1" />
+          <h1 className="text-primary-blue font-medium">Order</h1>
         </div>
         <div className="w-11/12 grid grid-cols-4 ms-[39px] mt-[30px] h-full items-center">
            <div className="relative">
