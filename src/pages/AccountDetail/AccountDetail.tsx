@@ -5,7 +5,7 @@ import CardProfile from "../../components/CardProfile";
 import useAccountDetail from "../../hooks/useAccountDetail";
 import { Link } from "react-router";
 import ProfileMenu from "../../components/ProfileMenu";
-import useLogOut from "../../hooks/useLogOut";
+import useLogOut from "../../hooks/auth/useLogOut";
 
 const AccountDetail: React.FC = () => {
   const { partner } = useAccountDetail();

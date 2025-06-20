@@ -13,7 +13,7 @@ import orderIcon from "../../assets/icons/package_box.svg";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, LabelList, Line, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import ProfileMenu from "../../components/ProfileMenu";
 import useAccountDetail from "../../hooks/useAccountDetail";
-import useLogOut from "../../hooks/useLogOut";
+import useLogOut from "../../hooks/auth/useLogOut";
 
 const data = [
   { bulan: '', pendapatan: 0 },

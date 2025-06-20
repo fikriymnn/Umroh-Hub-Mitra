@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { logOut } from '../services/authServices';
+import { logOut } from '../../services/authServices';
 
 const useLogOut = () => {
     const [openDropdown, setOpenDropdown] = useState(false);

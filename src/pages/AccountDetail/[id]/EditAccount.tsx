@@ -5,7 +5,7 @@ import profileExample from "../../../assets/images/profile_placeholder (1).png";
 import editIcon from "../../../assets/icons/Edit_fill (1).svg";
 import useUpdateAccount from "../../../hooks/useUpdateAccount";
 import ProfileMenu from "../../../components/ProfileMenu";
-import useLogOut from "../../../hooks/useLogOut";
+import useLogOut from "../../../hooks/auth/useLogOut";
 import useAccountDetail from "../../../hooks/useAccountDetail";
 // import vector from "../../assets/images/Group (1).png";
 const EditAccount: React.FC = () => {
