@@ -17,7 +17,7 @@ function Sidebar() {
      const location = useLocation();
     const currentPath = location.pathname;
     const [isOpen, setIsOpen] = useState(false);
-
+   const isDetailOrder = currentPath.startsWith("/Order/")
   return (
       <div className='w-[275px] fixed h-screen z-50'>
           <nav className="relative w-full h-screen background-div py-[17px]">
@@ -91,7 +91,7 @@ function Sidebar() {
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
               </Link>
-      {(isOpen || currentPath === "/Package/Promo" || currentPath ===  "/Package/Promo/AddPromo" || currentPath === "/Package/Hotel") && (
+      {(isOpen || currentPath === "/Package/Promo" || currentPath ===  "/Package/Promo/AddPromo" || currentPath === "/Package/Hotel" || currentPath==="/Package/Hotel/AddHotel")  && (
         <><div className=" mt-1 space-y-1">
               <Link
                 to="/Package/Promo"
@@ -109,25 +109,25 @@ function Sidebar() {
               <div className=" space-y-1">
                 <Link
                   to="/Package/Hotel"
-                  className={`flex items-center space-x-2 text-sm p-2 rounded-md ${currentPath === "/Package/Hotel" 
+                  className={`flex items-center space-x-2 text-sm p-2 rounded-md ${currentPath === "/Package/Hotel" || currentPath === "/Package/Hotel/AddHotel"
                       ? "bg-white text-primary-blue font-semibold active-nav"
                       : "text-white"}`}
                 >
-                  <img src={(currentPath === "/Package/Hotel") ? hotelIcon2 : hotelIcon} alt="hotel" className="w-[20px] h-[20px] ms-[50px]" />
+                  <img src={(currentPath === "/Package/Hotel" || currentPath==="/Package/Hotel/AddHotel")  ? hotelIcon2 : hotelIcon} alt="hotel" className="w-[20px] h-[20px] ms-[50px]" />
                   <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Hotel</h1>
-                 {currentPath === "/Package/Hotel" && (
+                 {currentPath === "/Package/Hotel" || currentPath === "/Package/Hotel/AddHotel" && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
                 </Link>
               </div></>
       )}
               <Link to="/Order"  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/Order" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${(currentPath === "/Order" || isDetailOrder )? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}>
-                    <img src={currentPath === "/Order" ? orderIcon : orderIcon2} alt="profile" className="w-[20px] h-[20px] ms-[30px]" />
+                    <img src={(currentPath === "/Order" || isDetailOrder ) ? orderIcon : orderIcon2} alt="profile" className="w-[20px] h-[20px] ms-[30px]" />
             <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Order</h1>
               {/* Bulatan di kanan */}
-                {currentPath === "/Order" && (
+                {(currentPath === "/Order" || isDetailOrder ) && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
                 </Link>
