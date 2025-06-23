@@ -77,7 +77,7 @@ function Sidebar() {
               </Link>
 
               <Link to="/Package"  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/Package" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${currentPath === "/Package" || currentPath === "/Package/AddPackage" || currentPath === "/Package/AddPackage/Fasility" || currentPath === "/Package/AddPackage/Preview" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}>
                   <button
           onClick={() => setIsOpen(!isOpen)}
@@ -85,9 +85,9 @@ function Sidebar() {
         >
           {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
-                    <img src={currentPath === "/Package" ? packageIcon : packageIcon2} alt="profile" className="w-[20px] h-[20px]" />
+                    <img src={currentPath === "/Package" || currentPath === "/Package/AddPackage" || currentPath === "/Package/AddPackage/Fasility" || currentPath === "/Package/AddPackage/Preview" ? packageIcon : packageIcon2} alt="profile" className="w-[20px] h-[20px]" />
                     <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Paket</h1>
-                {currentPath === "/Package" && (
+                {currentPath === "/Package" || currentPath === "/Package/AddPackage" || currentPath === "/Package/AddPackage/Fasility" || currentPath === "/Package/AddPackage/Preview" && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
               </Link>
