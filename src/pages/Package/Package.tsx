@@ -5,6 +5,7 @@ import packageIcon from "../../assets/icons/Vector (3).svg";
 import editIcon from "../../assets/icons/Edit_fill.svg";
 // import vector from "../../assets/images/Group (1).png";
 import searchIcon from "../../assets/icons/Search_alt_light.svg";
+import { Link } from "react-router";
 const Package: React.FC = () => {
   return (
     <DefaultLayout>
@@ -31,9 +32,11 @@ const Package: React.FC = () => {
             <h1 className="font-medium text-[15px] text-primary-blue">Paket Plus</h1>
             <h1 className="font-medium text-[15px] text-primary-blue">Paket Promo</h1>
                   </div>
-                  <button className="flex justify-center px-4 py-2 w-fit justify-self-end rounded-full text-white text-sm font-medium bg-gradient-to-r from-[#0066b2] to-[#00d2d3]">
+          <button className="flex justify-center px-4 py-2 w-fit justify-self-end rounded-full text-white text-sm font-medium bg-gradient-to-r from-[#0066b2] to-[#00d2d3]">
+            <Link to="/Package/AddPackage" className="flex items-center">
                     <span className="flex whitespace-nowrap items-center justify-center w-5 h-5 rounded-full border border-white text-white text-sm me-2">+</span>
                     Paket Baru
+            </Link>
                     </button>
 
               </div>
