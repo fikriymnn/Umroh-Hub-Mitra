@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
-
+import hotelExample from '../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
 function DetailHotel() {
+    const [dipilih, setDipilih] = useState<string[]>([]);
+
+    const pilihHotel = (nama: string) => {
+    if (!dipilih.includes(nama)) {
+        setDipilih([...dipilih, nama]);
+    }
+    };
+
     return (
       <DefaultLayout>
             
@@ -14,83 +22,93 @@ function DetailHotel() {
                       <div className="p-6 ms-[41px]">
                     <h1 className="text-[12px] flex items-center text-[#0A6BDB] space-x-[12px] capitalize font-medium ms-[30px]  mb-4">Sampul Paket <span className='ms-[12px]'>-</span>
                         <span className='text-[12px] text-[#0A6BDB]'>fasilitas</span>
-                        <span>-</span><span className='text-[20px] text-primary-blue'>Detail hotel</span>
+                        <span>-</span><span className='text-[20px] text-primary-blue'>Hotel</span>
                        <span>-</span><span className='text-[12px] text-[#919191]'>jadwal perjalanan</span>
               <span>-</span><span className='text-[12px] text-[#919191]'>preview</span>
                     </h1>
-                    <div className="w-full flex flex-col bg-white gap-6 shadow-[0px_4px_7.7px_5px] px-[30px] py-[27px] shadow-black/25">
-                        <div className="">      
-                        <div className="flex space-x-4">
-                            <div className="w-2/12 mt-[54px]">
-                            <p className=" font-semibold cursor-pointer">Nama Hotel 1</p>
-                            <p className="text-[#3885DD] font-semibold cursor-pointer">Nama Hotel 2</p>
+                    <div className="w-full bg-white grid grid-cols-2 gap-6 shadow-[0px_4px_7.7px_5px] px-[30px] py-[27px] shadow-black/25">
+                        <div className="px-[95px] py-[68px]">
+
+                                <h1 className='text-[20px] font-medium ms-3 flex justify-start'>Hotel Terdaftar</h1>
+                            <div className="flex-col w-full items-center mt-[20px] space-y-3">
+
+                        <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
+                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                            <div className="flex-col p-3 w-full">
+                            <div className="flex items-center space-x-2">
+                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
+                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
                             </div>
-
-                            <div className="w-full pe-[30px]">
-                                <h2 className="text-[20px] font-medium text-primary-blue mb-4">Fasilitas Hotel</h2>
-                            <div className="grid w-full grid-cols-3 gap-4 bg-white p-6 rounded shadow">
-                                {/* Fasilitas Umum */}
-                                <div>
-                                <h3 className="font-semibold  mb-2">Fasilitas Umum</h3>
-                                <div className="space-y-1">
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Kolam renang</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Restoran</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Gym/Fitness Center</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Musholla</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Lobby</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Ballroom</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Layanan Laundry</label><br/>
-                                    <label htmlFor="other" className='mt-4 text-[11px] text-primary-blue font-medium'>Lainnya..</label><br/>
-                                    <input type="text" name="other" className="w-9/12  border px-2 py-1 rounded" />
+                            <div className="flex items-center space-x-6">
+                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
+                            </div>
+                            </div>
+                            </div>
+                               <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
+                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                            <div className="flex-col p-3 w-full">
+                            <div className="flex items-center space-x-2">
+                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
+                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
+                            </div>
+                            <div className="flex items-center space-x-6">
+                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
+                            </div>
+                            </div>
                                 </div>
-                                </div>
-
-                                {/* Fasilitas Kamar */}
-                                <div>
-                                <h3 className="font-semibold mb-2">Fasilitas Kamar</h3>
-                                <label className="font-medium block mb-2 text-[11px] text-primary-blue">Kapasitas Kamar</label>
-                                <input
-                                type="number"
-                                className="border px-1 rounded w-12"
-                                min={1}
-                                max={10}
-                                />
-
-                                    <span className="ml-1 text-[10px] font-medium text-[#4F4F50]">/Orang</span>
                                 
-                                <div className="space-y-1">
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Televisi</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Wifi</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> AC</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Toilet</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Telepon/Layanan 24 jam</label><br/>
-                                    <label className='text-[11px] text-primary-blue font-medium'><input type="checkbox"/> Air Mineral</label><br/>
-                                     <label htmlFor="other" className='mt-4 text-[11px] text-primary-blue font-medium'>Lainnya..</label><br/>
-                                    <input type="text" name="other" className="w-9/12  border px-2 py-1 rounded" />
-                                </div>
-                            
-                                            </div>
-
-                                {/* Gambar Hotel */}
-                                <div className='w-full'>
-                                <h3 className="font-semibold mb-2">Gambar Hotel</h3>
-                                <div className="flex flex-col items-center font-medium justify-center w-full h-40 border rounded bg-gray-100 text-center cursor-pointer">
-                                    <h1 className="text-[38px]">+</h1> 
-                                    <h1>Tambah Gambar</h1>
-                                </div>
-                                <p className="text-sm text-gray-400 mt-1">Maks 5</p>
-                                        </div>
-                                        
-                                    </div>
-                                     <div className="w-full mt-6 flex justify-end gap-4">
-                                <button className="px-6 py-2 rounded-full bg-gradient-to-br from-[#004492] to-[#00152C] text-white">Kembali</button>
-                                <button className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white">
-                                Simpan Dan Lanjut
-                                </button>
+                                   <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
+                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                            <div className="flex-col p-3 w-full">
+                            <div className="flex items-center space-x-2">
+                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
+                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
                             </div>
+                            <div className="flex items-center space-x-6">
+                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
+                            </div>
+                            </div>
+                                </div>
+                                   <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
+                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                            <div className="flex-col p-3 w-full">
+                            <div className="flex items-center space-x-2">
+                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
+                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
+                            </div>
+                            <div className="flex items-center space-x-6">
+                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
+                            </div>
+                            </div>
+                            </div>
+                        
                             </div>
                         </div>
-                    </div>
+                        <div className="px-10 py-[68px]">
+                            <h1 className="text-[20px] font-medium mb-5">Hotel yang di pilih</h1>
+                            <div className="bg-white w-full h-[320px] overflow-y-auto shadow-md p-4 rounded">
+                                {dipilih.length === 0 ? (
+                                <p className="text-gray-400 text-sm">Belum ada hotel yang dipilih</p>
+                                ) : (
+                                dipilih.map((nama, i) => (
+                                    <div key={i} className="mb-4">
+                                    <p className="text-gray-500 text-sm">Hotel {i + 1}</p>
+                                    <h2 className="text-black font-semibold text-[15px]">{nama}</h2>
+                                    <p className="text-[12px] text-black">200 meter ke masjidil haram</p>
+                                    </div>
+                                ))
+                                )}
+                            </div>
+                        </div>
+
                 </div>
                                
                             </div>

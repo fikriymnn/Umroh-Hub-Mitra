@@ -20,7 +20,7 @@ function PackageCover() {
                 <div className="p-6 ms-[48px]">
                     <h1 className="text-[20px] flex items-center space-x-[12px] capitalize font-medium ms-[30px] text-primary-blue mb-4">Sampul Paket <span className='ms-[12px]'>-</span>
                         <span className='text-[12px] text-[#919191]'>fasilitas</span>
-                        <span>-</span><span className='text-[12px] text-[#919191]'>Detail hotel</span>
+                        <span>-</span><span className='text-[12px] text-[#919191]'>Hotel</span>
                        <span>-</span><span className='text-[12px] text-[#919191]'>jadwal perjalanan</span>
               <span>-</span><span className='text-[12px] text-[#919191]'>preview</span>
                     </h1>

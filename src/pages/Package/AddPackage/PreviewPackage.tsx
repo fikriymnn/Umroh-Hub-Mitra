@@ -230,7 +230,7 @@ function PreviewPackage() {
                       <div className="p-6 ms-[41px]">
                     <h1 className="text-[12px] flex items-center text-[#0A6BDB] space-x-[12px] capitalize font-medium ms-[30px]  mb-4">Sampul Paket <span className='ms-[12px]'>-</span>
                         <span className='text-[12px] text-[#0A6BDB]'>fasilitas</span>
-                        <span>-</span><span className='text-[12px] text-[#0A6BDB]'>Detail hotel</span>
+                        <span>-</span><span className='text-[12px] text-[#0A6BDB]'>Hotel</span>
                         <span>-</span><span className='text-[12px] text-[#0A6BDB]'>jadwal perjalanan</span>
                          <span>-</span><span className='text-[20px] text-primary-blue'>preview</span>
                     </h1>
