@@ -122,3 +122,17 @@ body {
   box-shadow: 35px -35px 0 10px white;
 }
 
+.scroll-khusus::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-khusus::-webkit-scrollbar-track {
+  background: #E6E6E6;
+  border-radius: 30px;
+}
+
+.scroll-khusus::-webkit-scrollbar-thumb {
+  background-color: #3C97FF;
+  border-radius: 30px;
+}
+

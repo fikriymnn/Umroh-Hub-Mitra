@@ -27,70 +27,101 @@ function DetailHotel() {
               <span>-</span><span className='text-[12px] text-[#919191]'>preview</span>
                     </h1>
                     <div className="w-full bg-white grid grid-cols-2 gap-6 shadow-[0px_4px_7.7px_5px] px-[30px] py-[27px] shadow-black/25">
-                        <div className="px-[95px] py-[68px]">
+                        <div className="ps-[95px] pe-[20px]  pt-[68px]">
 
                                 <h1 className='text-[20px] font-medium ms-3 flex justify-start'>Hotel Terdaftar</h1>
-                            <div className="flex-col w-full items-center mt-[20px] space-y-3">
+                           <div className="h-[270px] flex-col w-full pr-7 items-center mt-[20px] space-y-3 overflow-y-scroll scroll-khusus">
+                         <div className="bg-[#0030EE] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px]  transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                            <div className="flex-col p-3 w-full">
+                            <div className="flex items-center space-x-2">
+                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
+                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
+                            </div>
+                            <div className="flex items-center justify-between space-x-2">
+                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                                <button
+                                onClick={() => pilihHotel("Hotel Al-habssy fath")}
+                                className="bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full
+                                    hover:bg-gradient-to-r hover:from-primary-blue hover:to-[#0030EE]
+                                    origin-left active:scale-x-150 active:scale-y-125
+                                    transition-transform duration-300 ease-in-out"
+                                >
+                                Pilih Hotel
+                                </button>
 
-                        <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
-                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
-                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
-                            <div className="flex-col p-3 w-full">
-                            <div className="flex items-center space-x-2">
-                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
-                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
-                            </div>
-                            <div className="flex items-center space-x-6">
-                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
-                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
-                            </div>
-                            </div>
-                            </div>
-                               <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
-                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
-                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
-                            <div className="flex-col p-3 w-full">
-                            <div className="flex items-center space-x-2">
-                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
-                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
-                            </div>
-                            <div className="flex items-center space-x-6">
-                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
-                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
                             </div>
                             </div>
                                 </div>
-                                
-                                   <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
-                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
-                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                        <div className="bg-[#0030EE] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px]  transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
                             <div className="flex-col p-3 w-full">
                             <div className="flex items-center space-x-2">
                                 <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
                                 <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
                             </div>
-                            <div className="flex items-center space-x-6">
+                            <div className="flex items-center justify-between space-x-2">
                                 <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
-                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
+                                <button
+                                onClick={() => pilihHotel("Hotel Al-habssy fath")}
+                                className="bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full
+                                    hover:bg-gradient-to-r hover:from-primary-blue hover:to-[#0030EE]
+                                    origin-left active:scale-x-150 active:scale-y-125
+                                    transition-transform duration-300 ease-in-out"
+                                >
+                                Pilih Hotel
+                                </button>
+
                             </div>
                             </div>
                                 </div>
-                                   <div className="bg-[linear-gradient(to_right,_#0030EE_80%,_#001B88_100%)] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left hover:text-white
-                        hover:bg-[linear-gradient(to_bottom_right,_#0030EE_10%,_#001B88_70%)] h-[60px] flex w-full hover:w-[365 px]">
-                            <img src={hotelExample} alt="hotel picture" className="w-[70px] group-hover:w-[80px] transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                                  <div className="bg-[#0030EE] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px]  transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
                             <div className="flex-col p-3 w-full">
                             <div className="flex items-center space-x-2">
                                 <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
                                 <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
                             </div>
-                            <div className="flex items-center space-x-6">
+                            <div className="flex items-center justify-between space-x-2">
                                 <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
-                          <button onClick={() => pilihHotel("Hotel Al-habssy fath")} className='bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full'>Pilih Hotel</button>
+                                <button
+                                onClick={() => pilihHotel("Hotel Al-habssy fath")}
+                                className="bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full
+                                    hover:bg-gradient-to-r hover:from-primary-blue hover:to-[#0030EE]
+                                    origin-left active:scale-x-150 active:scale-y-125
+                                    transition-transform duration-300 ease-in-out"
+                                >
+                                Pilih Hotel
+                                </button>
+
                             </div>
                             </div>
+                                </div>
+                                    <div className="bg-[#0030EE] transform group shadow-black/25 shadow-[0px_1px_4.5px] rounded-[3px] transition-all duration-1000 ease-in-out origin-left h-[60px] flex w-full hover:w-[365 px]">
+                            <img src={hotelExample} alt="hotel picture" className="w-[70px]  transform transition-all duration-1000 ease-in-out rounded-s-[3px] h-[60px]" />
+                            <div className="flex-col p-3 w-full">
+                            <div className="flex items-center space-x-2">
+                                <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
+                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
                             </div>
+                            <div className="flex items-center justify-between space-x-2">
+                                <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                                <button
+                                onClick={() => pilihHotel("Hotel Al-habssy fath")}
+                                className="bg-[#003CB4] px-2 py-[1px] text-white font-medium text-[11px] rounded-full
+                                    hover:bg-gradient-to-r hover:from-primary-blue hover:to-[#0030EE]
+                                    origin-left active:scale-x-150 active:scale-y-125
+                                    transition-transform duration-300 ease-in-out"
+                                >
+                                Pilih Hotel
+                                </button>
+
+                            </div>
+                            </div>
+                                </div>
                         
-                            </div>
+                                
+                                </div>
                         </div>
                         <div className="px-10 py-[68px]">
                             <h1 className="text-[20px] font-medium mb-5">Hotel yang di pilih</h1>

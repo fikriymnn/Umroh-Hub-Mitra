@@ -4,11 +4,17 @@ import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
 
 function PackageCover() {
-    const [gambar, setGambar] = useState<string | null>(null);
-
-  const handleImageUpload = (event:any) => {
-    setGambar(URL.createObjectURL(event.target.files[0]));
-  };
+     const [previewImages, setPreviewImages] = useState<string[]>([]);
+   
+   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     const files = e.target.files;
+     if (files) {
+       const photoMultiple = Array.from(files).slice(0, 5); // Maksimal 5
+       const previewPict = photoMultiple.map((file) => URL.createObjectURL(file));
+       setPreviewImages(previewPict);
+     }
+   };
+   
     return (
       <DefaultLayout>
             
@@ -85,19 +91,38 @@ function PackageCover() {
                 
              <h1 className="font-medium capitalize">Gambar sampul</h1>
             <div className="flex flex-col w-7/12 items-center justify-center  bg-white border border-[#C6C6C6] h-[150px]">
-            {gambar ? (
-                <img src={gambar} alt="Gambar Sampul" className="h-full object-contain" />
-            ) : (
+           {previewImages.length === 0 ? (
+                
                 <div className="">
                                         
                
                 <div className="flex flex-col items-center cursor-pointer">
+                <label htmlFor="upload" className="flex flex-col items-center cursor-pointer">
                 <h1 className="text-3xl font-bold">+</h1>
-                <h1 className=" mt-2">Tambah Gambar</h1>
-                <input type="file" className="hidden" onChange={handleImageUpload} />
+                <h1 className="mt-2">Tambah Gambar</h1>
+                </label>
+                <input
+                                            type="file"
+                                            id="upload"
+                                            className="hidden"
+                                            multiple
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            />
                 </div>
-                </div>
-            )}
+                                    </div>
+                                ) : (
+                               <div className="flex overflow-x-scroll space-x-4 py-2">
+                                            {previewImages.map((src, index) => (
+                                            <img
+                                                key={index}
+                                                src={src}
+                                                alt={`preview-${index}`}
+                                                className="w-fit h-[100px] object-cover rounded-md shadow"
+                                            />
+                                            ))}
+                                        </div>          
+        )}
                             </div>
                               <div className='mt-2'>
                 <label className="block  font-medium text-primary-blue">List Persyaratan Untuk Jemaah</label>
