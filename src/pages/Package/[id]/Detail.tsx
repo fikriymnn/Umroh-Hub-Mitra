@@ -176,7 +176,7 @@ const DetailPackages: React.FC = () => {
           <img src={detailPackagesIcon} alt="dashboard icon" className="w-[20px] h-[20px] mt-1" />
           <h1 className="text-primary-blue font-medium">Package</h1>
         </div>
-        <div className="w-11/12 ms-[39px] mt-[30px] h-full items-center">
+        <div className="w-11/12 bg-white shadow-[0px_4px_19.5px] shadow-black/25 px-[55px] py-[29px] ms-[39px] mt-[30px] h-full items-center">
         <h1 className="text-primary-blue text-[24px] font-medium">Detail Package</h1>
         <div className="grid grid-cols-4 mt-[37px]">
             
@@ -190,18 +190,39 @@ const DetailPackages: React.FC = () => {
                 <h1 className="text-[24px] font-medium text-[#3679FE]">
                     Rp. 32.000.000
                 </h1>
-                <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
-                    Kuota
-                </h1>
-                <h1 className="text-[24px] font-medium text-[#3B3B3B]">
-                    10/12
-                          </h1>
-                <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
+                <div className="grid grid-cols-2 w-8/12">
+                    <div className="flex flex-col">
+                        
+                        <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
+                            Kuota
+                        </h1>
+                        <h1 className="text-[24px] font-medium text-[#3B3B3B]">
+                            10/12
+                                </h1>
+                                  <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
                   Kategori Paket
                 </h1>
                 <h1 className="text-[20px] font-medium text-[#3679FE]">
                     Plus
                 </h1>
+                              </div>
+                    <div className="flex flex-col">
+                        
+                        <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
+                            Durasi Perjalanan
+                        </h1>
+                        <h1 className="text-[24px] font-medium text-[#3B3B3B]">
+                            10 Hari
+                                </h1>
+                                  <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
+                                    Waktu Keberangkatan
+                                    </h1>
+                            <h1 className="text-[20px] font-medium text-[#3B3B3B]">
+                                23/10/2025 - 03/11/2025
+                            </h1>
+                              </div>
+                </div>
+              
             </div>
         </div>
         <div className="text-primary-blue text-[20px] mt-[50px]">
