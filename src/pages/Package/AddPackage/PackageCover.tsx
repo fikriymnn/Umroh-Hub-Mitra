@@ -15,14 +15,15 @@ function PackageCover() {
      }
    };
    
+
     return (
-      <DefaultLayout>
-            
-         <div className="w-full min-h-screen pb-16">
-        <div className="w-full h-[58px] flex space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
-          <img src={packageIcon} alt="dashboard icon" className="w-[20px] h-[20px] mt-1" />
-          <h1 className="text-primary-blue font-medium">Package</h1>
-        </div>
+        <DefaultLayout>
+
+            <div className="w-full min-h-screen pb-16">
+                <div className="w-full h-[58px] flex space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
+                    <img src={packageIcon} alt="dashboard icon" className="w-[20px] h-[20px] mt-1" />
+                    <h1 className="text-primary-blue font-medium">Package</h1>
+                </div>
                 <div className="p-6 ms-[48px]">
                     <h1 className="text-[20px] flex items-center space-x-[12px] capitalize font-medium ms-[30px] text-primary-blue mb-4">Sampul Paket <span className='ms-[12px]'>-</span>
                         <span className='text-[12px] text-[#919191]'>fasilitas</span>
@@ -123,29 +124,22 @@ function PackageCover() {
                                             ))}
                                         </div>          
         )}
-                            </div>
-                              <div className='mt-2'>
-                <label className="block  font-medium text-primary-blue">List Persyaratan Untuk Jemaah</label>
-                <textarea
-                className="mt-1 w-10/12 p-2  rounded-[10px] bg-white border border-[#C6C6C6]"
-                rows={6}
-                ></textarea>
-            </div>
-            </div>
-            <div className=""></div>
-        <div className="w-full mt-6 flex justify-end gap-4">
-            <button className="px-6 py-2 rounded-full bg-gray-400 text-white">Kembali</button>
-            <button className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white">
-            Simpan Dan Lanjut
-            </button>
-        </div>
-        </div>
+                        <div className="w-full mt-6 flex justify-end gap-4">
+                            <button className="px-6 py-2 rounded-full bg-gray-400 text-white">Kembali</button>
+                            <button className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white">
+                                Simpan Dan Lanjut
+                            </button>
+                        </div>
+                    </div>
 
-        {/* Buttons */}
-        </div>
-        </div>
-      </DefaultLayout>
-  )
+                    {/* Buttons */}
+                </div>
+            </div>
+</div>
+            </div>
+            
+                </DefaultLayout>
+    )
 }
 
 export default PackageCover

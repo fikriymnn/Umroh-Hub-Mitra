@@ -1,3 +1,5 @@
+import { Hotel } from "./Hotels";
+
 export interface Mitra {
   id: number;
   name: string;
@@ -17,39 +19,6 @@ export interface Mitra {
   createdAt: string;
   updatedAt: string;
 }
-
-export interface HotelFacility {
-    id: number;
-    id_hotel: number;
-    description: string;
-    is_active: boolean | null;
-    createdAt: string;
-    updatedAt: string;
-}
-  
-export interface MasterHotel {
-    id: number;
-    id_mitra: number;
-    is_active: boolean;
-    hotel_name: string;
-    hotel_type: string;
-    address: string;
-    room_type: string;
-    createdAt: string;
-    updatedAt: string;
-    hotel_facilities: HotelFacility[];
-  }
-  
-  export interface PackageHotel {
-    id: number;
-    id_package: number;
-    id_hotel: number;
-    description: string;
-    is_active: boolean | null;
-    createdAt: string;
-    updatedAt: string;
-    master_hotel: MasterHotel;
-  }
   
   export interface PackageFacility {
     id: number;
@@ -127,7 +96,7 @@ export interface MasterHotel {
     master_type_departure: MasterTypeDeparture;
     master_category_departure: MasterCategoryDeparture;
     master_location_departure: MasterLocationDeparture;
-    package_hotels: PackageHotel[];
+    package_hotels: Hotel[];
     package_facilities: PackageFacility[];
     package_schedules: PackageSchedule[];
   }

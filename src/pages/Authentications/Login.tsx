@@ -1,35 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router'
 import bg from '../../assets/images/Group (1).png'
-import { Partner } from '../../types/Partners';
-import { login } from '../../services/authServices';
-
-const defaultPartner: Partner = {
-    name: '',
-    email: '',
-    password: ''
-}
+import useLogin from '../../hooks/auth/useLogin';
 
 function Login() {
-    const navigate = useNavigate();
-    const [partner, setPartner] = useState<Partner>(defaultPartner);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPartner({ ...partner, [e.target.name]: e.target.value })
-    }
-
-    const handleLogin = async () => {
-        try {
-            const res = await login(partner);
-            console.log(res);
-
-            alert('Login berhasil');
-            navigate('/home')
-        } catch (error) {
-            alert('Login gagal')
-            console.error(`Error: ${error}`);
-        }
-    }
+    const {
+        name,
+        setName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        handleLogin
+    } = useLogin();
 
     return (
         <div className="w-full h-screen flex items-center justify-center bg-[#DAFAFF]">
@@ -44,25 +25,28 @@ function Login() {
                             <input
                                 type="text"
                                 name='name'
+                                value={name}
                                 className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Nama Mitra'
-                                onChange={handleChange}
+                                onChange={(e) => setName(e.target.value)}
                                 required
                             />
                             <input
                                 type="email"
                                 name='email'
+                                value={email}
                                 className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Email'
-                                onChange={handleChange}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
                             <input
                                 type="password"
                                 name='password'
+                                value={password}
                                 className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Password'
-                                onChange={handleChange}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
                             <button

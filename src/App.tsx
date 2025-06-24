@@ -5,7 +5,7 @@ import Login from "./pages/Authentications/Login";
 import "./index.css";
 import "./app.css"
 import AccountDetail from "./pages/AccountDetail/AccountDetail";
-import EditAccount from "./pages/AccountDetail/EditAccount/EditAccount";
+import EditAccount from "./pages/AccountDetail/[id]/EditAccount";
 import Package from "./pages/Package/Package";
 import PackageCover from "./pages/Package/AddPackage/PackageCover";
 import PackageFasility from "./pages/Package/AddPackage/PackageFasility";
@@ -46,7 +46,7 @@ export default function App() {
               </>
             }
           />
-            <Route
+          <Route
             path="/AccountDetail"
             element={
               <>
@@ -56,8 +56,8 @@ export default function App() {
               </>
             }
           />
-           <Route
-            path="/AccountDetail/EditAccountDetail"
+          <Route
+            path="/AccountDetail/:id"
             element={
               <>
                 <PageTitle title="PT CBL" />
@@ -76,7 +76,7 @@ export default function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/Package/AddPackage"
             element={
               <>
@@ -86,7 +86,7 @@ export default function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/Package/AddPackage/Fasility"
             element={
               <>
@@ -96,7 +96,7 @@ export default function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/Package/AddPackage/DetailHotel"
             element={
               <>
@@ -106,7 +106,7 @@ export default function App() {
               </>
             }
           />
-           <Route
+          <Route
             path="/Package/AddPackage/TravelDuration"
             element={
               <>
@@ -126,7 +126,7 @@ export default function App() {
               </>
             }
           />
-            <Route
+          <Route
             path="/Package/Promo"
             element={
               <>
