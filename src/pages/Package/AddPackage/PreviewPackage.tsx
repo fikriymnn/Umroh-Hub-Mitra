@@ -96,25 +96,26 @@ function PreviewPackage() {
       createdAt: "2025-01-01T00:00:00.000Z",
       updatedAt: "2025-01-01T00:00:00.000Z",
       master_hotel: {
-        id: 1,
-        id_mitra: 1,
-        is_active: true,
-        hotel_name: "Makkah Tower",
-        hotel_type: "Bintang 5",
-        address: "Jalan King Abdul Aziz, Makkah",
-        room_type: "Double",
-        createdAt: "2025-01-01T00:00:00.000Z",
-        updatedAt: "2025-01-01T00:00:00.000Z",
-        hotel_facilities: [
-          {
-            id: 1,
-            id_hotel: 1,
-            description: "WiFi Gratis",
-            is_active: true,
-            createdAt: "2025-01-01T00:00:00.000Z",
-            updatedAt: "2025-01-01T00:00:00.000Z"
-          }
-        ]
+          id: 1,
+          id_mitra: 1,
+          is_active: true,
+          hotel_name: "Makkah Tower",
+          hotel_type: "Bintang 5",
+          address: "Jalan King Abdul Aziz, Makkah",
+          room_type: "Double",
+          createdAt: "2025-01-01T00:00:00.000Z",
+          updatedAt: "2025-01-01T00:00:00.000Z",
+          hotel_facilities: [
+              {
+                  id: 1,
+                  id_hotel: 1,
+                  description: "WiFi Gratis",
+                  is_active: true,
+                  createdAt: "2025-01-01T00:00:00.000Z",
+                  updatedAt: "2025-01-01T00:00:00.000Z"
+              }
+          ],
+          description: ''
       }
     }
   ],
