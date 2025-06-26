@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import DefaultLayout from '../../../layout/DefaultLayout'
 import hotelIcon from '../../../assets/icons/Component 7 (1).svg'

@@ -15,6 +15,7 @@ function PackageCover() {
         }
     };
 
+
     return (
         <DefaultLayout>
 
@@ -123,27 +124,20 @@ function PackageCover() {
                                         ))}
                                     </div>
                                 )}
+                                <div className="w-full mt-6 flex justify-end gap-4">
+                                    <button className="px-6 py-2 rounded-full bg-gray-400 text-white">Kembali</button>
+                                    <button className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white">
+                                        Simpan Dan Lanjut
+                                    </button>
+                                </div>
                             </div>
-                            <div className='mt-2'>
-                                <label className="block  font-medium text-primary-blue">List Persyaratan Untuk Jemaah</label>
-                                <textarea
-                                    className="mt-1 w-10/12 p-2  rounded-[10px] bg-white border border-[#C6C6C6]"
-                                    rows={6}
-                                ></textarea>
-                            </div>
-                        </div>
-                        <div className=""></div>
-                        <div className="w-full mt-6 flex justify-end gap-4">
-                            <button className="px-6 py-2 rounded-full bg-gray-400 text-white">Kembali</button>
-                            <button className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white">
-                                Simpan Dan Lanjut
-                            </button>
+
+                            {/* Buttons */}
                         </div>
                     </div>
-
-                    {/* Buttons */}
                 </div>
             </div>
+
         </DefaultLayout>
     )
 }
