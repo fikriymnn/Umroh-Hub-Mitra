@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import bg from '../../assets/images/Group (1).png'
 import useLogin from '../../hooks/auth/useLogin';
 
@@ -12,6 +14,8 @@ function Login() {
         handleLogin
     } = useLogin();
 
+
+  const [showPassword, setShowPassword] = useState(false);
     return (
         <div className="w-full h-screen flex items-center justify-center bg-[#DAFAFF]">
             <div className="relative w-9/12 bg-white h-[573px] grid grid-cols-2 overflow-hidden rounded-[10px] shadow-lg">
@@ -26,7 +30,7 @@ function Login() {
                                 type="text"
                                 name='name'
                                 value={name}
-                                className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
+                                className="bg-[#F5F5F5] placeholder:text-[#CECECE] text-[#4B4B4B] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Nama Mitra'
                                 onChange={(e) => setName(e.target.value)}
                                 required
@@ -35,20 +39,30 @@ function Login() {
                                 type="email"
                                 name='email'
                                 value={email}
-                                className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
+                                className="bg-[#F5F5F5] placeholder:text-[#CECECE] text-[#4B4B4B] w-[330px] h-[49px] px-4 py-2 rounded-md"
                                 placeholder='Email'
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
-                            <input
-                                type="password"
-                                name='password'
-                                value={password}
-                                className="bg-[#F5F5F5] text-[#CECECE] w-[330px] h-[49px] px-4 py-2 rounded-md"
-                                placeholder='Password'
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
+                            <div className="relative w-[330px]">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="Password"
+                                    required
+                                    className="bg-[#F5F5F5] placeholder:text-[#CECECE] text-[#4B4B4B] w-full h-[49px] px-4 py-2 rounded-md pr-10"
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#A1A1A1]"
+                                >
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </button>
+                                </div>
                             <button
                                 type="button"
                                 onClick={handleLogin}
