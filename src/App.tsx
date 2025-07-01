@@ -19,6 +19,8 @@ import PackageHotel from "./pages/Package/Hotel/Hotel";
 import AddHotel from "./pages/Package/Hotel/AddHotel/AddHotel";
 import OrderDetail from "./pages/Order/[id]/Detail";
 import DetailPackages from "./pages/Package/[id]/Detail";
+import Pilgrims from "./pages/Package/[id]/Listed-Pilgrims/ListedPilgrims";
+import NotifikasiPage from "./pages/Notification/Notification";
 
 
 export default function App() {
@@ -193,6 +195,26 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <DetailPackages/>
+              </>
+            }
+          />
+           <Route
+            path="/Package/:id/Listed-Pilgrims"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <Pilgrims/>
+              </>
+            }
+          />
+          <Route
+            path="/Notifications"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <NotifikasiPage/>
               </>
             }
           />

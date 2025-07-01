@@ -3,9 +3,10 @@ import { Partner } from '../types/Partners'
 
 export const login = async (partner: Partner) => {
     return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/auth/login/mitra`,
-        partner,
-        {withCredentials: true}
+        partner,    
+        { withCredentials: true },
     );
+    console.log(`$import.meta.env.VITE_PUBLIC_URL}/auth/login/mitra`)
 };
 
 export const logOut = async () => {
