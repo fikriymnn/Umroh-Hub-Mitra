@@ -1,3 +1,12 @@
+export interface facilities_umum {
+    id?: number;
+    id_hotel?: number;
+    description?: string
+    is_active?: boolean
+    createdAt?: string
+    updatedAt?: string
+}
+
 export interface hotel_facilities {
     id?: number;
     id_hotel?: number;
@@ -8,7 +17,7 @@ export interface hotel_facilities {
 }
 
 export interface MasterHotel {
-    id?: number;
+    id?: number | undefined;
     id_mitra?: number;
     is_active?: boolean;
     hotel_name?: string;

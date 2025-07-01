@@ -2,8 +2,19 @@
 import React, { useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
+import usePackageCover from '../../../hooks/package/usePackageCover';
 
 function PackageCover() {
+    const {
+        packageName, setPackageName,
+        typeDepartureList, setTypeDepartureList,
+        selectedTypeDeparture, setSelectedTypeDeparture,
+        description, setDescription,
+        price, setPrice,
+        quota, setQuota,
+        // imageUrl, setImageUrl,
+        handleSave
+    } = usePackageCover();
     const [previewImages, setPreviewImages] = useState<string[]>([]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +51,8 @@ function PackageCover() {
                                 <label className="block font-medium text-primary-blue mb-1">Nama Paket</label>
                                 <input
                                     type="text"
+                                    value={packageName}
+                                    onChange={(e) => setPackageName(e.target.value)}
                                     placeholder="Nama Paket"
                                     className="w-10/12 px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none"
                                 />
@@ -48,9 +61,18 @@ function PackageCover() {
                             {/* Jenis Paket */}
                             <div>
                                 <label className="block font-medium text-primary-blue mb-1">Jenis Paket</label>
-                                <select className="w-[130px] px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none">
-                                    <option value="Reguler">Reguler</option>
-                                    <option value="VIP">VIP</option>
+                                <select
+                                    onChange={(e) => setSelectedTypeDeparture(Number(e.target.value))}
+                                    className="w-[130px] px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none">
+                                    <option value="Reguler">Pilih paket</option>
+                                    {typeDepartureList.map((item, i) => (
+                                        <option
+                                            key={i}
+                                            value={item.id}
+                                        >
+                                            {item.type_name}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
 
@@ -60,6 +82,8 @@ function PackageCover() {
                                 <textarea
                                     placeholder="Tulis deskripsi paket..."
                                     rows={4}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
                                     className="w-10/12 px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none resize-none"
                                 ></textarea>
                             </div>
@@ -68,7 +92,9 @@ function PackageCover() {
                             <div>
                                 <label className="block font-medium text-primary-blue mb-1">Harga Paket</label>
                                 <input
-                                    type="text"
+                                    type="number"
+                                    value={price}
+                                    onChange={(e) => setPrice(Number(e.target.value))}
                                     placeholder="Masukkan harga"
                                     className="w-10/12 px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none"
                                 />
@@ -80,6 +106,8 @@ function PackageCover() {
                                 <input
                                     type="number"
                                     min={1}
+                                    value={quota}
+                                    onChange={(e) => setQuota(Number(e.target.value))}
                                     placeholder="0"
                                     className="w-[100px] px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none"
                                 />
@@ -126,7 +154,10 @@ function PackageCover() {
                                 )}
                                 <div className="w-full mt-6 flex justify-end gap-4">
                                     <button className="px-6 py-2 rounded-full bg-gray-400 text-white">Kembali</button>
-                                    <button className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white">
+                                    <button
+                                        onClick={handleSave}
+                                        className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"
+                                    >
                                         Simpan Dan Lanjut
                                     </button>
                                 </div>

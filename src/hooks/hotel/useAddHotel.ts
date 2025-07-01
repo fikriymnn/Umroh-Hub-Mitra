@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { hotel_facilities } from '../../types/Hotels';
+import { facilities_umum, hotel_facilities } from '../../types/Hotels';
 import { addHotel } from '../../services/hotelServices';
 
 const useAddHotel = () => {
@@ -13,7 +13,8 @@ const useAddHotel = () => {
     const [address, setAddress] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [descriptionHotel, setDescriptionHotel] = useState('');
-    const [facilities, setFacilities] = useState<hotel_facilities[]>([]);
+    const [facilitiesHotel, setFacilitiesHotel] = useState<hotel_facilities[]>([]);
+    const [facilitiesUmum, setFacilitiesUmum] = useState<facilities_umum[]>([]);
 
     const risetForm = () => {
         setFasilitasUmum([]);
@@ -26,7 +27,8 @@ const useAddHotel = () => {
         setAddress('');
         setImageUrl('');
         setDescriptionHotel('');
-        setFacilities([]);
+        setFacilitiesHotel([]);
+        setFacilitiesUmum([]);
     };
 
     async function handleSave() {
@@ -37,10 +39,13 @@ const useAddHotel = () => {
             address: 'Bandung',
             image_url: 'example',
             description: descriptionHotel,
-            facilities,
+            facilities_hotel: facilitiesHotel,
+            facilities_general: facilitiesUmum,
         };
 
         try {
+            console.log(payload);
+            
             const res = await addHotel(payload);
             alert(`Berhasil kirim data hotel`);
             console.log(res);
@@ -55,9 +60,11 @@ const useAddHotel = () => {
         const { checked, value } = e.target;
     
         if (checked) {
-            setFacilities((prev) => [...prev,{description: value}]);
+            setFacilitiesHotel((prev) => [...prev,{description: value}]);
+            setFacilitiesUmum((prev) => [...prev,{description: value}]);
         } else { 
-            setFacilities((prev) => prev.filter((item) => item.description !== value));
+            setFacilitiesHotel((prev) => prev.filter((item) => item.description !== value));
+            setFacilitiesUmum((prev) => prev.filter((item) => item.description !== value));
         }
     };
 
@@ -72,7 +79,8 @@ const useAddHotel = () => {
         address, setAddress,
         imageUrl, setImageUrl,
         descriptionHotel, setDescriptionHotel,
-        facilities, setFacilities,
+        facilitiesHotel, setFacilitiesHotel,
+        facilitiesUmum, setFacilitiesUmum,
         handleSave,
         handleCheckboxChange
     };

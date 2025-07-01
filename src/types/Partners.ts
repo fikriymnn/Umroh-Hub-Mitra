@@ -16,4 +16,10 @@ export interface Partner {
     is_active?: boolean;
     createdAt?: string;
     updatedAt?: string;
+};
+
+export interface ErrorMessage {
+    status_code: number;
+    success: boolean;
+    message: string;
 }
