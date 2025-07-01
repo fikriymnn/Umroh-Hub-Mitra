@@ -6,9 +6,10 @@ export const login = async (partner: Partner) => {
     console.log(import.meta.env.VITE_PUBLIC_URL);
     
     return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/auth/login/mitra`,
-        partner,
-        {withCredentials: true}
+        partner,    
+        { withCredentials: true },
     );
+    console.log(`$import.meta.env.VITE_PUBLIC_URL}/auth/login/mitra`)
 };
 
 export const logOut = async () => {

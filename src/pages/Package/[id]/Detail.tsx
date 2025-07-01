@@ -205,7 +205,10 @@ const DetailPackages: React.FC = () => {
                 </h1>
                 <h1 className="text-[20px] font-medium text-[#3679FE]">
                     Plus
-                </h1>
+                  </h1>
+                  <button className="bg-gradient-to-r rounded-full mt-2 from-[#003CB4] to-[#3679FE] text-[15px] font-medium text-white py-1 px-4 w-fit">
+                    Jemaah Terdaftar
+                </button>
                               </div>
                     <div className="flex flex-col">
                         
