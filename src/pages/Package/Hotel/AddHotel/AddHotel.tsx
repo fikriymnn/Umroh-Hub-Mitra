@@ -17,7 +17,8 @@ function AddHotel() {
     // address, setAddress,
     // imageUrl, setImageUrl,
     descriptionHotel, setDescriptionHotel,
-    facilities,
+    facilitiesHotel,
+    facilitiesUmum, setFacilitiesUmum,
     handleSave,
     handleCheckboxChange
   } = useAddHotel();
@@ -89,20 +90,20 @@ function AddHotel() {
                         </div>
                         <div className="flex flex-col space-y-[30px]">
                           <div className='flex flex-col space-y-2'>
-                            <label htmlFor='room type' className=" flex items-center text-[14px] font-medium text-primary-blue">Jenis Kamar</label>
+                            <label htmlFor='roomType' className=" flex items-center text-[14px] font-medium text-primary-blue">Jenis Kamar</label>
                             <select
-                              name="room type"
-                              value={roomType}
+                              name="roomType"
                               onChange={(e) => setRoomType(e.target.value)}
                               className="mt-1 ms-2 w-fit px-2 py-1  text-[14px] rounded-[10px] bg-[#F4F4F4]"
                             >
+                              <option value="">Pilihan Kamar</option>
                               <option value="Quad">Quad</option>
                               <option value="Triple">Triple</option>
                               <option value="Double">Double</option>
                             </select>
                           </div>
                           <div className='flex flex-col space-y-2'>
-                            <label htmlFor='room type' className=" flex items-center text-[14px] font-medium text-primary-blue">Bintang Hotel</label>
+                            <label htmlFor='hotel_type' className=" flex items-center text-[14px] font-medium text-primary-blue">Bintang Hotel</label>
                             <div className="flex ms-2 items-center bg-[#F4F4F4] rounded-full px-4 py-1 w-fit space-x-1">
                               <span className="text-yellow-400 text-[18px]">★</span>
                               <input
@@ -128,7 +129,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Kolam renang"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Kolam renang")}
+                                checked={facilitiesUmum.some((item) => item.description === "Kolam renang")}
                               /> Kolam renang
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -136,7 +137,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Restoran"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Restoran")}
+                                checked={facilitiesUmum.some((item) => item.description === "Restoran")}
                               /> Restoran
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -144,7 +145,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Gym/Fitness Center"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Gym/Fitness Center")}
+                                checked={facilitiesUmum.some((item) => item.description === "Gym/Fitness Center")}
                               /> Gym/Fitness Center
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -152,7 +153,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Musholla"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Musholla")}
+                                checked={facilitiesUmum.some((item) => item.description === "Musholla")}
                               /> Musholla
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -160,7 +161,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Lobby"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Lobby")}
+                                checked={facilitiesUmum.some((item) => item.description === "Lobby")}
                               /> Lobby
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -168,7 +169,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Ballroom"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Ballroom")}
+                                checked={facilitiesUmum.some((item) => item.description === "Ballroom")}
                               /> Ballroom
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -176,7 +177,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Layanan Laundry"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Layanan Laundry")}
+                                checked={facilitiesUmum.some((item) => item.description === "Layanan Laundry")}
                               /> Layanan Laundry
                             </label><br />
 
@@ -186,7 +187,7 @@ function AddHotel() {
                                   type="checkbox"
                                   value={item}
                                   onChange={handleCheckboxChange}
-                                  checked={facilities.some((f) => f.description === item)}
+                                  checked={facilitiesUmum.some((f) => f.description === item)}
                                   className=""
                                 /> {item}
                               </label>
@@ -229,7 +230,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Televisi"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Televisi")}
+                                checked={facilitiesHotel.some((item) => item.description === "Televisi")}
                               /> Televisi
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -237,7 +238,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Wifi"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Wifi")}
+                                checked={facilitiesHotel.some((item) => item.description === "Wifi")}
                               /> Wifi
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -245,7 +246,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="AC"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "AC")}
+                                checked={facilitiesHotel.some((item) => item.description === "AC")}
                               /> AC
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -253,7 +254,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Toilet"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Toilet")}
+                                checked={facilitiesHotel.some((item) => item.description === "Toilet")}
                               /> Toilet
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -261,7 +262,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Telepon/Layanan 24 jam"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Telepon/Layanan 24 jam")}
+                                checked={facilitiesHotel.some((item) => item.description === "Telepon/Layanan 24 jam")}
                               /> Telepon/Layanan 24 jam
                             </label><br />
                             <label className='text-[11px] text-primary-blue font-medium'>
@@ -269,7 +270,7 @@ function AddHotel() {
                                 type="checkbox"
                                 value="Air Mineral"
                                 onChange={handleCheckboxChange}
-                                checked={facilities.some((item) => item.description === "Air Mineral")}
+                                checked={facilitiesHotel.some((item) => item.description === "Air Mineral")}
                               /> Air Mineral
                             </label><br />
 
@@ -279,7 +280,7 @@ function AddHotel() {
                                   type="checkbox"
                                   value={item}
                                   onChange={handleCheckboxChange}
-                                  checked={facilities.some((f) => f.description === item)}
+                                  checked={facilitiesHotel.some((f) => f.description === item)}
                                   className="mr-1"
                                 /> {item}
                               </label>

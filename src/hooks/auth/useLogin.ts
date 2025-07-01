@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useNavigate } from 'react-router';
 import { login } from '../../services/authServices';
+import axios from 'axios';
 
 const useLogin = () => {
     const navigate = useNavigate();
@@ -20,8 +21,10 @@ const useLogin = () => {
             alert('Login berhasil');
             navigate('/home')
         } catch (error) {
-            alert('Login gagal')
-            console.error(`Error: ${error}`);
+            if (axios.isAxiosError(error)) {
+                alert('Login gagal');
+                console.error('Axios error:', error.response?.data?.message);
+            }
         }
     }
 

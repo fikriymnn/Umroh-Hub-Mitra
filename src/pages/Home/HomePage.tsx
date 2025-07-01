@@ -15,6 +15,7 @@ import { Area, AreaChart, CartesianGrid, Cell, Line, Pie, PieChart, ResponsiveCo
 import ProfileMenu from "../../components/ProfileMenu";
 import useAccountDetail from "../../hooks/useAccountDetail";
 import useLogOut from "../../hooks/auth/useLogOut";
+import useDashboard from "../../hooks/useDashboard";
 
 const data = [
   { bulan: '', pendapatan: 0 },
@@ -58,10 +59,14 @@ const dataMonthly = [
 const HomePage: React.FC = () => {
   const { partner } = useAccountDetail();
   const {
+    datas, setDatas,
+    income, setIncome,
+    selectedYear, setSelectedYear
+  } = useDashboard();
+  const {
     openDropdown, setOpenDropdown,
     handleLogOut
   } = useLogOut();
-  const [selectedYear, setSelectedYear] = useState("2025");
   const years = ["2023", "2024", "2025"];
   const [tahun, setTahun] = useState("2025");
 
@@ -116,7 +121,7 @@ const HomePage: React.FC = () => {
               <div className="flex-col flex">
 
                 <h1 className="capitalize text-[10px] text-[#797979] font-medium">Jemaah Terdaftar</h1>
-                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">10</h1>
+                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">{datas?.allJamaah}</h1>
 
               </div>
               <div className="w-[44px] h-[44px] rounded-full justify-center bg-[#5CE9FF63] flex items-center">
@@ -129,7 +134,7 @@ const HomePage: React.FC = () => {
               <div className="flex-col flex">
 
                 <h1 className="capitalize text-[10px] text-[#797979] font-medium">Jumlah Paket</h1>
-                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">10</h1>
+                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">{datas?.allPackage}</h1>
 
               </div>
               <div className="w-[44px] h-[44px] rounded-full justify-center bg-[#70FFEE63] flex items-center">
@@ -142,7 +147,7 @@ const HomePage: React.FC = () => {
               <div className="flex-col flex">
 
                 <h1 className="capitalize text-[10px] text-[#797979] font-medium">Paket aktif</h1>
-                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">10</h1>
+                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">{datas?.packageActive}</h1>
 
               </div>
               <div className="w-[44px] h-[44px] rounded-full justify-center bg-[#F370FF63] flex items-center">
@@ -155,7 +160,7 @@ const HomePage: React.FC = () => {
               <div className="flex-col flex">
 
                 <h1 className="capitalize text-[10px] text-[#797979] font-medium">Pendapatan bulan ini</h1>
-                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">10</h1>
+                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">{datas?.totalRevenueThisMonth}</h1>
                 <h1 className="capitalize text-[10px] text-[#797979] font-medium">mei</h1>
               </div>
               <div className="w-[44px] h-[44px] rounded-full justify-center bg-[#70FFE763] flex items-center">
@@ -168,7 +173,7 @@ const HomePage: React.FC = () => {
               <div className="flex-col flex">
 
                 <h1 className="capitalize text-[10px] text-[#797979] font-medium">Paket promo aktif</h1>
-                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">10</h1>
+                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">{datas?.packageRegular}</h1>
 
               </div>
               <div className="w-[44px] h-[44px] rounded-full justify-center bg-[#70DF0263] flex items-center">
@@ -181,7 +186,7 @@ const HomePage: React.FC = () => {
               <div className="flex-col flex">
 
                 <h1 className="capitalize text-[10px] text-[#797979] font-medium">Pesanan</h1>
-                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">10</h1>
+                <h1 className="text-[19px] flex items-center font-medium text-[#202020]">{datas?.order}</h1>
 
               </div>
               <div className="w-[44px] h-[44px] rounded-full justify-center bg-[#FFBE7063] flex items-center">
