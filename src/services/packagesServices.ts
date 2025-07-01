@@ -14,6 +14,12 @@ export const getAllPackageMitra = async () => {
     );
 };
 
+export const getOnePackageMitra = async (id: number | string) => {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getOnePackageUmroh/${id}`,
+        {withCredentials: true}
+    );
+};
+
 export const getAllCategory = async () => {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getAllCategory`)
 }; 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { facilities_umum, hotel_facilities } from '../../types/Hotels';
+import { facilities_general, hotel_facilities } from '../../types/Hotels';
 import { addHotel } from '../../services/hotelServices';
 
 const useAddHotel = () => {
@@ -14,7 +14,7 @@ const useAddHotel = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [descriptionHotel, setDescriptionHotel] = useState('');
     const [facilitiesHotel, setFacilitiesHotel] = useState<hotel_facilities[]>([]);
-    const [facilitiesUmum, setFacilitiesUmum] = useState<facilities_umum[]>([]);
+    const [facilitiesUmum, setFacilitiesUmum] = useState<facilities_general[]>([]);
 
     const risetForm = () => {
         setFasilitasUmum([]);

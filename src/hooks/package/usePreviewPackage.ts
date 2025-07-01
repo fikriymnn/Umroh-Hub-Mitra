@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { AddPackge, Package } from '../../types/Package';
+import { useEffect, useState } from 'react'
+import { AddPackge } from '../../types/Package';
 import { clearPackageData, getPackageCover, getPackageFasility, getPackageHotel, getPackageSchedules } from '../../utils/storage';
 import { addPackage } from '../../services/packagesServices';
 import axios from 'axios';

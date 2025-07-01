@@ -1,4 +1,4 @@
-export interface facilities_umum {
+export interface facilities_general {
     id?: number;
     id_hotel?: number;
     description?: string
@@ -28,7 +28,8 @@ export interface MasterHotel {
     description: string;
     createdAt?: string;
     updatedAt?: string;
-    hotel_facilities?: hotel_facilities[]
+    facilities_hotel?: hotel_facilities[];
+    facilities_general?: facilities_general[];
 } 
 
 export interface Hotel {
