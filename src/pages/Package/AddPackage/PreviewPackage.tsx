@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useRef, useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
 import Slider from 'react-slick'
@@ -10,82 +9,32 @@ import disabilityIcon from '../../../assets/icons/streamline_travel-wayfinder-di
 import spoonIcon from "../../../assets/icons/ic_round-restaurant.svg"
 import roomServiceIcon from '../../../assets/icons/ic_baseline-meeting-room.svg'
 import locationIcon from "../../../assets/icons/Pin_alt.svg"
-import exampleImage from "../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png"
 import planeIcon from '../../../assets/icons/bxs_plane.svg'
-import scheduleImage from "../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png"
 import examplePlane from '../../../assets/images/image 3.png'
 import bedIcons from '../../../assets/icons/mdi_guest-room.svg'
 import departureLocIcon from '../../../assets/icons/mingcute_location-fill.svg'
 import dateIcon from '../../../assets/icons/clarity_date-solid.svg'
 import durationIcon from '../../../assets/icons/mdi_calendar-time.svg'
 import TravelSchedule from '../../../components/TravelSchedule';
-import { Package } from '../../../types/Package'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import usePreviewPackage from '../../../hooks/package/usePreviewPackage';
 
 function PreviewPackage() {
     const {
-        packages, setPackages,
-        handleSubmit
+        packages,
+        currentPage, setCurrentPage,
+        handleSubmit,
+        totalPages,
+        currentItems,
+        images,
+        settings,
+        sliderRef,
+        formatHarga,
+        next,
+        previous
     } = usePreviewPackage();
 
-
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemPages = 4;
-
-
-
-    const schedule = packages?.schedules?.flatMap((schedule: any) =>
-        schedule.details.map((activity: any) => ({
-            hari: schedule.title,
-            image: schedule.image_url,
-            aktivitas: activity.activity,
-            catatan: activity.note,
-            waktu: activity.time,
-        }))
-    ) || [];
-
-    const totalPages = Math.ceil((schedule?.length || 0) / itemPages);
-    const startIndex = (currentPage - 1) * itemPages
-    const currentItems = schedule.slice(startIndex, startIndex + itemPages)
-
-    const images = [
-        exampleImage,
-        exampleImage,
-        exampleImage
-    ];
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-    };
-
-    const sliderRef = useRef<any>(null);
-
-    const formatHarga = (itung: number) => {
-        return new Intl.NumberFormat("id-ID", {
-            style: "currency",
-            currency: "IDR",
-        }).format(itung);
-    };
-
-    const next = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickNext();
-        }
-    };
-
-    const previous = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickPrev();
-        }
-    };
     return (
         <DefaultLayout>
 
@@ -319,7 +268,7 @@ function PreviewPackage() {
                                                     <div className="flex h-[20px] items-center space-x-5 w-7/12">
                                                         <img src={wifiIcon} alt="icon" className='w-[18px] h-[18px]' />
                                                         <p className="text-[15px] capitalize font-medium">
-                                                            {item?.hotel_facilities?.[0]?.description}
+                                                            {item?.facilities_hotel?.[0]?.description}
                                                         </p>
                                                     </div>
                                                     <div className="flex space-x-5 w-7/12">

@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
 import hotelExample from '../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
 import usePackageHotel from '../../../hooks/package/usePackageHotel';
+import { renderStarsHotels } from '../../../utils/renderStarts';
 function DetailHotel() {
     const {
-        hotelList, setHotelList,
+        hotelList,
         selectedHotel, setSelectedHotel,
         handleSelectedHotel,
         handleSave
     } = usePackageHotel();
-    const [dipilih, setDipilih] = useState<string[]>([]);
-
-    const pilihHotel = (nama: string) => {
-        if (!dipilih.includes(nama)) {
-            setDipilih([...dipilih, nama]);
-        }
-    };
 
     return (
         <DefaultLayout>
@@ -44,7 +37,7 @@ function DetailHotel() {
                                         <div className="flex-col p-3 w-full">
                                             <div className="flex items-center space-x-2">
                                                 <span className="text-[15px] font-semibold text-white">{hotel?.hotel_name}</span>
-                                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
+                                                <span className="text-[#F0E260] text-[11px]">{renderStarsHotels(Number(hotel?.hotel_type))}</span>
                                             </div>
                                             <div className="flex items-center justify-between space-x-2">
                                                 <h1 className="text-[10px] font-medium text-white">{hotel?.description}</h1>
