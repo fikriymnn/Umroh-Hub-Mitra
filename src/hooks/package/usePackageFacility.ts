@@ -15,7 +15,7 @@ const usePackageFacility = () => {
     const [inputTransportation, setInputTransportation] = useState("");
 
     useEffect(() => {
-        async function fetchLocationDeparture() {
+        const fetchLocationDeparture = async () => {
             try {
                 const res = await getAllLocation();
                 console.log(res);
@@ -59,7 +59,7 @@ const usePackageFacility = () => {
         }
     };
 
-    async function handleSave() {
+    const handleSave = () => {
         const parsedFacilities = facilities
             .split('\n')
             .map((item) => item.trim())
@@ -84,6 +84,14 @@ const usePackageFacility = () => {
         }
     };
 
+    const handleBack = () => {
+        try {
+            navigate(-1);
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+    };
+
     return {
         facilities, setFacilities,
         airLine, setAirLine,
@@ -94,7 +102,8 @@ const usePackageFacility = () => {
         inputTransportation, setInputTransportation,
         handleAddTransportation,
         handleKeyDown,
-        handleSave
+        handleSave,
+        handleBack
     };
 };
 

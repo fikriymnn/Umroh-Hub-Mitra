@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Partner } from '../types/Partners'
 
-export const login = async (partner: Partner) => {
+export async function login (partner: Partner) {
     console.log(partner);
     console.log(import.meta.env.VITE_PUBLIC_URL);
     
@@ -12,6 +12,6 @@ export const login = async (partner: Partner) => {
     console.log(`$import.meta.env.VITE_PUBLIC_URL}/auth/login/mitra`)
 };
 
-export const logOut = async () => {
+export async function logOut () {
     await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/auth/logout`);
 };

@@ -8,7 +8,8 @@ function DetailHotel() {
         hotelList,
         selectedHotel, setSelectedHotel,
         handleSelectedHotel,
-        handleSave
+        handleSave,
+        handleBack
     } = usePackageHotel();
 
     return (
@@ -85,7 +86,12 @@ function DetailHotel() {
                         </div>
 
                         <div className="w-full col-span-2 mt-6 flex justify-end gap-4">
-                            <button className="px-6 py-2 h-fit rounded-full bg-gray-400 text-white">Kembali</button>
+                            <button
+                                onClick={handleBack}
+                                className="px-6 py-2 h-fit rounded-full bg-gray-400 text-white"
+                            >
+                                Kembali
+                            </button>
                             <button
                                 onClick={handleSave}
                                 className="px-6 py-2 h-fit rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"
@@ -95,7 +101,6 @@ function DetailHotel() {
                         </div>
                     </div>
                 </div>
-
             </div>
         </DefaultLayout>
     )

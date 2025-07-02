@@ -9,7 +9,7 @@ const useLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function handleLogin() {
+    const handleLogin = async () => {
         try {
             const res = await login({
                 name,

@@ -8,13 +8,15 @@ import usePackageCover from '../../../hooks/package/usePackageCover';
 function PackageCover() {
     const {
         packageName, setPackageName,
-        typeDepartureList, setTypeDepartureList,
-        selectedTypeDeparture, setSelectedTypeDeparture,
+        typeDepartureList,
+        setSelectedTypeDeparture,
         description, setDescription,
         price, setPrice,
         quota, setQuota,
+        requirements, setRequirements,
         // imageUrl, setImageUrl,
-        handleSave
+        handleSave,
+        handleBack
     } = usePackageCover();
     const [previewImages, setPreviewImages] = useState<string[]>([]);
 
@@ -154,26 +156,34 @@ function PackageCover() {
                                     </div>
                                 )}
                             </div>
-                              <div>
+
+                            {/* Persyaratan Jamaah */}
+                            <div>
                                 <label className="block font-medium text-primary-blue my-1">List Persyaratan Untuk Jemaah</label>
                                 <textarea
                                     rows={6}
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
+                                    value={requirements}
+                                    onChange={(e) => setRequirements(e.target.value)}
                                     className="w-10/12 px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none resize-none"
                                 ></textarea>
                             </div>
-                                <div className="w-full mt-10 flex justify-end gap-4">
-                                    <button className="px-6 py-2 rounded-full bg-gray-400 text-white">Kembali</button>
-                                    <button
-                                        onClick={handleSave}
-                                        className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"
-                                    >
-                                        Simpan Dan Lanjut
-                                    </button>
-                                </div>
 
                             {/* Buttons */}
+                            <div className="w-full mt-10 flex justify-end gap-4">
+                                <button
+                                    onClick={handleBack}
+                                    className="px-6 py-2 rounded-full bg-gray-400 text-white"
+                                >
+                                    Kembali
+                                </button>
+                                <button
+                                    onClick={handleSave}
+                                    className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"
+                                >
+                                    Simpan Dan Lanjut
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

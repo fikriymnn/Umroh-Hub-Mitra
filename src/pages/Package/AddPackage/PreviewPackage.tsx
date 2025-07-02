@@ -25,6 +25,7 @@ function PreviewPackage() {
         packages,
         currentPage, setCurrentPage,
         handleSubmit,
+        handleBack,
         totalPages,
         currentItems,
         images,
@@ -344,7 +345,12 @@ function PreviewPackage() {
                             {/* </div>
             )} */}
                             <div className="w-full mt-6 flex justify-end gap-4">
-                                <button className="px-6 py-2 rounded-full bg-gradient-to-r from-[#004492] to-[#00152C] text-white">Kembali</button>
+                                <button
+                                    onClick={handleBack}
+                                    className="px-6 py-2 rounded-full bg-gradient-to-r from-[#004492] to-[#00152C] text-white"
+                                >
+                                    Kembali
+                                </button>
                                 <button
                                     onClick={handleSubmit}
                                     className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"

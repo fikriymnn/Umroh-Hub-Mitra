@@ -25,7 +25,7 @@ const useDetailPackage = () => {
     const currentItems = schedule.slice(startIndex, startIndex + itemPages)
 
     useEffect(() => {
-        async function fetchPackage() {
+        const fetchPackage = async () => {
             try {
                 if (id) {
                     const res = await getOnePackageMitra(id);

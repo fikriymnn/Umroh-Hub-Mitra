@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
 import usePackageActivity from '../../../hooks/package/usePackageActivity';
@@ -14,7 +13,8 @@ function TravelDuration() {
     handleRemoveActivity,
     handleAddDay,
     handleDeleteDay,
-    handleSave
+    handleSave,
+    handleBack
   } = usePackageActivity();
   return (
     <DefaultLayout>
@@ -121,21 +121,23 @@ function TravelDuration() {
                 Tambah Hari
               </button>
             </div>
+
             <div className="w-full flex justify-end gap-4">
-
-
-              <button className="px-6 py-2 rounded-full bg-gradient-to-br from-[#004492] to-[#00152C] text-white">Kembali</button>
+              <button
+                onClick={handleBack}
+                className="px-6 py-2 rounded-full bg-gradient-to-br from-[#004492] to-[#00152C] text-white"
+              >
+                Kembali
+              </button>
               <button
                 onClick={handleSave}
                 className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"
               >
                 Simpan Dan Lanjut
               </button>
-
             </div>
           </div>
         </div>
-
       </div>
     </DefaultLayout>
   )

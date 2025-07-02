@@ -9,7 +9,7 @@ const useDetailOrder = () => {
     const [order, setOrder] = useState<Order>();
 
     useEffect(() => {
-        async function fetchOrder() {
+        const fetchOrder = async () => {
             try {
                 if (id) {
                     const res = await getOneOrder(id);

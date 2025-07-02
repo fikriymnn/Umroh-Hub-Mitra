@@ -8,7 +8,7 @@ const useOrder = () => {
     const [active, setActive] = useState(false);
 
     useEffect(() => {
-        async function fetchOrder() {
+        const fetchOrder = async () => {
             try {
                 const res = await getAllOrder();
                 console.log(res);

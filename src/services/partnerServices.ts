@@ -1,19 +1,18 @@
 import axios from "axios";
-import { Partner } from "../types/Partners";
 
-export const getMe = async () => {
+export async function getMe () {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/mitras/me`, {
         withCredentials: true
     });
 };
 
-export const updatePartner = async (id: number, data: {
+export async function updatePartner (id: number, data: {
     name: string;
     siuppiu: string;
     company_name: string;
     address: string;
     website: string;
     email: string;
-}) => {
+}) {
     return await axios.put(`${import.meta.env.VITE_PUBLIC_URL}/mitras/${id}`, data);
 };

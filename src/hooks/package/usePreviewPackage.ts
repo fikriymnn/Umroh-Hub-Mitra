@@ -22,7 +22,6 @@ const usePreviewPackage = () => {
         ...packageFasility,
         id_category_departure: 3,
         duration: 3,
-        jamaah_requirements: 'Semua harus memakai baju putih',
         date_departure: '12-02-2020',
         hotel: packageHotel,
         schedules: packageSchedules,
@@ -33,7 +32,7 @@ const usePreviewPackage = () => {
     };
 
     useEffect(() => {
-        async function fetchPackage() {
+        const fetchPackage = () => {
             try {
                 console.log(payload);
                 setPackages(payload);
@@ -57,6 +56,14 @@ const usePreviewPackage = () => {
                 alert('Gagal kirim data');
                 console.error('Axios error:', error.response?.data?.message);
             }
+        }
+    };
+
+    const handleBack = () => {
+        try {
+            navigate(-1);
+        } catch (error) {
+            console.error(`Error: ${error}`);
         }
     };
 
@@ -118,6 +125,7 @@ const usePreviewPackage = () => {
         packageHotel,
         packageSchedules,
         handleSubmit,
+        handleBack,
         itemPages,
         totalPages,
         currentItems,

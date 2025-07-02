@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getDataDashboardMitra, statistikMitra } from '../services/dashboardServices';
 import { Dashboard } from '../types/Dashboard';
 
@@ -12,7 +12,7 @@ const useDashboard = () => {
         fetchIncome
     }, [selectedYear]);
     
-    async function fetchData() {
+    const fetchData = async () => {
         try {
             const res = await getDataDashboardMitra();
             console.log(res);
@@ -22,7 +22,7 @@ const useDashboard = () => {
         }
     };
 
-    async function fetchIncome() {
+    const fetchIncome = async () => {
         try {
             const res = await statistikMitra();
             console.log(res);

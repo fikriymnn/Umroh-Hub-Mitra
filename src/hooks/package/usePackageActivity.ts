@@ -112,6 +112,14 @@ const usePackageActivity = () => {
         }
     };
 
+    const handleBack = () => {
+        try {
+            navigate(-1);
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+    };
+
     return {
         schedules,
         setSchedules,
@@ -120,7 +128,8 @@ const usePackageActivity = () => {
         handleRemoveActivity,
         handleAddDay,
         handleDeleteDay,
-        handleSave
+        handleSave,
+        handleBack
     };
 };
 

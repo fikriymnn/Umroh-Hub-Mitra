@@ -14,7 +14,7 @@ const useUpdateAccount = () => {
     const [email, setEmail] = useState('');
 
     useEffect(() => {
-        async function fetchPartner() {
+        const fetchPartner = async () => {
             try {
                 const res = await getMe();
                 console.log(res);
@@ -35,7 +35,7 @@ const useUpdateAccount = () => {
         fetchPartner();
     }, []);
 
-    async function handleUpdate() {
+    const handleUpdate = async () => {
         if (!partner?.id) return;
         try {
             await updatePartner(partner.id, {
@@ -55,20 +55,13 @@ const useUpdateAccount = () => {
     }
 
     return {
-        partner,
-        setPartner,
-        name,
-        setName,
-        siuppiu,
-        setSiuppiu,
-        company,
-        setCompany,
-        address,
-        setAddress,
-        website,
-        setWebsite,
-        email,
-        setEmail,
+        partner, setPartner,
+        name, setName,
+        siuppiu, setSiuppiu,
+        company, setCompany,
+        address, setAddress,
+        website, setWebsite,
+        email, setEmail,
         handleUpdate
     };
 };

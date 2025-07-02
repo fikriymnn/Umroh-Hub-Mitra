@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { MasterCategoryDeparture, MasterLocationDeparture, MasterTypeDeparture, Package } from '../../types/Package';
+import { useEffect, useState } from 'react'
+import { MasterTypeDeparture } from '../../types/Package';
 import { getAllType } from '../../services/packagesServices';
 import { savePackageCover } from '../../utils/storage';
 import { useNavigate } from 'react-router';
@@ -12,10 +12,11 @@ const usePackageCover = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
     const [quota, setQuota] = useState(0);
+    const [requirements, setRequirements] = useState('');
     // const [imageUrl, setImageUrl] = useState('');
 
     useEffect(() => {
-        async function fetchTypeDeparture() {
+        const fetchTypeDeparture = async () => {
             try {
                 const res = await getAllType();
                 console.log(res);
@@ -28,13 +29,14 @@ const usePackageCover = () => {
         fetchTypeDeparture();
     }, []);
 
-    async function handleSave() {
+    const handleSave = () => {
         const payload = {
             package_name: packageName,
             id_type_departure: selectedTypeDeparture,
             description,
             price,
             quota,
+            jamaah_requirements: requirements,
             // image_url: "example"
         }
 
@@ -49,6 +51,14 @@ const usePackageCover = () => {
         }
     };
 
+    const handleBack = () => {
+        try {
+            navigate(-1);
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+    };
+
     return {
         packageName, setPackageName,
         typeDepartureList, setTypeDepartureList,
@@ -56,8 +66,10 @@ const usePackageCover = () => {
         description, setDescription,
         price, setPrice,
         quota, setQuota,
+        requirements, setRequirements,
         // imageUrl, setImageUrl,
-        handleSave
+        handleSave,
+        handleBack
     };
 };
 

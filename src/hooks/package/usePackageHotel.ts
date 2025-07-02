@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MasterHotel } from '../../types/Hotels';
 import { getAllHotels } from '../../services/hotelServices';
 import { savePackageHotel } from '../../utils/storage';
@@ -10,7 +10,7 @@ const usePackageHotel = () => {
     const [selectedHotel, setSelectedHotel] = useState<MasterHotel[]>([]);
 
     useEffect(() => {
-        async function fecthHotel() {
+        const fecthHotel = async () => {
             try {
                 const res = await getAllHotels();
                 console.log(res);
@@ -32,7 +32,7 @@ const usePackageHotel = () => {
         }
     };
 
-    const handleSave = async () => {
+    const handleSave = () => {
         const payload = selectedHotel?.map(hotel => ({
             id_hotel: hotel?.id,
             description: hotel?.description
@@ -48,11 +48,20 @@ const usePackageHotel = () => {
         }
     };
 
+    const handleBack = () => {
+        try {
+            navigate(-1);
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+    };
+
     return {
         hotelList, setHotelList,
         selectedHotel, setSelectedHotel,
         handleSelectedHotel,
-        handleSave
+        handleSave,
+        handleBack
     };
 };
 
