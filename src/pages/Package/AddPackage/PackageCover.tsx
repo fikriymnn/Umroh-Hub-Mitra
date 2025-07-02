@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
@@ -152,7 +153,17 @@ function PackageCover() {
                                         ))}
                                     </div>
                                 )}
-                                <div className="w-full mt-6 flex justify-end gap-4">
+                            </div>
+                              <div>
+                                <label className="block font-medium text-primary-blue my-1">List Persyaratan Untuk Jemaah</label>
+                                <textarea
+                                    rows={6}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    className="w-10/12 px-4 py-2 rounded-[20px] bg-white border border-[#C6C6C6] text-sm focus:outline-none resize-none"
+                                ></textarea>
+                            </div>
+                                <div className="w-full mt-10 flex justify-end gap-4">
                                     <button className="px-6 py-2 rounded-full bg-gray-400 text-white">Kembali</button>
                                     <button
                                         onClick={handleSave}
@@ -161,7 +172,6 @@ function PackageCover() {
                                         Simpan Dan Lanjut
                                     </button>
                                 </div>
-                            </div>
 
                             {/* Buttons */}
                         </div>
