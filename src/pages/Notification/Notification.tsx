@@ -38,7 +38,8 @@ const NotifikasiPage = () => {
                     {currentItems.map((notif) => (
                     <div
                         key={notif.id}
-                        className="flex justify-between h-[90px] items-start border-b border-b-[#A1A1A1] hover:border-b-[#686161] hover:border-b-2 hover:h-[80px] py-4 px-4 transform group transition-all duration-1100 ease-in-out origin-left w-full hover:bg-[#F0F0F0] hover:w-[1360px]"
+                            className="flex justify-between h-[90px] items-start border-b border-b-[#A1A1A1] hover:border-b-[#686161] hover:border-b-2 hover:h-[80px] py-4
+                        origin-top px-4 transform group transition-all duration-1100 ease-in-out w-full hover:bg-[#F0F0F0] hover:w-[1360px]"
                     >
                         <div className="flex items-start space-x-3">
                         <div className="pt-1">
