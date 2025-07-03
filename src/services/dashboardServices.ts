@@ -6,8 +6,8 @@ export async function getDataDashboardMitra () {
     });
 };
 
-export async function statistikMitra () {
-    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/sttMitra`, {
+export async function statistikMitra (year: string) {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/sttMitra/${year}`, {
         withCredentials: true
     });
 };

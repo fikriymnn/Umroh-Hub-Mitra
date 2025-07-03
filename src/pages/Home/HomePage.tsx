@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
   const { partner } = useAccountDetail();
   const {
     datas, setDatas,
-    income, setIncome,
+    chartData, setChartData,
     selectedYear, setSelectedYear
   } = useDashboard();
   const {
@@ -195,60 +195,60 @@ const HomePage: React.FC = () => {
               </div>
             </div>
           </div>
-         <div className="w-11/12 mt-[42px] gap-6 h-full grid grid-cols-6">
+          <div className="w-11/12 mt-[42px] gap-6 h-full grid grid-cols-6">
             <div className="bg-white shadow-[-5px_2px_14px] col-span-4 shadow-black/25 w-full rounded-[7px] px-[30px] py-[15px]">
-                      <h2 className="text-xl font-bold">Pendapatan Bulanan</h2>
-                <div className="flex items-center justify-between mb-2">
-                        <h2 className="text-[8px] ms-[20px] font-bold">Jt</h2>
-                        <select
-                          value={selectedYear}
-                          onChange={(e) => setSelectedYear(e.target.value)}
-                          className="bg-gradient-to-r from-[#008FE2] to-[#5CE9FF] text-white text-sm px-3 py-1 rounded-full outline-none cursor-pointer"
-                        >
-                          {years.map((year) => (
-                            <option key={year} value={year} className="text-black">
-                              {year}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                        <div className="">
-                        <div className="pe-4">
-                          <ResponsiveContainer width="100%" height={300}>
-                            <AreaChart
-                            
-                              data={data}
-                               margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
-                            >
-                              <defs>
-                                <linearGradient id="colorPendapatan" x1="0" y1="0" x2="0" y2="1">
-                                  <stop offset="30%" stopColor="#3C97FF" stopOpacity={1} />
-                                  <stop offset="100%" stopColor="#5CE9FF00" stopOpacity={0} />
-                                </linearGradient>
-                              </defs>
+              <h2 className="text-xl font-bold">Pendapatan Bulanan</h2>
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-[8px] ms-[20px] font-bold">Jt</h2>
+                <select
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  className="bg-gradient-to-r from-[#008FE2] to-[#5CE9FF] text-white text-sm px-3 py-1 rounded-full outline-none cursor-pointer"
+                >
+                  {years.map((year) => (
+                    <option key={year} value={year} className="text-black">
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="">
+                <div className="pe-4">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <AreaChart
 
-                              <CartesianGrid
-                                stroke="#e5e7eb"
-                               strokeDasharray="0"
+                      data={chartData}
+                      margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
+                    >
+                      <defs>
+                        <linearGradient id="colorPendapatan" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="30%" stopColor="#3C97FF" stopOpacity={1} />
+                          <stop offset="100%" stopColor="#5CE9FF00" stopOpacity={0} />
+                        </linearGradient>
+                      </defs>
 
-                              />
+                      <CartesianGrid
+                        stroke="#e5e7eb"
+                        strokeDasharray="0"
 
-                                <XAxis
-                                  dataKey="bulan"
-                                  interval={0}
-                                  tickLine={false}
-                                  axisLine={{ stroke: '#e5e7eb' }}
-                                  tick={{
-                                    fill: '#000',
-                                    fontSize: 11,
-                                    dx: -23,
-                                    color: '#000',
-                                    fontWeight: 500
-                                  }}
-                                 
-                                />
+                      />
 
-                              {/* <YAxis
+                      <XAxis
+                        dataKey="bulan"
+                        interval={0}
+                        tickLine={false}
+                        axisLine={{ stroke: '#e5e7eb' }}
+                        tick={{
+                          fill: '#000',
+                          fontSize: 11,
+                          dx: -23,
+                          color: '#000',
+                          fontWeight: 500
+                        }}
+
+                      />
+
+                      {/* <YAxis
                                 className="text-[10px] font-medium text-[#8E8E8E]"
                                         domain={[0, 110]}
                                         tickCount={110}
@@ -256,115 +256,115 @@ const HomePage: React.FC = () => {
                                         width={30}
                                 
                                       /> */}
-                      
+
                       <YAxis
-                          ticks={ticks}
-                          tickLine={false}
-                          axisLine={{ stroke: '#e5e7eb' }}
-                          fontSize={10}
-                          width={30}
-                        />
+                        ticks={ticks}
+                        tickLine={false}
+                        axisLine={{ stroke: '#e5e7eb' }}
+                        fontSize={10}
+                        width={30}
+                      />
 
 
-                            <Tooltip
-                              content={({ active, payload, label }) => {
-                                if (active && payload && payload.length > 0) {
-                                  const value = payload[0].value;
-                                  if (value === 0) return null;
+                      <Tooltip
+                        content={({ active, payload, label }) => {
+                          if (active && payload && payload.length > 0) {
+                            const value = payload[0].value;
+                            if (value === 0) return null;
 
-                                  return (
-                                    <div className="rounded-md overflow-hidden shadow-lg text-sm w-[160px]">
-                                      <div className="bg-[#0047AB] capitalize text-white font-medium px-3 py-1">
-                                        {label}
-                                      </div>
-                                      <div className="bg-white px-3 py-2 text-center">
-                                        <p className="text-[#0A6BDB] font-medium">Pendapatan</p>
-                                        <p className="text-[#0A6BDB] font-bold">Rp 200.000</p>
-                                      </div>
-                                    </div>
-                                  );
-                                }
-                                return null;
-                              }}
-                            />
-
-
-                              <Area
-                                type="linear"
-                                dataKey="pendapatan"
-                                stroke="none"
-                                fill="url(#colorPendapatan)"
-
-                                dot={(props: any) => {
-                                  const { cx, cy, payload } = props;
-                                  if (payload.pendapatan === 0) {
-                                    return <circle cx={cx} cy={cy} r={0.0001} fill="none" />;
-                                  }
-                                  return (
-                                    <circle
-                                      cx={cx}
-                                      cy={cy}
-                                      r={3}
-                                      fill="#0284c7"
-                                      stroke="#fff"
-                                      strokeWidth={1}
-                                    />
-                                  );
-                                }}
-                                activeDot={(props: any) => {
-                                  const { cx, cy } = props;
-                                  return (
-                                    <circle
-                                      cx={cx}
-                                      cy={cy}
-                                      r={10}
-                                      fill="#0284c7"
-                                      stroke="#fff"
-                                      strokeWidth={2}
-                                    />
-                                  );
-                                }}
-
-                                dy={30}
-                              />
-
-                              <Line
-                                type="monotone"
-                                dataKey="pendapatan"
-                                stroke="#0284c7"
-                                strokeWidth={2}
-                                dot={(props: any) => (
-                                  <circle
-                                    cx={props.cx}
-                                    cy={props.cy}
-                                    r={props.payload.pendapatan === 0 ? 0.0001 : 1.5}
-                                    fill="#0284c7"
-                                  />
-                                )}
-                              />
-
-                            </AreaChart>
-                          </ResponsiveContainer>
-
-                              </div>
+                            return (
+                              <div className="rounded-md overflow-hidden shadow-lg text-sm w-[160px]">
+                                <div className="bg-[#0047AB] capitalize text-white font-medium px-3 py-1">
+                                  {label}
                                 </div>
+                                <div className="bg-white px-3 py-2 text-center">
+                                  <p className="text-[#0A6BDB] font-medium">Pendapatan</p>
+                                  <p className="text-[#0A6BDB] font-bold">{value?.toLocaleString('id-ID')}</p>
+                                </div>
+                              </div>
+                            );
+                          }
+                          return null;
+                        }}
+                      />
+
+
+                      <Area
+                        type="linear"
+                        dataKey="pendapatan"
+                        stroke="none"
+                        fill="url(#colorPendapatan)"
+
+                        dot={(props: any) => {
+                          const { cx, cy, payload } = props;
+                          if (payload.pendapatan === 0) {
+                            return <circle cx={cx} cy={cy} r={0.0001} fill="none" />;
+                          }
+                          return (
+                            <circle
+                              cx={cx}
+                              cy={cy}
+                              r={3}
+                              fill="#0284c7"
+                              stroke="#fff"
+                              strokeWidth={1}
+                            />
+                          );
+                        }}
+                        activeDot={(props: any) => {
+                          const { cx, cy } = props;
+                          return (
+                            <circle
+                              cx={cx}
+                              cy={cy}
+                              r={10}
+                              fill="#0284c7"
+                              stroke="#fff"
+                              strokeWidth={2}
+                            />
+                          );
+                        }}
+
+                        dy={30}
+                      />
+
+                      <Line
+                        type="monotone"
+                        dataKey="pendapatan"
+                        stroke="#0284c7"
+                        strokeWidth={2}
+                        dot={(props: any) => (
+                          <circle
+                            cx={props.cx}
+                            cy={props.cy}
+                            r={props.payload.pendapatan === 0 ? 0.0001 : 1.5}
+                            fill="#0284c7"
+                          />
+                        )}
+                      />
+
+                    </AreaChart>
+                  </ResponsiveContainer>
+
+                </div>
+              </div>
             </div>
-           <div className="bg-white col-span-2 rounded-lg shadow-[-5px_2px_14px] shadow-black/25 p-6 flex flex-col  w-full">
+            <div className="bg-white col-span-2 rounded-lg shadow-[-5px_2px_14px] shadow-black/25 p-6 flex flex-col  w-full">
               <h2 className="text-[14px] font-bold">
                 Distribusi Paket <span className="bg-gradient-to-br text-[12px] from-[#247599] to-[#3CC2FF] ms-[17px] text-transparent bg-clip-text">Hasanah Hana</span>
               </h2>
-            <div className="flex flex-col w-full h-12/12 items-center space-x-[29px] justify-center">
+              <div className="flex flex-col w-full h-12/12 items-center space-x-[29px] justify-center">
 
-              <div className="min-w-[160px] h-[160px] mx-auto">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <defs>
-                       <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
+                <div className="min-w-[160px] h-[160px] mx-auto">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <defs>
+                        <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
                           <stop offset="0%" stopColor="#0D78F3" />
                           <stop offset="100%" stopColor="#07468D" />
                         </linearGradient>
                       </defs>
-                       <Pie
+                      <Pie
                         data={dataPie}
                         cx="50%"
                         cy="50%"
@@ -372,12 +372,12 @@ const HomePage: React.FC = () => {
                         outerRadius={75}
                         dataKey="value"
                         stroke="none"
-                        >
-                <Cell fill="url(#regulerGradient)" />
-                <Cell fill="#001A4D" />
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
+                      >
+                        <Cell fill="url(#regulerGradient)" />
+                        <Cell fill="#001A4D" />
+                      </Pie>
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
 
 
@@ -424,50 +424,50 @@ const HomePage: React.FC = () => {
                     </div>
                   </div> */}
                 <div className="w-7/12 h-[200px] grid grid-cols-2">
-                                     <div className="min-w-[180px] h-[160px] flex flex-col items-center mx-auto">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <defs>
-                <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#0D78F3" />
-                  <stop offset="100%" stopColor="#07468D" />
-                </linearGradient>
-              </defs>
-              <Pie
-                data={dataPie}
-                cx="50%"
-                cy="50%"
-                outerRadius={75}
-                dataKey="value"
-                stroke="none"
-              >
-                <Cell fill="url(#regulerGradient)" />
-                <Cell fill="#001A4D" />
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-                 <div className="flex flex-col mt-7">
+                  <div className="min-w-[180px] h-[160px] flex flex-col items-center mx-auto">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <defs>
+                          <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stopColor="#0D78F3" />
+                            <stop offset="100%" stopColor="#07468D" />
+                          </linearGradient>
+                        </defs>
+                        <Pie
+                          data={dataPie}
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={75}
+                          dataKey="value"
+                          stroke="none"
+                        >
+                          <Cell fill="url(#regulerGradient)" />
+                          <Cell fill="#001A4D" />
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="flex flex-col mt-7">
                     <div className="flex  flex-col items-center space-x-2">
                       <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 rounded-full bg-[#0D78F3]" />                          
-                      <h1>Reguler</h1>
+                        <div className="w-3 h-3 rounded-full bg-[#0D78F3]" />
+                        <h1>Reguler</h1>
                       </div>
                       <h1 className="font-bold text-[20px]">80%</h1>
                     </div>
-                   
+
                     <div className="flex flex-col items-center space-x-2">
                       <div className="flex items-center space-x-2">
 
-                      <div className="w-3 h-3 rounded-full bg-[#001A4D]" />
-                      
-                      <h1>Plus</h1>
+                        <div className="w-3 h-3 rounded-full bg-[#001A4D]" />
+
+                        <h1>Plus</h1>
                       </div>
                       <h1 className="font-bold text-[20px]">20%</h1>
                     </div>
                   </div>
-                  </div>
                 </div>
+              </div>
 
               {/* <div className="flex flex-col text-sm items-center w-full space-y-2">
                 
@@ -606,31 +606,31 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-           <div className="mt-[42px] px-[37px] py-[16px] w-11/12 col-span-2 h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
+          <div className="mt-[42px] px-[37px] py-[16px] w-11/12 col-span-2 h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
             <h1 className="font-bold text-[14px]">Hotel Terdaftar</h1>
             <div className="mt-[32px] overflow-x-auto overflow-y-hidden max-w-[95%] mx-auto">
-  <div className="flex space-x-4 w-max">
-    {[1, 2, 3].map((_, index) => (
-      <div
-        key={index}
-        className="bg-[#0030EE] shadow-black/25 shadow-[0px_1px_4.5px] rounded-r-[10px] h-[60px] flex min-w-[300px] transition-all duration-300"
-      >
-        <img
-          src={hotelExample}
-          alt="hotel picture"
-          className="w-[70px] h-[60px] rounded-s-[3px]"
-        />
-        <div className="flex flex-col justify-center p-3 w-full">
-          <div className="flex items-center space-x-2">
-            <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
-            <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
-          </div>
-          <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
+              <div className="flex space-x-4 w-max">
+                {[1, 2, 3].map((_, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#0030EE] shadow-black/25 shadow-[0px_1px_4.5px] rounded-r-[10px] h-[60px] flex min-w-[300px] transition-all duration-300"
+                  >
+                    <img
+                      src={hotelExample}
+                      alt="hotel picture"
+                      className="w-[70px] h-[60px] rounded-s-[3px]"
+                    />
+                    <div className="flex flex-col justify-center p-3 w-full">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
+                        <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
+                      </div>
+                      <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
           </div>
         </div>
