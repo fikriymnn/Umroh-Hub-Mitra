@@ -9,11 +9,18 @@ export interface Dashboard {
     totalRevenueThisMonth: number
 };
 
-export interface Income {
+export interface MonthlyStatistics {
     month: number;
     totalPackage: number;
     totalPackagePlus: number;
     totalPackageRegular: number;
     totalSubTotal: string | number;
     totalTransactions: number;
+};
+
+export interface ChartData {
+    monthlyStatistics: MonthlyStatistics[];
+    packagePlusYears: number;
+    packageRegularYears: number
+    year: string
 };

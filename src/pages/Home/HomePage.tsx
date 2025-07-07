@@ -16,6 +16,7 @@ import ProfileMenu from "../../components/ProfileMenu";
 import useAccountDetail from "../../hooks/useAccountDetail";
 import useLogOut from "../../hooks/auth/useLogOut";
 import useDashboard from "../../hooks/useDashboard";
+import { renderStarsHotels } from "../../utils/renderStarts";
 
 const data = [
   { bulan: '', pendapatan: 0 },
@@ -60,6 +61,8 @@ const HomePage: React.FC = () => {
   const { partner } = useAccountDetail();
   const {
     datas, setDatas,
+    income, setIncome,
+    hotels, setHotels,
     chartData, setChartData,
     selectedYear, setSelectedYear
   } = useDashboard();
@@ -217,7 +220,7 @@ const HomePage: React.FC = () => {
                   <ResponsiveContainer width="100%" height={300}>
                     <AreaChart
 
-                      data={chartData}
+                      data={income}
                       margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
                     >
                       <defs>
@@ -234,7 +237,7 @@ const HomePage: React.FC = () => {
                       />
 
                       <XAxis
-                        dataKey="bulan"
+                        dataKey="month"
                         interval={0}
                         tickLine={false}
                         axisLine={{ stroke: '#e5e7eb' }}
@@ -291,13 +294,13 @@ const HomePage: React.FC = () => {
 
                       <Area
                         type="linear"
-                        dataKey="pendapatan"
+                        dataKey="totalSubTotal"
                         stroke="none"
                         fill="url(#colorPendapatan)"
 
                         dot={(props: any) => {
                           const { cx, cy, payload } = props;
-                          if (payload.pendapatan === 0) {
+                          if (payload.totalSubTotal === 0) {
                             return <circle cx={cx} cy={cy} r={0.0001} fill="none" />;
                           }
                           return (
@@ -330,14 +333,14 @@ const HomePage: React.FC = () => {
 
                       <Line
                         type="monotone"
-                        dataKey="pendapatan"
+                        dataKey="totalSubTotal"
                         stroke="#0284c7"
                         strokeWidth={2}
                         dot={(props: any) => (
                           <circle
                             cx={props.cx}
                             cy={props.cy}
-                            r={props.payload.pendapatan === 0 ? 0.0001 : 1.5}
+                            r={props.payload.totalSubTotal === 0 ? 0.0001 : 1.5}
                             fill="#0284c7"
                           />
                         )}
@@ -510,8 +513,8 @@ const HomePage: React.FC = () => {
             <div className="w-full flex flex-col justify-center">
               <div className="flex w-full justify-end mb-4">
                 <select
-                  value={tahun}
-                  onChange={(e) => setTahun(e.target.value)}
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
                   className="bg-gradient-to-r from-[#008FE2] to-[#5CE9FF] text-white text-xs px-3 py-1 rounded-full"
                 >
                   <option>2025</option>
@@ -521,30 +524,30 @@ const HomePage: React.FC = () => {
               <div className="w-full flex flex-col items-center">
 
                 <div className="space-y-2 w-9/12">
-                  {dataMonthly.map((item, idx) => {
-                    const isActive = item.bulan === "Okt";
+                  {chartData?.monthlyStatistics?.map((item, idx) => {
+                    const isActive = item?.month === 10;
                     return (
                       <div key={idx} className="w-[100%] flex items-center space-x-2">
                         <span
                           className={`w-[35px] text-right ${isActive ? "font-bold text-[#004492] text-[20px]" : "text-[11px]"
                             }`}
                         >
-                          {item.bulan}
+                          {item.month}
                         </span>
                         <div className={`flex items-center px-2  space-x-2 ${isActive ? "shadow-[0px_0px_7.7px] rounded-full shadow-[#1B89FF]" : ""}`}
                           style={{
-                            width: `${item.value}%`
+                            width: `${item.totalPackagePlus}%`
                           }}>
                           <div
                             className={`h-3 rounded-full bg-gradient-to-r from-[#1E90FF] to-[#00E0FF]
                             `}
-                            style={{ width: `${item.value}%` }}
+                            style={{ width: `${item.totalPackagePlus}%` }}
                           />
                           <h1
                             className={` flex items-center w-fit justify-self-end text-[#008FE2]  ${isActive ? "font-bold text-[15px]" : "font-semibold text-[10px]"
                               }`}
                           >
-                            {item.value}
+                            {item.totalPackagePlus}
                           </h1>
                         </div>
                       </div>
@@ -610,7 +613,7 @@ const HomePage: React.FC = () => {
             <h1 className="font-bold text-[14px]">Hotel Terdaftar</h1>
             <div className="mt-[32px] overflow-x-auto overflow-y-hidden max-w-[95%] mx-auto">
               <div className="flex space-x-4 w-max">
-                {[1, 2, 3].map((_, index) => (
+                {hotels.map((hotel, index) => (
                   <div
                     key={index}
                     className="bg-[#0030EE] shadow-black/25 shadow-[0px_1px_4.5px] rounded-r-[10px] h-[60px] flex min-w-[300px] transition-all duration-300"
@@ -622,10 +625,10 @@ const HomePage: React.FC = () => {
                     />
                     <div className="flex flex-col justify-center p-3 w-full">
                       <div className="flex items-center space-x-2">
-                        <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
-                        <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
+                        <span className="text-[15px] font-semibold text-white">{hotel?.hotel_name}</span>
+                        <span className="text-[#F0E260] text-[11px]">{renderStarsHotels(Number(hotel?.hotel_type))}</span>
                       </div>
-                      <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
+                      <h1 className="text-[10px] font-medium text-white">{hotel?.description}</h1>
                     </div>
                   </div>
                 ))}

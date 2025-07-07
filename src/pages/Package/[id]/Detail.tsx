@@ -10,10 +10,11 @@ import useDetailPackage from "../../../hooks/package/useDetailPackage";
 import { renderStarsHotels } from "../../../utils/renderStarts";
 const DetailPackages: React.FC = () => {
   const {
-    packages,
+    data,
     currentPage, setCurrentPage,
     totalPages,
-    currentItems
+    currentItems,
+    handleCLick
   } = useDetailPackage();
 
   return (
@@ -23,7 +24,7 @@ const DetailPackages: React.FC = () => {
           <img src={detailPackagesIcon} alt="dashboard icon" className="w-[20px] h-[20px] mt-1" />
           <h1 className="text-primary-blue font-medium">Package</h1>
         </div>
-        {packages && (
+        {data && (
           <div className="w-11/12 bg-white shadow-[0px_4px_19.5px] shadow-black/25 px-[55px] py-[29px] ms-[39px] mt-[30px] h-full items-center">
             <h1 className="text-primary-blue text-[24px] font-medium">Detail Package</h1>
             <div className="grid grid-cols-4 mt-[37px]">
@@ -33,10 +34,10 @@ const DetailPackages: React.FC = () => {
               </div>
               <div className="col-span-3 flex flex-col">
                 <h1 className="text-[20px] font-medium text-[#3B3B3B]">
-                  {packages?.package_name}
+                  {data?.detailPackage?.package_name}
                 </h1>
                 <h1 className="text-[24px] font-medium text-[#3679FE]">
-                  Rp. {packages?.price?.toLocaleString()}
+                  Rp. {data?.detailPackage?.price?.toLocaleString()}
                 </h1>
                 <div className="grid grid-cols-2 w-8/12">
                   <div className="flex flex-col">
@@ -45,15 +46,18 @@ const DetailPackages: React.FC = () => {
                       Kuota
                     </h1>
                     <h1 className="text-[24px] font-medium text-[#3B3B3B]">
-                      {packages?.quota_update}/{packages?.quota}
+                      {data?.detailPackage?.quota_update}/{data?.detailPackage?.quota}
                     </h1>
                     <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
                       Kategori Paket
                     </h1>
                     <h1 className="text-[20px] font-medium text-[#3679FE]">
-                      {packages?.master_category_departure?.category_name}
+                      {data?.detailPackage?.master_category_departure?.category_name}
                     </h1>
-                    <button className="bg-gradient-to-r rounded-full mt-2 from-[#003CB4] to-[#3679FE] text-[15px] font-medium text-white py-1 px-4 w-fit">
+                    <button
+                      onClick={() => (handleCLick(Number(data?.detailPackage?.id)))}
+                      className="bg-gradient-to-r rounded-full mt-2 from-[#003CB4] to-[#3679FE] text-[15px] font-medium text-white py-1 px-4 w-fit"
+                    >
                       Jemaah Terdaftar
                     </button>
                   </div>
@@ -63,13 +67,13 @@ const DetailPackages: React.FC = () => {
                       Durasi Perjalanan
                     </h1>
                     <h1 className="text-[24px] font-medium text-[#3B3B3B]">
-                      {packages?.duration} Hari
+                      {data?.detailPackage?.duration} Hari
                     </h1>
                     <h1 className="text-[20px] mt-2 font-medium text-[#3B3B3B]">
                       Waktu Keberangkatan
                     </h1>
                     <h1 className="text-[20px] font-medium text-[#3B3B3B]">
-                      {packages?.date_departure}
+                      {data?.detailPackage?.date_departure}
                     </h1>
                   </div>
                 </div>
@@ -78,7 +82,7 @@ const DetailPackages: React.FC = () => {
             </div>
             <div className="text-primary-blue text-[20px] mt-[50px]">
               <h2 className="font-semibold mb-2">Fasilitas</h2>
-              {packages?.package_facilities?.map((fasilities, index) => (
+              {data?.detailPackage?.package_facilities?.map((fasilities, index) => (
                 <ul key={index} className="list-disc ms-5 space-y-1 capitalize font-medium">
                   <li>{fasilities?.description}</li>
                 </ul>
@@ -87,7 +91,7 @@ const DetailPackages: React.FC = () => {
             <div className="w-full mt-[80px] space-y-6 text-primary-blue text-[20px]">
               <h2 className="font-semibold mb-[28px] text-[20px] text-primary-blue">Fasilitas Hotel</h2>
               {/* Hotel */}
-              {packages?.package_hotels?.map((hotel, index) => (
+              {data?.detailPackage?.package_hotels?.map((hotel, index) => (
                 <div key={index}>
                   <h2 className="font-medium text-[20px] ms-8">Hotel {index + 1}</h2>
                   <div className="mt-1 px-[31px] py-4 border border-[#BABABA] rounded-[20px] bg-white flex flex-col space-y-2">

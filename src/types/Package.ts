@@ -1,4 +1,5 @@
 import { Hotel, MasterHotel } from "./Hotels";
+import { Jamaah } from "./Order";
 
 export interface Mitra {
   id: number;
@@ -107,6 +108,18 @@ export interface Mitra {
     package_hotels?: Hotel[];
     package_facilities?: PackageFacility[];
     package_schedules?: PackageSchedule[];
+  }
+
+  export interface detailJamaah {
+    id: number;
+    jamaah: Jamaah[];
+  }
+  export interface PackageDetail {
+    detailJamaah?: detailJamaah[];
+    detailPackage?: Package;
+    totalJamaah?: number
+    totalJamaahFemale?: number
+    totalJamaahMale?: number
   }
 
 export interface AddPackge {
