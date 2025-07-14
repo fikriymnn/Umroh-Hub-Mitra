@@ -17,6 +17,7 @@ import useAccountDetail from "../../hooks/useAccountDetail";
 import useLogOut from "../../hooks/auth/useLogOut";
 import useDashboard from "../../hooks/useDashboard";
 import { renderStarsHotels } from "../../utils/renderStarts";
+import useOrder from "../../hooks/order/useOrder";
 
 const data = [
   { bulan: '', pendapatan: 0 },
@@ -32,11 +33,6 @@ const data = [
   { bulan: "okt", pendapatan: 58 },
   { bulan: "nov", pendapatan: 52 },
   { bulan: "des", pendapatan: 64 },
-];
-
-const dataPie = [
-  { name: 'Reguler', value: 80 },
-  { name: 'Plus', value: 30 },
 ];
 
 const dataMonthly = [
@@ -64,8 +60,12 @@ const HomePage: React.FC = () => {
     income, setIncome,
     hotels, setHotels,
     chartData, setChartData,
-    selectedYear, setSelectedYear
+    selectedYear, setSelectedYear,
+    dataPie
   } = useDashboard();
+  const {
+    orders, setOrders
+  } = useOrder();
   const {
     openDropdown, setOpenDropdown,
     handleLogOut
@@ -585,20 +585,15 @@ const HomePage: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody className="text-left">
-                  <tr>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Amanah</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Gunawan</td>
-                    <td className="py-[15px] ps-[23px] text-[12px]">Rp6.000.000</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Uang Muka</td>
-                    <td className="py-[15px] ps-[23px] text-[12px]">10/05/2025</td>
-                  </tr>
-                  <tr>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Plus Amanah</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Asep Hitla Husomad</td>
-                    <td className="py-[15px] ps-[23px] text-[12px]">Rp20.000.000</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Lunas</td>
-                    <td className="py-[15px] px-4 text-[12px]">12/05/2025</td>
-                  </tr>
+                  {orders.map((order, index) => (
+                    <tr key={index}>
+                      <td className="capitalize py-[15px] ps-[23px] text-[12px]">{order?.package_umroh?.package_name}</td>
+                      <td className="capitalize py-[15px] ps-[23px] text-[12px]">{order?.user?.name}</td>
+                      <td className="py-[15px] ps-[23px] text-[12px]">{order?.subtotal}</td>
+                      <td className="capitalize py-[15px] ps-[23px] text-[12px]">Uang Muka</td>
+                      <td className="py-[15px] ps-[23px] text-[12px]">{order?.createdAt}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <div className="relative w-full">

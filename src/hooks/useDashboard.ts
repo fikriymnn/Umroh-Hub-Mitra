@@ -79,14 +79,20 @@ const useDashboard = () => {
                 console.log(`Error: ${error}`);
             }
         }
-    }
+    };
+
+    const dataPie = [
+        { name: 'Reguler', value: chartData?.packageRegularYears },
+        { name: 'Plus', value: chartData?.packagePlusYears },
+    ];
 
     return {
         datas, setDatas,
         income, setIncome,
         hotels, setHotels,
         chartData, setChartData,
-        selectedYear, setSelectedYear
+        selectedYear, setSelectedYear,
+        dataPie
     };
 };
 
