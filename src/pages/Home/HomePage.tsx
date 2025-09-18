@@ -13,7 +13,7 @@ import promoIcon from "../../assets/icons/Lable.svg";
 import orderIcon from "../../assets/icons/package_box.svg";
 import { Area, AreaChart, CartesianGrid, Cell, Line, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import ProfileMenu from "../../components/ProfileMenu";
-import useAccountDetail from "../../hooks/useAccountDetail";
+import useAccountDetail from "../../hooks/AccountDetail/useAccountDetail";
 import useLogOut from "../../hooks/auth/useLogOut";
 import useDashboard from "../../hooks/useDashboard";
 import { renderStarsHotels } from "../../utils/renderStarts";

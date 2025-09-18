@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { savePackageFasility } from '../../utils/storage';
+import { savePackageFasility } from '../../../utils/storage';
 import { useNavigate } from 'react-router';
-import { MasterLocationDeparture, Transportation } from '../../types/Package';
-import { getAllLocation } from '../../services/packagesServices';
+import { MasterLocationDeparture, Transportation } from '../../../types/Package';
+import { getAllLocation } from '../../../services/packagesServices';
 
-const usePackageFacility = () => {
+const usePackageFasility = () => {
     const navigate = useNavigate();
     const [facilities, setFacilities] = useState('');
     const [airLine, setAirLine] = useState('');
@@ -107,4 +107,4 @@ const usePackageFacility = () => {
     };
 };
 
-export default usePackageFacility;
+export default usePackageFasility;

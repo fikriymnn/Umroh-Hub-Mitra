@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
-import usePackageFacility from '../../../hooks/package/usePackageFacility';
+import usePackageFasility from "../../../hooks/package/AddPackage/usePackageFasility";
 
 function PackageFasility() {
   const {
@@ -16,7 +16,7 @@ function PackageFasility() {
     handleKeyDown,
     handleSave,
     handleBack
-  } = usePackageFacility();
+  } = usePackageFasility();
 
   return (
     <DefaultLayout>

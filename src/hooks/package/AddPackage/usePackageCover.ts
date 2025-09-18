@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { MasterTypeDeparture } from '../../types/Package';
-import { getAllType } from '../../services/packagesServices';
-import { savePackageCover } from '../../utils/storage';
+import { MasterTypeDeparture } from '../../../types/Package';
+import { getAllType } from '../../../services/packagesServices';
+import { savePackageCover } from '../../../utils/storage';
 import { useNavigate } from 'react-router';
 
 const usePackageCover = () => {

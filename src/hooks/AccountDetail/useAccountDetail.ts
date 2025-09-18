@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Partner } from "../types/Partners";
-import { getMe } from "../services/partnerServices";
+import { Partner } from "../../types/Partners";
+import { getMe } from "../../services/partnerServices";
 
 const useAccountDetail = () => {
     const [partner, setPartner] = useState<Partner>();

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { AddPackge } from '../../types/Package';
-import { clearPackageData, getPackageCover, getPackageFasility, getPackageHotel, getPackageSchedules } from '../../utils/storage';
-import { addPackage } from '../../services/packagesServices';
+import { AddPackge } from '../../../types/Package';
+import { clearPackageData, getPackageCover, getPackageFasility, getPackageHotel, getPackageSchedules } from '../../../utils/storage';
+import { addPackage } from '../../../services/packagesServices';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import exampleImage from "../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png"

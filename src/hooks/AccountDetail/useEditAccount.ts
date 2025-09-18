@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { Partner } from "../types/Partners"
-import { getMe, updatePartner } from "../services/partnerServices"
+import { Partner } from "../../types/Partners"
+import { getMe, updatePartner } from "../../services/partnerServices"
 import { useNavigate } from "react-router";
 
-const useUpdateAccount = () => {
+const useEditAccount = () => {
     const navigate = useNavigate();
     const [partner, setPartner] = useState<Partner>();
     const [name, setName] = useState('');
@@ -66,4 +66,4 @@ const useUpdateAccount = () => {
     };
 };
 
-export default useUpdateAccount;
+export default useEditAccount;

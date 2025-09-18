@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
-import usePackageCover from '../../../hooks/package/usePackageCover';
+import usePackageCover from '../../../hooks/package/AddPackage/usePackageCover';
 
 function PackageCover() {
     const {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { MasterHotel } from '../../types/Hotels';
-import { getAllHotels } from '../../services/hotelServices';
-import { savePackageHotel } from '../../utils/storage';
+import { MasterHotel } from '../../../types/Hotels';
+import { getAllHotels } from '../../../services/hotelServices';
+import { savePackageHotel } from '../../../utils/storage';
 import { useNavigate } from 'react-router';
 
-const usePackageHotel = () => {
+const useDetailHotel = () => {
     const navigate = useNavigate();
     const [hotelList, setHotelList] = useState<MasterHotel[]>([]);
     const [selectedHotel, setSelectedHotel] = useState<MasterHotel[]>([]);
@@ -65,4 +65,4 @@ const usePackageHotel = () => {
     };
 };
 
-export default usePackageHotel;
+export default useDetailHotel;

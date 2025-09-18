@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
-import usePackageActivity from '../../../hooks/package/usePackageActivity';
+import useTravelDuration from "../../../hooks/package/AddPackage/useTravelDuration";
 
 function TravelDuration() {
   const {
@@ -15,7 +15,7 @@ function TravelDuration() {
     handleDeleteDay,
     handleSave,
     handleBack
-  } = usePackageActivity();
+  } = useTravelDuration();
   return (
     <DefaultLayout>
 

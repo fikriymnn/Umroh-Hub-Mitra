@@ -18,7 +18,7 @@ import durationIcon from '../../../assets/icons/mdi_calendar-time.svg'
 import TravelSchedule from '../../../components/TravelSchedule';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import usePreviewPackage from '../../../hooks/package/usePreviewPackage';
+import usePreviewPackage from '../../../hooks/package/AddPackage/usePreviewPackage';
 
 function PreviewPackage() {
     const {

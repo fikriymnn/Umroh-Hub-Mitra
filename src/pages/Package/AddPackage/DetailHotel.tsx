@@ -1,8 +1,8 @@
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
 import hotelExample from '../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
-import usePackageHotel from '../../../hooks/package/usePackageHotel';
 import { renderStarsHotels } from '../../../utils/renderStarts';
+import useDetailHotel from "../../../hooks/package/AddPackage/useDetailHotel";
 function DetailHotel() {
     const {
         hotelList,
@@ -10,7 +10,7 @@ function DetailHotel() {
         handleSelectedHotel,
         handleSave,
         handleBack
-    } = usePackageHotel();
+    } = useDetailHotel();
 
     return (
         <DefaultLayout>
