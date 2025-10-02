@@ -6,7 +6,7 @@ const usePackage = () => {
     const [packages, setPackages] = useState<Package[]>([]);
 
     useEffect(() => {
-        async function fetchPackage() {
+        const fetchPackage = async () => {
             try {
                 const res = await getAllPackageMitra();
                 console.log(res);

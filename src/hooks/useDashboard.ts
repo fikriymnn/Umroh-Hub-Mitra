@@ -1,41 +1,98 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getDataDashboardMitra, statistikMitra } from '../services/dashboardServices';
-import { Dashboard } from '../types/Dashboard';
+import { ChartData, Dashboard, MonthlyStatistics } from '../types/Dashboard';
+import { MasterHotel } from '../types/Hotels';
+import { getAllHotels } from '../services/hotelServices';
+import { isAxiosError } from 'axios';
 
 const useDashboard = () => {
     const [datas, setDatas] = useState<Dashboard>();
-    const [income, setIncome] = useState();
-    const [selectedYear, setSelectedYear] = useState("2025");
+    const [hotels, setHotels] = useState<MasterHotel[]>([]);
+    const [income, setIncome] = useState<MonthlyStatistics[]>([]);
+    const [chartData, setChartData] = useState<ChartData>();
+    const [selectedYear, setSelectedYear] = useState("");
+
+    const monthName = [
+        "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", 
+        "Agu", "Sep", "Okt", "Nov", "Des"
+    ];
 
     useEffect(() => {
         fetchData();
-        fetchIncome
+        fetchIncome();
+        fetchChartData();
     }, [selectedYear]);
     
-    async function fetchData() {
+    useEffect(() => {
+        fetchHotel();
+    });
+    
+    const fetchData = async () => {
         try {
             const res = await getDataDashboardMitra();
-            console.log(res);
             setDatas(res.data.data)
         } catch (error) {
             console.error(`Error: ${error}`);
         }
     };
 
-    async function fetchIncome() {
+    const fetchIncome = async () => {
         try {
-            const res = await statistikMitra();
-            console.log(res);
-            setIncome(res.data);
+            if (selectedYear) {
+                const res = await statistikMitra(selectedYear);
+                console.log(res);
+                const rawData = res.data.data.monthlyStatistics;
+
+                const mappedData = rawData.map((item: MonthlyStatistics) => ({
+                    month: monthName[item.month - 1],
+                    totalSubTotal: Number(item.totalSubTotal),
+                    totalPackage: item.totalPackage
+                }));
+
+                setIncome(mappedData);
+            }
         } catch (error) {
             console.error(`Error: ${error}`);
         }
     };
 
+    const fetchHotel = async () => {
+        try {
+            const res = await getAllHotels();
+            setHotels(res.data);
+        } catch (error) {
+            if (isAxiosError(error)) {
+                console.log(`Error: ${error}`);
+            }
+        }
+    };
+
+    const fetchChartData = async () => {
+        try {
+            if (selectedYear) {
+                const res = await statistikMitra(selectedYear);
+                console.log(res);
+                setChartData(res.data.data);
+            }
+        } catch (error) {
+            if (isAxiosError(error)) {
+                console.log(`Error: ${error}`);
+            }
+        }
+    };
+
+    const dataPie = [
+        { name: 'Reguler', value: chartData?.packageRegularYears },
+        { name: 'Plus', value: chartData?.packagePlusYears },
+    ];
+
     return {
         datas, setDatas,
         income, setIncome,
-        selectedYear, setSelectedYear
+        hotels, setHotels,
+        chartData, setChartData,
+        selectedYear, setSelectedYear,
+        dataPie
     };
 };
 

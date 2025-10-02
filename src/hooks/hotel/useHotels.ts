@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Hotel, MasterHotel } from '../../types/Hotels';
+import { useEffect, useState } from 'react'
+import { MasterHotel } from '../../types/Hotels';
 import { getAllHotels } from '../../services/hotelServices';
 import { useNavigate } from 'react-router';
 
@@ -8,7 +8,7 @@ const useHotels = () => {
     const [hotels, setHotels] = useState<MasterHotel[]>([]);
 
     useEffect(() => {
-        async function fetchHotel() {
+        const fetchHotel = async () => {
             try {
                 const res = await getAllHotels();
                 console.log(res);
@@ -23,7 +23,7 @@ const useHotels = () => {
 
     const handleAddHotel = () => {
         navigate('/Package/Hotel/AddHotel');
-      };
+    };
 
     return {
         hotels, setHotels,

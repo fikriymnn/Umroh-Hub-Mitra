@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { PackageSchedule, DetailActivity } from '../../types/Package';
-import { savePackageSchedules } from '../../utils/storage';
+import { PackageSchedule, DetailActivity } from '../../../types/Package';
+import { savePackageSchedules } from '../../../utils/storage';
 import { useNavigate } from 'react-router';
 
-const usePackageActivity = () => {
+const useTravelDuration = () => {
     const navigate = useNavigate();
     const [schedules, setSchedules] = useState<PackageSchedule[]>([]);
 
@@ -112,6 +112,14 @@ const usePackageActivity = () => {
         }
     };
 
+    const handleBack = () => {
+        try {
+            navigate(-1);
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+    };
+
     return {
         schedules,
         setSchedules,
@@ -120,8 +128,9 @@ const usePackageActivity = () => {
         handleRemoveActivity,
         handleAddDay,
         handleDeleteDay,
-        handleSave
+        handleSave,
+        handleBack
     };
 };
 
-export default usePackageActivity;
+export default useTravelDuration;

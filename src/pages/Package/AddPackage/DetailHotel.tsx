@@ -1,23 +1,21 @@
+<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
+=======
+>>>>>>> 16f090dbac5a6f73fd2564cbf63524ccc7c5d304
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
 import hotelExample from '../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
-import usePackageHotel from '../../../hooks/package/usePackageHotel';
+import { renderStarsHotels } from '../../../utils/renderStarts';
+import useDetailHotel from "../../../hooks/package/AddPackage/useDetailHotel";
 function DetailHotel() {
     const {
-        hotelList, setHotelList,
+        hotelList,
         selectedHotel, setSelectedHotel,
         handleSelectedHotel,
-        handleSave
-    } = usePackageHotel();
-    const [dipilih, setDipilih] = useState<string[]>([]);
-
-    const pilihHotel = (nama: string) => {
-        if (!dipilih.includes(nama)) {
-            setDipilih([...dipilih, nama]);
-        }
-    };
+        handleSave,
+        handleBack
+    } = useDetailHotel();
 
     return (
         <DefaultLayout>
@@ -45,7 +43,7 @@ function DetailHotel() {
                                         <div className="flex-col p-3 w-full">
                                             <div className="flex items-center space-x-2">
                                                 <span className="text-[15px] font-semibold text-white">{hotel?.hotel_name}</span>
-                                                <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
+                                                <span className="text-[#F0E260] text-[11px]">{renderStarsHotels(Number(hotel?.hotel_type))}</span>
                                             </div>
                                             <div className="flex items-center justify-between space-x-2">
                                                 <h1 className="text-[10px] font-medium text-white">{hotel?.description}</h1>
@@ -93,7 +91,12 @@ function DetailHotel() {
                         </div>
 
                         <div className="w-full col-span-2 mt-6 flex justify-end gap-4">
-                            <button className="px-6 py-2 h-fit rounded-full bg-gray-400 text-white">Kembali</button>
+                            <button
+                                onClick={handleBack}
+                                className="px-6 py-2 h-fit rounded-full bg-gray-400 text-white"
+                            >
+                                Kembali
+                            </button>
                             <button
                                 onClick={handleSave}
                                 className="px-6 py-2 h-fit rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"
@@ -103,7 +106,6 @@ function DetailHotel() {
                         </div>
                     </div>
                 </div>
-
             </div>
         </DefaultLayout>
     )

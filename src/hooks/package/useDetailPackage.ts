@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Package } from '../../types/Package';
-import { useParams } from 'react-router';
+import { PackageDetail } from '../../types/Package';
+import { useNavigate, useParams } from 'react-router';
 import { getOnePackageMitra } from '../../services/packagesServices';
 import axios from 'axios';
 
 const useDetailPackage = () => {
     const {id} = useParams();
-    const [packages, setPackages] = useState<Package>();
+    const navigate = useNavigate();
+    const [data, setData] = useState<PackageDetail>();
     const [currentPage, setCurrentPage] = useState(1);
     const itemPages = 4;
 
-    const schedule = packages?.package_schedules?.flatMap((schedule: any) =>
+    const schedule = data?.detailPackage?.package_schedules?.flatMap((schedule: any) =>
         schedule.detail_activities.map((activity: any) => ({
             hari: schedule.title,
             image: schedule.image_url,
@@ -25,12 +26,12 @@ const useDetailPackage = () => {
     const currentItems = schedule.slice(startIndex, startIndex + itemPages)
 
     useEffect(() => {
-        async function fetchPackage() {
+        const fetchPackage = async () => {
             try {
                 if (id) {
                     const res = await getOnePackageMitra(id);
                     console.log(res);
-                    setPackages(res.data.data);
+                    setData(res.data.data);
                 }
             } catch (error) {
                 if (axios.isAxiosError(error)) {
@@ -42,12 +43,21 @@ const useDetailPackage = () => {
         fetchPackage();
     }, []);
 
+    const handleCLick = (id: number) => {
+        try {
+            navigate(`/Package/${id}/Listed-Pilgrims`);
+        } catch (error) {
+            console.error(`Error: ${error}`);
+        }
+    };
+
     return {
-        packages, setPackages,
+        data, setData,
         currentPage, setCurrentPage,
         itemPages,
         totalPages,
-        currentItems
+        currentItems,
+        handleCLick
     };
 };
 

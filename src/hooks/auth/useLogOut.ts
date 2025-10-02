@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { logOut } from '../../services/authServices';
 
 const useLogOut = () => {
     const [openDropdown, setOpenDropdown] = useState(false);
 
-    async function handleLogOut() {
+    const handleLogOut = async () => {
         try {
             await logOut();
         

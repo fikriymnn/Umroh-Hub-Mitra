@@ -2,7 +2,7 @@ import React from "react";
 import DefaultLayout from "../../layout/DefaultLayout";
 import dashboardIcon from "../../assets/icons/Home.svg";
 import CardProfile from "../../components/CardProfile";
-import useAccountDetail from "../../hooks/useAccountDetail";
+import useAccountDetail from "../../hooks/AccountDetail/useAccountDetail";
 import { Link } from "react-router";
 import ProfileMenu from "../../components/ProfileMenu";
 import useLogOut from "../../hooks/auth/useLogOut";

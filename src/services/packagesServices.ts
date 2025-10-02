@@ -1,33 +1,33 @@
 import axios from "axios";
 import { Package } from "../types/Package";
 
-export const addPackage = async (data: Package) => {
+export async function addPackage (data: Package) {
     return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/addPackage`, 
         data,
         {withCredentials: true}
     );
 };
 
-export const getAllPackageMitra = async () => {
+export async function getAllPackageMitra () {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/packageMitra`,
         {withCredentials: true}
     );
 };
 
-export const getOnePackageMitra = async (id: number | string) => {
+export async function getOnePackageMitra (id: number | string) {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getOnePackageUmroh/${id}`,
         {withCredentials: true}
     );
 };
 
-export const getAllCategory = async () => {
+export async function getAllCategory () {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getAllCategory`)
 }; 
 
-export const getAllLocation = async () => {
+export async function getAllLocation () {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getAllLocation`)
 }; 
 
-export const getAllType = async () => {
+export async function getAllType () {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getAllType`)
 }; 

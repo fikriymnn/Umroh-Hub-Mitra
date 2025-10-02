@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const getDataDashboardMitra = async () => {
-    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getDataSahboardMitra`, {
+export async function getDataDashboardMitra () {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getDataDahboardMitra`, {
         withCredentials: true
     });
 };
 
-export const statistikMitra = async () => {
-    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/sttMitra`, {
+export async function statistikMitra (year: string) {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/sttMitra/${year}`, {
         withCredentials: true
     });
 };

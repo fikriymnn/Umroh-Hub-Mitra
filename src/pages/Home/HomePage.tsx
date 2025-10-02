@@ -14,9 +14,11 @@ import promoIcon from "../../assets/icons/Lable.svg";
 import orderIcon from "../../assets/icons/package_box.svg";
 import { Area, AreaChart, CartesianGrid, Cell, Line, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import ProfileMenu from "../../components/ProfileMenu";
-import useAccountDetail from "../../hooks/useAccountDetail";
+import useAccountDetail from "../../hooks/AccountDetail/useAccountDetail";
 import useLogOut from "../../hooks/auth/useLogOut";
 import useDashboard from "../../hooks/useDashboard";
+import { renderStarsHotels } from "../../utils/renderStarts";
+import useOrder from "../../hooks/order/useOrder";
 
 const data = [
   { bulan: '', pendapatan: 0 },
@@ -32,11 +34,6 @@ const data = [
   { bulan: "okt", pendapatan: 58 },
   { bulan: "nov", pendapatan: 52 },
   { bulan: "des", pendapatan: 64 },
-];
-
-const dataPie = [
-  { name: 'Reguler', value: 80 },
-  { name: 'Plus', value: 30 },
 ];
 
 const dataMonthly = [
@@ -62,8 +59,14 @@ const HomePage: React.FC = () => {
   const {
     datas, setDatas,
     income, setIncome,
-    selectedYear, setSelectedYear
+    hotels, setHotels,
+    chartData, setChartData,
+    selectedYear, setSelectedYear,
+    dataPie
   } = useDashboard();
+  const {
+    orders, setOrders
+  } = useOrder();
   const {
     openDropdown, setOpenDropdown,
     handleLogOut
@@ -196,60 +199,60 @@ const HomePage: React.FC = () => {
               </div>
             </div>
           </div>
-         <div className="w-11/12 mt-[42px] gap-6 h-full grid grid-cols-6">
+          <div className="w-11/12 mt-[42px] gap-6 h-full grid grid-cols-6">
             <div className="bg-white shadow-[-5px_2px_14px] col-span-4 shadow-black/25 w-full rounded-[7px] px-[30px] py-[15px]">
-                      <h2 className="text-xl font-bold">Pendapatan Bulanan</h2>
-                <div className="flex items-center justify-between mb-2">
-                        <h2 className="text-[8px] ms-[20px] font-bold">Jt</h2>
-                        <select
-                          value={selectedYear}
-                          onChange={(e) => setSelectedYear(e.target.value)}
-                          className="bg-gradient-to-r from-[#008FE2] to-[#5CE9FF] text-white text-sm px-3 py-1 rounded-full outline-none cursor-pointer"
-                        >
-                          {years.map((year) => (
-                            <option key={year} value={year} className="text-black">
-                              {year}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                        <div className="">
-                        <div className="pe-4">
-                          <ResponsiveContainer width="100%" height={300}>
-                            <AreaChart
-                            
-                              data={data}
-                               margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
-                            >
-                              <defs>
-                                <linearGradient id="colorPendapatan" x1="0" y1="0" x2="0" y2="1">
-                                  <stop offset="30%" stopColor="#3C97FF" stopOpacity={1} />
-                                  <stop offset="100%" stopColor="#5CE9FF00" stopOpacity={0} />
-                                </linearGradient>
-                              </defs>
+              <h2 className="text-xl font-bold">Pendapatan Bulanan</h2>
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-[8px] ms-[20px] font-bold">Jt</h2>
+                <select
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  className="bg-gradient-to-r from-[#008FE2] to-[#5CE9FF] text-white text-sm px-3 py-1 rounded-full outline-none cursor-pointer"
+                >
+                  {years.map((year) => (
+                    <option key={year} value={year} className="text-black">
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="">
+                <div className="pe-4">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <AreaChart
 
-                              <CartesianGrid
-                                stroke="#e5e7eb"
-                               strokeDasharray="0"
+                      data={income}
+                      margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
+                    >
+                      <defs>
+                        <linearGradient id="colorPendapatan" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="30%" stopColor="#3C97FF" stopOpacity={1} />
+                          <stop offset="100%" stopColor="#5CE9FF00" stopOpacity={0} />
+                        </linearGradient>
+                      </defs>
 
-                              />
+                      <CartesianGrid
+                        stroke="#e5e7eb"
+                        strokeDasharray="0"
 
-                                <XAxis
-                                  dataKey="bulan"
-                                  interval={0}
-                                  tickLine={false}
-                                  axisLine={{ stroke: '#e5e7eb' }}
-                                  tick={{
-                                    fill: '#000',
-                                    fontSize: 11,
-                                    dx: -23,
-                                    color: '#000',
-                                    fontWeight: 500
-                                  }}
-                                 
-                                />
+                      />
 
-                              {/* <YAxis
+                      <XAxis
+                        dataKey="month"
+                        interval={0}
+                        tickLine={false}
+                        axisLine={{ stroke: '#e5e7eb' }}
+                        tick={{
+                          fill: '#000',
+                          fontSize: 11,
+                          dx: -23,
+                          color: '#000',
+                          fontWeight: 500
+                        }}
+
+                      />
+
+                      {/* <YAxis
                                 className="text-[10px] font-medium text-[#8E8E8E]"
                                         domain={[0, 110]}
                                         tickCount={110}
@@ -257,115 +260,115 @@ const HomePage: React.FC = () => {
                                         width={30}
                                 
                                       /> */}
-                      
+
                       <YAxis
-                          ticks={ticks}
-                          tickLine={false}
-                          axisLine={{ stroke: '#e5e7eb' }}
-                          fontSize={10}
-                          width={30}
-                        />
+                        ticks={ticks}
+                        tickLine={false}
+                        axisLine={{ stroke: '#e5e7eb' }}
+                        fontSize={10}
+                        width={30}
+                      />
 
 
-                            <Tooltip
-                              content={({ active, payload, label }) => {
-                                if (active && payload && payload.length > 0) {
-                                  const value = payload[0].value;
-                                  if (value === 0) return null;
+                      <Tooltip
+                        content={({ active, payload, label }) => {
+                          if (active && payload && payload.length > 0) {
+                            const value = payload[0].value;
+                            if (value === 0) return null;
 
-                                  return (
-                                    <div className="rounded-md overflow-hidden shadow-lg text-sm w-[160px]">
-                                      <div className="bg-[#0047AB] capitalize text-white font-medium px-3 py-1">
-                                        {label}
-                                      </div>
-                                      <div className="bg-white px-3 py-2 text-center">
-                                        <p className="text-[#0A6BDB] font-medium">Pendapatan</p>
-                                        <p className="text-[#0A6BDB] font-bold">Rp 200.000</p>
-                                      </div>
-                                    </div>
-                                  );
-                                }
-                                return null;
-                              }}
-                            />
-
-
-                              <Area
-                                type="linear"
-                                dataKey="pendapatan"
-                                stroke="none"
-                                fill="url(#colorPendapatan)"
-
-                                dot={(props: any) => {
-                                  const { cx, cy, payload } = props;
-                                  if (payload.pendapatan === 0) {
-                                    return <circle cx={cx} cy={cy} r={0.0001} fill="none" />;
-                                  }
-                                  return (
-                                    <circle
-                                      cx={cx}
-                                      cy={cy}
-                                      r={3}
-                                      fill="#0284c7"
-                                      stroke="#fff"
-                                      strokeWidth={1}
-                                    />
-                                  );
-                                }}
-                                activeDot={(props: any) => {
-                                  const { cx, cy } = props;
-                                  return (
-                                    <circle
-                                      cx={cx}
-                                      cy={cy}
-                                      r={10}
-                                      fill="#0284c7"
-                                      stroke="#fff"
-                                      strokeWidth={2}
-                                    />
-                                  );
-                                }}
-
-                                dy={30}
-                              />
-
-                              <Line
-                                type="monotone"
-                                dataKey="pendapatan"
-                                stroke="#0284c7"
-                                strokeWidth={2}
-                                dot={(props: any) => (
-                                  <circle
-                                    cx={props.cx}
-                                    cy={props.cy}
-                                    r={props.payload.pendapatan === 0 ? 0.0001 : 1.5}
-                                    fill="#0284c7"
-                                  />
-                                )}
-                              />
-
-                            </AreaChart>
-                          </ResponsiveContainer>
-
-                              </div>
+                            return (
+                              <div className="rounded-md overflow-hidden shadow-lg text-sm w-[160px]">
+                                <div className="bg-[#0047AB] capitalize text-white font-medium px-3 py-1">
+                                  {label}
                                 </div>
+                                <div className="bg-white px-3 py-2 text-center">
+                                  <p className="text-[#0A6BDB] font-medium">Pendapatan</p>
+                                  <p className="text-[#0A6BDB] font-bold">{value?.toLocaleString('id-ID')}</p>
+                                </div>
+                              </div>
+                            );
+                          }
+                          return null;
+                        }}
+                      />
+
+
+                      <Area
+                        type="linear"
+                        dataKey="totalSubTotal"
+                        stroke="none"
+                        fill="url(#colorPendapatan)"
+
+                        dot={(props: any) => {
+                          const { cx, cy, payload } = props;
+                          if (payload.totalSubTotal === 0) {
+                            return <circle cx={cx} cy={cy} r={0.0001} fill="none" />;
+                          }
+                          return (
+                            <circle
+                              cx={cx}
+                              cy={cy}
+                              r={3}
+                              fill="#0284c7"
+                              stroke="#fff"
+                              strokeWidth={1}
+                            />
+                          );
+                        }}
+                        activeDot={(props: any) => {
+                          const { cx, cy } = props;
+                          return (
+                            <circle
+                              cx={cx}
+                              cy={cy}
+                              r={10}
+                              fill="#0284c7"
+                              stroke="#fff"
+                              strokeWidth={2}
+                            />
+                          );
+                        }}
+
+                        dy={30}
+                      />
+
+                      <Line
+                        type="monotone"
+                        dataKey="totalSubTotal"
+                        stroke="#0284c7"
+                        strokeWidth={2}
+                        dot={(props: any) => (
+                          <circle
+                            cx={props.cx}
+                            cy={props.cy}
+                            r={props.payload.totalSubTotal === 0 ? 0.0001 : 1.5}
+                            fill="#0284c7"
+                          />
+                        )}
+                      />
+
+                    </AreaChart>
+                  </ResponsiveContainer>
+
+                </div>
+              </div>
             </div>
-           <div className="bg-white col-span-2 rounded-lg shadow-[-5px_2px_14px] shadow-black/25 p-6 flex flex-col  w-full">
+            <div className="bg-white col-span-2 rounded-lg shadow-[-5px_2px_14px] shadow-black/25 p-6 flex flex-col  w-full">
               <h2 className="text-[14px] font-bold">
                 Distribusi Paket <span className="bg-gradient-to-br text-[12px] from-[#247599] to-[#3CC2FF] ms-[17px] text-transparent bg-clip-text">Hasanah Hana</span>
               </h2>
-            <div className="flex flex-col w-full h-12/12 items-center space-x-[29px] justify-center">
+              <div className="flex flex-col w-full h-12/12 items-center space-x-[29px] justify-center">
 
-              <div className="min-w-[160px] h-[160px] mx-auto">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <defs>
-                       <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
+                <div className="min-w-[160px] h-[160px] mx-auto">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <defs>
+                        <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
                           <stop offset="0%" stopColor="#0D78F3" />
                           <stop offset="100%" stopColor="#07468D" />
                         </linearGradient>
                       </defs>
-                       <Pie
+                      <Pie
                         data={dataPie}
                         cx="50%"
                         cy="50%"
@@ -373,12 +376,12 @@ const HomePage: React.FC = () => {
                         outerRadius={75}
                         dataKey="value"
                         stroke="none"
-                        >
-                <Cell fill="url(#regulerGradient)" />
-                <Cell fill="#001A4D" />
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
+                      >
+                        <Cell fill="url(#regulerGradient)" />
+                        <Cell fill="#001A4D" />
+                      </Pie>
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
 
 
@@ -425,50 +428,50 @@ const HomePage: React.FC = () => {
                     </div>
                   </div> */}
                 <div className="w-7/12 h-[200px] grid grid-cols-2">
-                                     <div className="min-w-[180px] h-[160px] flex flex-col items-center mx-auto">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <defs>
-                <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#0D78F3" />
-                  <stop offset="100%" stopColor="#07468D" />
-                </linearGradient>
-              </defs>
-              <Pie
-                data={dataPie}
-                cx="50%"
-                cy="50%"
-                outerRadius={75}
-                dataKey="value"
-                stroke="none"
-              >
-                <Cell fill="url(#regulerGradient)" />
-                <Cell fill="#001A4D" />
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-                 <div className="flex flex-col mt-7">
+                  <div className="min-w-[180px] h-[160px] flex flex-col items-center mx-auto">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <defs>
+                          <linearGradient id="regulerGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stopColor="#0D78F3" />
+                            <stop offset="100%" stopColor="#07468D" />
+                          </linearGradient>
+                        </defs>
+                        <Pie
+                          data={dataPie}
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={75}
+                          dataKey="value"
+                          stroke="none"
+                        >
+                          <Cell fill="url(#regulerGradient)" />
+                          <Cell fill="#001A4D" />
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="flex flex-col mt-7">
                     <div className="flex  flex-col items-center space-x-2">
                       <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 rounded-full bg-[#0D78F3]" />                          
-                      <h1>Reguler</h1>
+                        <div className="w-3 h-3 rounded-full bg-[#0D78F3]" />
+                        <h1>Reguler</h1>
                       </div>
                       <h1 className="font-bold text-[20px]">80%</h1>
                     </div>
-                   
+
                     <div className="flex flex-col items-center space-x-2">
                       <div className="flex items-center space-x-2">
 
-                      <div className="w-3 h-3 rounded-full bg-[#001A4D]" />
-                      
-                      <h1>Plus</h1>
+                        <div className="w-3 h-3 rounded-full bg-[#001A4D]" />
+
+                        <h1>Plus</h1>
                       </div>
                       <h1 className="font-bold text-[20px]">20%</h1>
                     </div>
                   </div>
-                  </div>
                 </div>
+              </div>
 
               {/* <div className="flex flex-col text-sm items-center w-full space-y-2">
                 
@@ -511,8 +514,8 @@ const HomePage: React.FC = () => {
             <div className="w-full flex flex-col justify-center">
               <div className="flex w-full justify-end mb-4">
                 <select
-                  value={tahun}
-                  onChange={(e) => setTahun(e.target.value)}
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
                   className="bg-gradient-to-r from-[#008FE2] to-[#5CE9FF] text-white text-xs px-3 py-1 rounded-full"
                 >
                   <option>2025</option>
@@ -522,30 +525,30 @@ const HomePage: React.FC = () => {
               <div className="w-full flex flex-col items-center">
 
                 <div className="space-y-2 w-9/12">
-                  {dataMonthly.map((item, idx) => {
-                    const isActive = item.bulan === "Okt";
+                  {chartData?.monthlyStatistics?.map((item, idx) => {
+                    const isActive = item?.month === 10;
                     return (
                       <div key={idx} className="w-[100%] flex items-center space-x-2">
                         <span
                           className={`w-[35px] text-right ${isActive ? "font-bold text-[#004492] text-[20px]" : "text-[11px]"
                             }`}
                         >
-                          {item.bulan}
+                          {item.month}
                         </span>
                         <div className={`flex items-center px-2  space-x-2 ${isActive ? "shadow-[0px_0px_7.7px] rounded-full shadow-[#1B89FF]" : ""}`}
                           style={{
-                            width: `${item.value}%`
+                            width: `${item.totalPackagePlus}%`
                           }}>
                           <div
                             className={`h-3 rounded-full bg-gradient-to-r from-[#1E90FF] to-[#00E0FF]
                             `}
-                            style={{ width: `${item.value}%` }}
+                            style={{ width: `${item.totalPackagePlus}%` }}
                           />
                           <h1
                             className={` flex items-center w-fit justify-self-end text-[#008FE2]  ${isActive ? "font-bold text-[15px]" : "font-semibold text-[10px]"
                               }`}
                           >
-                            {item.value}
+                            {item.totalPackagePlus}
                           </h1>
                         </div>
                       </div>
@@ -583,20 +586,15 @@ const HomePage: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody className="text-left">
-                  <tr>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Amanah</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Gunawan</td>
-                    <td className="py-[15px] ps-[23px] text-[12px]">Rp6.000.000</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Uang Muka</td>
-                    <td className="py-[15px] ps-[23px] text-[12px]">10/05/2025</td>
-                  </tr>
-                  <tr>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Plus Amanah</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Asep Hitla Husomad</td>
-                    <td className="py-[15px] ps-[23px] text-[12px]">Rp20.000.000</td>
-                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Lunas</td>
-                    <td className="py-[15px] px-4 text-[12px]">12/05/2025</td>
-                  </tr>
+                  {orders.map((order, index) => (
+                    <tr key={index}>
+                      <td className="capitalize py-[15px] ps-[23px] text-[12px]">{order?.package_umroh?.package_name}</td>
+                      <td className="capitalize py-[15px] ps-[23px] text-[12px]">{order?.user?.name}</td>
+                      <td className="py-[15px] ps-[23px] text-[12px]">{order?.subtotal}</td>
+                      <td className="capitalize py-[15px] ps-[23px] text-[12px]">Uang Muka</td>
+                      <td className="py-[15px] ps-[23px] text-[12px]">{order?.createdAt}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <div className="relative w-full">
@@ -607,31 +605,31 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-           <div className="mt-[42px] px-[37px] py-[16px] w-11/12 col-span-2 h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
+          <div className="mt-[42px] px-[37px] py-[16px] w-11/12 col-span-2 h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
             <h1 className="font-bold text-[14px]">Hotel Terdaftar</h1>
             <div className="mt-[32px] overflow-x-auto overflow-y-hidden max-w-[95%] mx-auto">
-  <div className="flex space-x-4 w-max">
-    {[1, 2, 3].map((_, index) => (
-      <div
-        key={index}
-        className="bg-[#0030EE] shadow-black/25 shadow-[0px_1px_4.5px] rounded-r-[10px] h-[60px] flex min-w-[300px] transition-all duration-300"
-      >
-        <img
-          src={hotelExample}
-          alt="hotel picture"
-          className="w-[70px] h-[60px] rounded-s-[3px]"
-        />
-        <div className="flex flex-col justify-center p-3 w-full">
-          <div className="flex items-center space-x-2">
-            <span className="text-[15px] font-semibold text-white">Hotel Al-habssy fath</span>
-            <span className="text-[#F0E260] text-[11px]">★ ★ ★ ★ ★</span>
-          </div>
-          <h1 className="text-[10px] font-medium text-white">200 meter ke masjidil haram</h1>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
+              <div className="flex space-x-4 w-max">
+                {hotels.map((hotel, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#0030EE] shadow-black/25 shadow-[0px_1px_4.5px] rounded-r-[10px] h-[60px] flex min-w-[300px] transition-all duration-300"
+                  >
+                    <img
+                      src={hotelExample}
+                      alt="hotel picture"
+                      className="w-[70px] h-[60px] rounded-s-[3px]"
+                    />
+                    <div className="flex flex-col justify-center p-3 w-full">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-[15px] font-semibold text-white">{hotel?.hotel_name}</span>
+                        <span className="text-[#F0E260] text-[11px]">{renderStarsHotels(Number(hotel?.hotel_type))}</span>
+                      </div>
+                      <h1 className="text-[10px] font-medium text-white">{hotel?.description}</h1>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
           </div>
         </div>

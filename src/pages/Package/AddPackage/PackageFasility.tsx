@@ -1,23 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react'
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
-import usePackageFacility from '../../../hooks/package/usePackageFacility';
+import usePackageFasility from "../../../hooks/package/AddPackage/usePackageFasility";
 
 function PackageFasility() {
   const {
     facilities, setFacilities,
     airLine, setAirLine,
     airPlane, setAirPlane,
-    locationList, setLocationList,
-    selectedLocation, setSelectedLocation,
-    transportation, setTransportation,
+    locationList,
+    setSelectedLocation,
     inputTransportation, setInputTransportation,
     handleAddTransportation,
     handleKeyDown,
-    handleSave
-  } = usePackageFacility();
+    handleSave,
+    handleBack
+  } = usePackageFasility();
 
   return (
     <DefaultLayout>
@@ -48,11 +47,7 @@ function PackageFasility() {
                   onChange={(e) => setFacilities(e.target.value)}
                   onKeyDown={handleKeyDown}
                 />
-
               </div>
-
-
-
             </div>
 
             {/* Form kanan */}
@@ -117,14 +112,18 @@ function PackageFasility() {
                       +
                     </button>
                   </div>
-
                 </div>
               </div>
-
             </div>
 
+            {/* Buttons */}
             <div className="w-full col-span-2 mt-6 flex justify-end gap-4">
-              <button className="px-6 py-2 h-fit rounded-full bg-gray-400 text-white">Kembali</button>
+              <button
+                onClick={handleBack}
+                className="px-6 py-2 h-fit rounded-full bg-gray-400 text-white"
+              >
+                Kembali
+              </button>
               <button
                 onClick={handleSave}
                 className="px-6 py-2 h-fit rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 text-white"
@@ -133,8 +132,6 @@ function PackageFasility() {
               </button>
             </div>
           </div>
-
-          {/* Buttons */}
         </div>
       </div>
     </DefaultLayout>

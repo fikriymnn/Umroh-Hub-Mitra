@@ -3,10 +3,10 @@ import DefaultLayout from "../../../layout/DefaultLayout";
 import dashboardIcon from "../../../assets/icons/Home.svg";
 import profileExample from "../../../assets/images/profile_placeholder (1).png";
 import editIcon from "../../../assets/icons/Edit_fill (1).svg";
-import useUpdateAccount from "../../../hooks/useUpdateAccount";
 import ProfileMenu from "../../../components/ProfileMenu";
 import useLogOut from "../../../hooks/auth/useLogOut";
-import useAccountDetail from "../../../hooks/useAccountDetail";
+import useAccountDetail from "../../../hooks/AccountDetail/useAccountDetail";
+import useEditAccount from "../../../hooks/AccountDetail/useEditAccount";
 // import vector from "../../assets/images/Group (1).png";
 const EditAccount: React.FC = () => {
   const { partner } = useAccountDetail();
@@ -24,7 +24,7 @@ const EditAccount: React.FC = () => {
     email,
     setEmail,
     handleUpdate
-  } = useUpdateAccount();
+  } = useEditAccount();
   const {
     openDropdown, setOpenDropdown,
     handleLogOut

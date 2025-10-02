@@ -31,7 +31,7 @@ const useAddHotel = () => {
         setFacilitiesUmum([]);
     };
 
-    async function handleSave() {
+    const handleSave = async () => {
         const payload = {
             hotel_name: hotelName,
             hotel_type: hotelType,
