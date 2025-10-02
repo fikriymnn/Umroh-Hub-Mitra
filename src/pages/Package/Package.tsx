@@ -66,7 +66,7 @@ const Package: React.FC = () => {
                   <img
                     src={packageExample}
                     alt="paket"
-                    className="object-cover w-[183px] h-[183px]"
+                    className="object-cover w-[135px] h-[135px]"
                   />
                 </div>
 
