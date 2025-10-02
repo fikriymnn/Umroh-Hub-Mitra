@@ -125,7 +125,7 @@ function Sidebar() {
                   ${(currentPath === "/Order" || isDetailOrder )? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}>
                     <img src={(currentPath === "/Order" || isDetailOrder ) ? orderIcon : orderIcon2} alt="profile" className="w-[20px] h-[20px] ms-[30px]" />
-            <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Order</h1>
+            <h1 className={`font-medium text-left text-[20px]  flex items-self-center`}>Pesanan</h1>
               {/* Bulatan di kanan */}
                 {(currentPath === "/Order" || isDetailOrder ) && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />

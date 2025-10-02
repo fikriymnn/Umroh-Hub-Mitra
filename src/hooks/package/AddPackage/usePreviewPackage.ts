@@ -4,7 +4,7 @@ import { clearPackageData, getPackageCover, getPackageFasility, getPackageHotel,
 import { addPackage } from '../../../services/packagesServices';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import exampleImage from "../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png"
+import exampleImage from "../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png"
 
 const usePreviewPackage = () => {
     const navigate = useNavigate();

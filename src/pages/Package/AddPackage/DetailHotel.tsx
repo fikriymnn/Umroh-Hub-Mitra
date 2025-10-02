@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
-=======
->>>>>>> 16f090dbac5a6f73fd2564cbf63524ccc7c5d304
 import packageIcon from "../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../layout/DefaultLayout';
 import hotelExample from '../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'

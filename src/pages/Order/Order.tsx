@@ -41,7 +41,11 @@ const Order: React.FC = () => {
           </button>
 
         </div>
-        <div className="w-11/12 ms-[39px] mt-[30px] h-full">
+        <div className="w-11/12 ms-[39px] mt-[37px] h-full">
+         <div className="flex ms-[20px] mb-[27px] space-x-[35px]">
+            <h1 className="font-bold text-[15px] text-primary-blue capitalize">Belum di konfirmasi</h1>
+            <h1 className="font-medium text-[15px] text-primary-blue capitalize">sudah di konfirmasi</h1>
+          </div>
           {/* table head */}
           <div className="grid grid-cols-12 bg-white text-[#031B4E] font-bold px-4 py-3 rounded-t-md shadow-[0px_0px_14.4px_2px] shadow-black/25">
             <div className="">No</div>
@@ -87,7 +91,7 @@ const Order: React.FC = () => {
                 </div>
 
                 <div className="flex col-span-3 justify-between items-center">
-                  <h1 className="font-medium">Uang Muka</h1>
+                  <h1 className="font-medium capitalize w-[100px]">Belum dikonfirmasi</h1>
 
                   <Link to={`/Order/${order?.id}`}>
                     <button

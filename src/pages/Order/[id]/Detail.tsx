@@ -9,6 +9,7 @@ const OrderDetail: React.FC = () => {
     order
   } = useDetailOrder();
 
+     const fakeStatusConfirm = 'Confirmed'
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -19,13 +20,31 @@ const OrderDetail: React.FC = () => {
         <div className="w-11/12 ms-[39px] mt-[30px] h-full items-center">
           <h1 className="font-medium text-[32px]">Detail Pesanan</h1>
           {order && (
-            <div className="w-full flex flex-col space-y-[32px] mt-[44px] px-[27px] py-[42px] mx-auto min-h-screen shadow-[-1px_0px_9.8px] shadow-black/25">
-              <div className="flex flex-col ms-[59px] ">
+            <div className="w-full flex flex-col space-y-[32px] mt-[44px] px-[27px] py-[42px] mx-auto h-fit shadow-[-1px_0px_9.8px] shadow-black/25">
+              <div className="grid grid-cols-3 ms-[59px] ">
+              <div className="flex flex-col ">
 
                 <h1 className="font-medium text-[#696969] text-[15px]">
                   Nama Pemesan
                 </h1>
                 <h1 className="text-[20px] font-medium">{order?.user?.name}</h1>
+                </div>
+                <div className="flex flex-col ">
+
+                <h1 className="font-medium text-[#696969] text-[15px]">
+                  Status Pembayaran
+                </h1>
+                <h1 className="text-[20px] font-medium capitalize">uang muka</h1>
+                <h1 className="text-[13px] font-medium text-[#3C97FF]">Rp6.000.000</h1>
+                </div>
+                <div className="flex flex-col ">
+
+                <h1 className="font-medium text-[#696969] text-[15px]">
+                 Paket Yang Di pesan
+                </h1>
+                <h1 className="text-[20px] font-medium capitalize">Umroh Paket Plus Amanah</h1>
+                <h1 className="text-[13px] font-medium text-[#3C97FF]">Rp6.000.000</h1>
+                </div>
               </div>
               <div className="flex flex-col ms-[59px] ">
 
@@ -88,6 +107,19 @@ const OrderDetail: React.FC = () => {
                   </table>
                 </div>
               </div>
+              <div className="flex justify-between w-full mt-[40px]">
+                <div className=""></div>
+              {fakeStatusConfirm === 'Confirmed' && (
+                 <h1 className="font-medium text-[#696969] text-[15px]">
+                  Di Konfirmasi
+                </h1>
+                )}
+                <div className="flex justify-end">
+                              <button className="bg-gradient-to-r capitalize from-[#003CB4] to-[#3679FE] text-white text-[15px] px-4 py-1 rounded-full">
+                                {fakeStatusConfirm === 'Confirmed' ? 'upload visa' : 'Konfirmasi'}
+                              </button>
+                            </div>
+                </div>
             </div>
           )}
         </div>
