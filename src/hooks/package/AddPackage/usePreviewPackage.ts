@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react'
 import { AddPackge } from '../../../types/Package';
 import { clearPackageData, getPackageCover, getPackageFasility, getPackageHotel, getPackageSchedules } from '../../../utils/storage';
