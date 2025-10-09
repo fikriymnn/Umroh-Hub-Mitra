@@ -9,7 +9,8 @@ import { Link } from "react-router";
 const Order: React.FC = () => {
   const {
     orders,
-    active, setActive
+    active, setActive,
+    filter, setFilter
   } = useOrder();
   return (
     <DefaultLayout>
@@ -31,9 +32,33 @@ const Order: React.FC = () => {
           </div>
 
           <div className="flex space-x-[35px] col-span-2">
-            <h1 className="font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue">Semua</h1>
-            <h1 className="font-medium text-[15px] text-primary-blue">Paket Reguler</h1>
-            <h1 className="font-medium text-[15px] text-primary-blue">Paket Plus</h1>
+            <button
+              onClick={() => setFilter('Semua')}
+              className={`${filter === 'Semua' ?
+                'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
+                'font-medium text-[15px] text-primary-blue'
+                }`}
+            >
+              Semua
+            </button>
+            <button
+              onClick={() => setFilter('Reguler')}
+              className={`${filter === 'Reguler' ?
+                'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
+                'font-medium text-[15px] text-primary-blue'
+                }`}
+            >
+              Paket Reguler
+            </button>
+            <button
+              onClick={() => setFilter('Plus')}
+              className={`${filter === 'Plus' ?
+                'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
+                'font-medium text-[15px] text-primary-blue'
+                }`}
+            >
+              Paket Plus
+            </button>
           </div>
           <button className="flex justify-center px-4 py-2 w-fit justify-self-end rounded-full text-white text-sm font-medium bg-gradient-to-r from-[#0066b2] to-[#00d2d3]">
             <span className="flex whitespace-nowrap items-center justify-center w-5 h-5 rounded-full border border-white text-white text-sm me-2">+</span>
@@ -42,7 +67,7 @@ const Order: React.FC = () => {
 
         </div>
         <div className="w-11/12 ms-[39px] mt-[37px] h-full">
-         <div className="flex ms-[20px] mb-[27px] space-x-[35px]">
+          <div className="flex ms-[20px] mb-[27px] space-x-[35px]">
             <h1 className="font-bold text-[15px] text-primary-blue capitalize">Belum di konfirmasi</h1>
             <h1 className="font-medium text-[15px] text-primary-blue capitalize">sudah di konfirmasi</h1>
           </div>
