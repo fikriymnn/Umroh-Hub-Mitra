@@ -8,6 +8,7 @@ import TravelSchedule from "../../../components/TravelSchedule";
 import locationIcon from "../../../assets/icons/Pin_alt.svg"
 import useDetailPackage from "../../../hooks/package/useDetailPackage";
 import { renderStarsHotels } from "../../../utils/renderStarts";
+import { formatDate } from "../../../utils/formatDate";
 const DetailPackages: React.FC = () => {
   const {
     data,
@@ -73,7 +74,12 @@ const DetailPackages: React.FC = () => {
                       Waktu Keberangkatan
                     </h1>
                     <h1 className="text-[20px] font-medium text-[#3B3B3B]">
-                      {data?.detailPackage?.date_departure}
+                      {data?.detailPackage?.date_departure
+                        ? `${formatDate(String(data?.detailPackage?.date_departure))}`
+                        : 'Tanggal tidak valid'} -
+                      {data?.detailPackage?.date_arrival
+                        ? `${formatDate(String(data?.detailPackage?.date_arrival))}`
+                        : 'Tanggal tidak valid'}
                     </h1>
                   </div>
                 </div>
@@ -103,7 +109,7 @@ const DetailPackages: React.FC = () => {
 
                         <div className="flex items-center space-x-1">
                           <img src={locationIcon} alt="icon located" className="w-[16px] h-[16px]" />
-                          <span className="text-[11px]">{hotel?.master_hotel?.description}</span>
+                          <span className="text-[11px]">{hotel?.master_hotel?.address}</span>
                         </div>
                       </div>
                     </div>

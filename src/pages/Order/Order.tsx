@@ -33,8 +33,8 @@ const Order: React.FC = () => {
 
           <div className="flex space-x-[35px] col-span-2">
             <button
-              onClick={() => setFilter('Semua')}
-              className={`${filter === 'Semua' ?
+              onClick={() => setFilter('')}
+              className={`${filter === '' ?
                 'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
                 'font-medium text-[15px] text-primary-blue'
                 }`}

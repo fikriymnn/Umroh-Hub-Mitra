@@ -2,6 +2,7 @@ import packageIcon from "../../../../assets/icons/Vector (3).svg";
 import DefaultLayout from '../../../../layout/DefaultLayout';
 import packageExample from '../../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
 import useDetailPackage from '../../../../hooks/package/useDetailPackage';
+import { formatDate, formatDateWithDay } from "../../../../utils/formatDate";
 function Pilgrims() {
   const {
     data
@@ -19,7 +20,12 @@ function Pilgrims() {
           <div className="flex flex-col items-center p-6 font-sans">
             {/* Tanggal */}
             <h1 className="text-lg font-semibold text-gray-800">
-              {data?.detailPackage?.date_departure} - 03/11/2025
+              {data?.detailPackage?.date_departure
+                ? `${formatDate(String(data?.detailPackage?.date_departure))}`
+                : 'Tanggal tidak valid'} -
+              {data?.detailPackage?.date_arrival
+                ? `${formatDate(String(data?.detailPackage?.date_arrival))}`
+                : 'Tanggal tidak valid'}
             </h1>
 
             <div className="w-full px-4 mt-[39px] bg-white shadow-[0px_4px_8.4px_4px] shadow-black/25 rounded-lg">
@@ -53,11 +59,11 @@ function Pilgrims() {
                     </div>
                     <div className="text-sm text-[#1D1D1D] text-left">
                       <p>Tanggal keberangkatan</p>
-                      <p className="font-semibold">Senin {data?.detailPackage?.date_departure}</p>
+                      <p className="font-semibold">{formatDateWithDay(String(data?.detailPackage?.date_departure))}</p>
                     </div>
                     <div className="text-sm text-[#1D1D1D] text-left">
                       <p>Tanggal kepulangan</p>
-                      <p className="font-semibold">Selasa 3/10/2025</p>
+                      <p className="font-semibold">{formatDateWithDay(String(data?.detailPackage?.date_arrival))}</p>
                     </div>
                   </div>
                   <div className='w-10/12'>
@@ -93,7 +99,7 @@ function Pilgrims() {
                 {data?.totalJamaah} Jamaah Terdaftar
               </div>
               <div className="bg-purple-100 text-purple-800 border-[3px] border-[#9A3CFF] rounded-[20px] px-4 py-3 font-semibold text-center">
-                104 Sisa Kuota
+                {data?.detailPackage?.quota - data?.detailPackage?.quota_update} Sisa Kuota
               </div>
             </div>
 

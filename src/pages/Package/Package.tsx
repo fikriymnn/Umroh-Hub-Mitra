@@ -8,6 +8,7 @@ import searchIcon from "../../assets/icons/Search_alt_light.svg";
 import { Link } from "react-router";
 import usePackage from "../../hooks/package/usePackage";
 import packageExample from '../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
+import { formatDateWithDay } from "../../utils/formatDate";
 const Package: React.FC = () => {
   const { packages } = usePackage();
   return (
@@ -80,7 +81,7 @@ const Package: React.FC = () => {
                     </div>
                     <div className="text-right">
                       <p className="text-[#1D1D1D] font-semibold">Rp{pckg.price?.toLocaleString()}</p>
-                      <p className="text-sm text-[#1D1D1D]">{pckg.quota}/{pckg.quota_update}</p>
+                      <p className="text-sm text-[#1D1D1D]">{pckg.quota_update}/{pckg.quota}</p>
                     </div>
                   </div>
 
@@ -94,11 +95,11 @@ const Package: React.FC = () => {
                     </div>
                     <div className="text-sm text-[#1D1D1D] text-left">
                       <p>Tanggal keberangkatan</p>
-                      <p className="font-semibold">Senin 23/10/2025</p>
+                      <p className="font-semibold">{formatDateWithDay(String(pckg?.date_departure))}</p>
                     </div>
                     <div className="text-sm text-[#1D1D1D] text-left">
                       <p>Tanggal kepulangan</p>
-                      <p className="font-semibold">Selasa 3/10/2025</p>
+                      <p className="font-semibold">{formatDateWithDay(String(pckg?.date_arrival))}</p>
                     </div>
                   </div>
 

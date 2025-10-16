@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export async function getDataDashboardMitra () {
-    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getDataDahboardMitra`, {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getDataDashboardMitra`, {
         withCredentials: true
     });
 };

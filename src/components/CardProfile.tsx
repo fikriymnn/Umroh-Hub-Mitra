@@ -3,6 +3,7 @@ import profileExample from "../assets/images/profile_placeholder (1).png";
 import editIcon from "../assets/icons/Edit_fill.svg";
 import vector from "../assets/images/Group (1).png";
 import { Partner } from '../types/Partners';
+import { formatDate } from '../utils/formatDate';
 
 const CardProfile = ({ partner }: { partner: Partner }) => {
     return (
@@ -34,7 +35,7 @@ const CardProfile = ({ partner }: { partner: Partner }) => {
                             Daftar Sejak
                         </h2>
                         <h2 className="text-white text-[10px] capitalize">
-                            20/10/2020
+                            {formatDate(String(partner.createdAt))}
                         </h2>
                     </div>
                 </div>
