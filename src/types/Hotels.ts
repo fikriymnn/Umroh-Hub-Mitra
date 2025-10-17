@@ -28,8 +28,8 @@ export interface MasterHotel {
     description: string;
     createdAt?: string;
     updatedAt?: string;
-    facilities_hotel?: hotel_facilities[];
-    facilities_general?: facilities_general[];
+    hotel_facilities?: hotel_facilities[];
+    general_facilities?: facilities_general[];
 } 
 
 export interface Hotel {

@@ -117,7 +117,7 @@ const DetailPackages: React.FC = () => {
                     <div className="grid grid-cols-2 font-medium text-[16px] gap-4 mt-2 text-black">
                       <div>
                         <h3 className="font-semibold ">Fasilitas Umum</h3>
-                        {hotel?.master_hotel?.facilities_general?.map((fGeneral, index) => (
+                        {hotel?.master_hotel?.general_facilities?.map((fGeneral, index) => (
                           <ul key={index} className="list-disc ms-7 mt-[19px] space-y-[2px]">
                             <li>{fGeneral?.description}</li>
                           </ul>
@@ -125,15 +125,13 @@ const DetailPackages: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold ">Fasilitas Kamar</h3>
-                        {hotel?.master_hotel?.facilities_hotel?.map((fRoom, index) => (
+                        {hotel?.master_hotel?.hotel_facilities?.map((fRoom, index) => (
                           <ul key={index} className="list-disc ms-8 space-y-[2px] mt-[19px]">
                             <li>{fRoom?.description}</li>
                           </ul>
                         ))}
                       </div>
                     </div>
-
-
 
                   </div>
                 </div>

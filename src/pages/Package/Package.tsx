@@ -10,7 +10,10 @@ import usePackage from "../../hooks/package/usePackage";
 import packageExample from '../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
 import { formatDateWithDay } from "../../utils/formatDate";
 const Package: React.FC = () => {
-  const { packages } = usePackage();
+  const {
+    packages,
+    filter, setFilter
+  } = usePackage();
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -31,10 +34,42 @@ const Package: React.FC = () => {
           </div>
 
           <div className="flex space-x-[35px] col-span-2">
-            <h1 className="font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue">Semua</h1>
-            <h1 className="font-medium text-[15px] text-primary-blue">Paket Reguler</h1>
-            <h1 className="font-medium text-[15px] text-primary-blue">Paket Plus</h1>
-            <h1 className="font-medium text-[15px] text-primary-blue">Paket Promo</h1>
+            <button
+              onClick={() => setFilter('')}
+              className={`${filter === '' ?
+                'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
+                'font-medium text-[15px] text-primary-blue'
+                }`}
+            >
+              Semua
+            </button>
+            <button
+              onClick={() => setFilter('Reguler')}
+              className={`${filter === 'Reguler' ?
+                'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
+                'font-medium text-[15px] text-primary-blue'
+                }`}
+            >
+              Paket Reguler
+            </button>
+            <button
+              onClick={() => setFilter('Plus')}
+              className={`${filter === 'Plus' ?
+                'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
+                'font-medium text-[15px] text-primary-blue'
+                }`}
+            >
+              Paket Plus
+            </button>
+            <button
+              onClick={() => setFilter('Promo')}
+              className={`${filter === 'Promo' ?
+                'font-bold text-[15px] text-primary-blue border-b-4 border-primary-blue' :
+                'font-medium text-[15px] text-primary-blue'
+                }`}
+            >
+              Paket Promo
+            </button>
           </div>
           <button className="flex justify-center px-4 py-2 w-fit justify-self-end rounded-full text-white text-sm font-medium bg-gradient-to-r from-[#0066b2] to-[#00d2d3]">
             <Link to="/Package/AddPackage" className="flex items-center">

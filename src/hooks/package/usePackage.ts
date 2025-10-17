@@ -4,11 +4,14 @@ import { Package } from '../../types/Package';
 
 const usePackage = () => {
     const [packages, setPackages] = useState<Package[]>([]);
+    const [filter, setFilter] = useState('');
 
     useEffect(() => {
         const fetchPackage = async () => {
             try {
-                const res = await getAllPackageMitra();
+                console.log(`Filter: ${filter}`);
+                
+                const res = await getAllPackageMitra(filter);
                 console.log(res);
                 setPackages(res.data.data);
             } catch (error) {
@@ -17,9 +20,12 @@ const usePackage = () => {
         };
 
         fetchPackage();
-    }, []);
+    }, [filter]);
 
-    return {packages};
+    return {
+        packages, setPackages,
+        filter, setFilter
+    };
 };
 
 export default usePackage;

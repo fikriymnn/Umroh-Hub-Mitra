@@ -8,8 +8,8 @@ export async function addPackage (data: Package) {
     );
 };
 
-export async function getAllPackageMitra () {
-    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/packageMitra`,
+export async function getAllPackageMitra (category: string | undefined) {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/packageMitra?category_name=${category}`,
         {withCredentials: true}
     );
 };
