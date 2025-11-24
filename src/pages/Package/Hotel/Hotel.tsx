@@ -5,7 +5,7 @@ import hotelIcon from '../../../assets/icons/Component 7 (1).svg'
 import hotelExample from '../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
 import roomIcon from '../../../assets/icons/mdi_guest-room (1).svg'
 import locationIcon from '../../../assets/icons/Pin_alt (1).svg'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import useHotels from '../../../hooks/hotel/useHotels'
 import { renderStarsHotels } from '../../../utils/renderStarts'
 function PackageHotel() {
@@ -41,7 +41,9 @@ function PackageHotel() {
                     <img src={roomIcon} alt="room icon" className="w-[16px] h-[16px]" />
                     <span className="text-[11px] font-medium text-white">{hotel.room_type}</span>
                   </div>
+                  <Link to={`/Package/Hotel/${hotel?.id}`}>
                   <h1 className="text-[15px] flex w-full justify-end font-bold text-white">Lihat Detail</h1>
+                  </Link>
                 </div>
               </div>
             ))}
