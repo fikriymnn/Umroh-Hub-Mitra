@@ -42,7 +42,9 @@ function PackageHotel() {
                     <span className="text-[11px] font-medium text-white">{hotel.room_type}</span>
                   </div>
                   <Link to={`/Package/Hotel/${hotel?.id}`}>
-                  <h1 className="text-[15px] flex w-full justify-end font-bold text-white">Lihat Detail</h1>
+                    <h1 className="text-[15px] flex w-full justify-end font-bold text-white">
+                      Lihat Detail
+                    </h1>
                   </Link>
                 </div>
               </div>

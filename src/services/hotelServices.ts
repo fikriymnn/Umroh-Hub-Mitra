@@ -13,3 +13,8 @@ export async function getAllHotels () {
         withCredentials: true
     });
 };
+export async function getDetailHotel (id: number | string) {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/hotels/${id}`, {
+        withCredentials: true
+    });
+};
