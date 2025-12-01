@@ -21,6 +21,7 @@ import OrderDetail from "./pages/Order/[id]/Detail";
 import DetailPackages from "./pages/Package/[id]/Detail";
 import Pilgrims from "./pages/Package/[id]/Listed-Pilgrims/ListedPilgrims";
 import NotifikasiPage from "./pages/Notification/Notification";
+import { Detail } from "./pages/Package/Hotel/[id]/Detail";
 
 
 export default function App() {
@@ -215,6 +216,16 @@ export default function App() {
                 <PageTitle title="PT CBL" />
 
                 <NotifikasiPage/>
+              </>
+            }
+          />
+           <Route
+            path="/Package/Hotel/:id"
+            element={
+              <>
+                <PageTitle title="PT CBL" />
+
+                <Detail />
               </>
             }
           />

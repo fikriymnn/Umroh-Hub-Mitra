@@ -11,6 +11,9 @@ const OrderDetail: React.FC = () => {
 
   const fakeStatusConfirm = 'Confirmed'
   const [UploadVisa, setUploadVisa] = useState(false);
+
+  const [filePassport, setFilePassport] = useState("");
+  const [fileTiket, setFileTiket] = useState("");
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -28,15 +31,15 @@ const OrderDetail: React.FC = () => {
                 <h2 className="font-medium ms-3 mb-4">Upload Visa, Tiket Penerbangan </h2>
                 <div className="shadow-black/25 shadow-[0px_4px_15.2px] mt-[15px] ">
                     <table className="w-full border-collapse">
-                      <thead className="bg-[#001F5D] text-white font-medium">
+                      <thead className="bg-[#001F5D] text-sm text-white font-medium">
                         <tr>
                           <th className="p-4">No</th>
                           <th className="p-4">Nama Jemaah</th>
                           <th className="p-4">Gender</th>
                           <th className="p-4">Email</th>
-                          <th className="p-4">KTP</th>
-                          <th className="p-4">Passport</th>
-                          <th className="p-4">Kartu Keluarga</th>
+                          <th className="p-4">Upload Visa</th>
+                        <th className="p-4">Upload Tiket<br/>
+                        Penerbangan</th>
                         </tr>
                       </thead>
                       <tbody className="w-full">
@@ -46,33 +49,51 @@ const OrderDetail: React.FC = () => {
                             <td className="p-4 text-[20px]">{jmh?.name}</td>
                             <td className="p-4 text-[#696969] text-sm">{jmh?.gender}</td>
                             <td className="p-4 text-[#696969] text-sm">{jmh?.email}</td>
-
                             <td className="p-4">
                               <div className="flex justify-center">
-                                <button className="bg-gradient-to-r from-[#003CB4] to-[#3679FE] text-white text-[12px] px-4 py-1 rounded-full">
-                                  Lihat File
-                                </button>
+                                <label className="bg-[#001F5D] text-white text-[12px] px-4 py-1 rounded-md cursor-pointer">
+                                  {filePassport ? filePassport : "Pilih File"}
+                                  <input
+                                    name="Passport"
+                                    type="file"
+                                    className="hidden"
+                                    onChange={(e) => {
+                                      const files = e.target.files;
+                                      if (files && files[0]) {
+                                        setFilePassport(files[0].name);
+                                      }
+                                    }}
+                                  />
+                                </label>
                               </div>
                             </td>
                             <td className="p-4">
                               <div className="flex justify-center">
-                                <button className="bg-gradient-to-r from-[#003CB4] to-[#3679FE] text-white text-[12px] px-4 py-1 rounded-full">
-                                  Lihat File
-                                </button>
+                                <label className="bg-[#001F5D] text-white text-[12px] px-4 py-1 rounded-md cursor-pointer">
+                                  {fileTiket ? fileTiket : "Pilih File"}
+                                  <input
+                                    name="Tiket Penerbangan"
+                                    type="file"
+                                    className="hidden"
+                                    onChange={(e) => {
+                                      const files = e.target.files;
+                                      if (files && files[0]) {
+                                        setFileTiket(files[0].name);
+                                      }
+                                    }}
+                                  />
+                                </label>
                               </div>
                             </td>
-                            <td className="p-4">
-                              <div className="flex justify-center">
-                                <button className="bg-gradient-to-r from-[#003CB4] to-[#3679FE] text-white text-[12px] px-4 py-1 rounded-full">
-                                  Lihat File
-                                </button>
-                              </div>
-                            </td>
-
                           </tr>
                         ))}
                       </tbody>
                     </table>
+                </div>
+                <div className="flex justify-end mt-6">
+                   <button className="bg-gradient-to-r from-[#003CB4] to-[#3679FE] text-white text-[15px] px-4 py-1 rounded-full">
+                                  Konfirmasi
+                                </button>
                   </div>
               </div>
             </div>
